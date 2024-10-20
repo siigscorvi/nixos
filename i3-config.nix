@@ -1,7 +1,7 @@
-{config, pkgs, home-manager, ... }
+{config, pkgs, home-manager, ... }:
 
 {
 
-  services.xserver.windowManager.i3.configFile = $HOME/.dotfiles/i3/config;
+  services.xserver.windowManager.i3.configFile = ./i3/config;
 
 }
