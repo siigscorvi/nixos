@@ -8,6 +8,7 @@
   imports =
     [ 
       ./hardware-configuration.nix
+      ./i3-config.nix
     ];
 
   boot.loader = {
@@ -77,7 +78,7 @@
     xkb.layout = "de";
 
     windowManager.i3.enable = true;
-    # windowManager.i3.package = pkgs.i3;
+    # windowManager.i3.package = pkgs.i3;  # to remove all other packages 
     displayManager.lightdm.enable = true;
    
     videoDrivers = [ "nvidia" ];
