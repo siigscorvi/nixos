@@ -2,6 +2,6 @@
 
 {
 
-  services.xserver.windowManager.i3.configFile = ./i3/config;
+  services.xserver.windowManager.i3.configFile =./i3/config;
 
 }

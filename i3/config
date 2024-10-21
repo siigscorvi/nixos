@@ -13,7 +13,7 @@ font pango:JetBrains\ Mono, FontAwesome 8
 default_orientation auto
 default_border pixel 2
 hide_edge_borders none
-gaps inner 2
+gaps inner 3
 gaps outer 2
 # class                 border  backgr. text    indicator child_border
 client.focused          #F3F6FB #F3F6FB #00040D #AEFFFF   #F3F6FB
