@@ -9,6 +9,7 @@
     [ 
       ./hardware-configuration.nix
       ./i3-config.nix
+      ./desktop-env
     ];
 
   boot.loader = {
@@ -129,15 +130,19 @@
     spotify
     fastfetch
     btop
+    vlc
     firefox
     git
     wget
-    alacritty
     rofi
     alsa-utils
     polybar
   ];
 
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+  ];
+  
   programs = {
     thunar.enable = true;
   };

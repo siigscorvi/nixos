@@ -19,6 +19,7 @@
   programs = {
     home-manager.enable = true;
     git.enable = true;
+    alacritty.enable = true;
 
   };
   
@@ -35,5 +36,16 @@
       };
     };
   };
-
+  
+  programs.alacritty.settings = {
+    font = {
+      normal.family = "JetBrainsMono Nerd Font Mono";
+      bold = { style = "Bold"; };
+      size = 11;
+    };
+   #offset = {
+   #  x = -1;
+   #  y = 0;
+   #};
+  };
 }
