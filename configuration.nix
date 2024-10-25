@@ -6,11 +6,11 @@
 
 {
   imports =
-    [ 
-      ./hardware-configuration.nix
-      ./i3-config.nix
-      ./desktop-env
-    ];
+    [ ./hardware-configuration.nix
+      ./i3-config.nix 
+    ] ++ 
+    (import ./desktop-env) ++
+    (import ./services);
 
   boot.loader = {
     systemd-boot = {
@@ -40,8 +40,6 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-   
-
 
   networking = {
     hostName = "nixos";
@@ -126,6 +124,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    p7zip
     neovim
     spotify
     fastfetch
@@ -142,10 +141,6 @@
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
-  
-  programs = {
-    thunar.enable = true;
-  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

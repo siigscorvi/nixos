@@ -8,12 +8,17 @@
         thunar-archive-plugin
         thunar-volman
         thunar-media-tags-plugin
-        thunar-share-plugin
       ];
     };
+    xfconf.enable = true;
   };
 
   services = {
     tumbler.enable = true;
+    gvfs.enable = true;
   };
+
+  environment.systemPackages = with pkgs; [
+    file-roller
+  ];
 }
