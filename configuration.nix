@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, home-manager, ... }:
 
 {
   imports =
@@ -125,7 +125,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     p7zip
-    neovim
     spotify
     fastfetch
     btop
@@ -135,8 +134,20 @@
     wget
     rofi
     alsa-utils
-    polybar
+    #polybar
+    arandr
   ];
+
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+  };
+  environment.variables.EDITOR = "nvim";
+
+  programs.tmux = {
+    enable = true;
+  };
 
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
@@ -151,9 +162,6 @@
   # };
 
   # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
