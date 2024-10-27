@@ -4,23 +4,12 @@
 
   home.username = "siigs";
   home.homeDirectory = "/home/siigs";
-  home.shellAliases = {
-    "g" = "git";
-    "gst" = "git status";
-    "gp" = "git push";
-    "gc" = "git commit";
-  };
-  
-
-
-
-  home.stateVersion = "24.05";
 
   programs = {
     home-manager.enable = true;
     git.enable = true;
     alacritty.enable = true;
-
+    lf.enable = true;
   };
   
   programs.git = {
@@ -43,9 +32,7 @@
       bold = { style = "Bold"; };
       size = 11;
     };
-   #offset = {
-   #  x = -1;
-   #  y = 0;
-   #};
   };
+
+  home.stateVersion = "24.05";
 }
