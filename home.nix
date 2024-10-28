@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
 
@@ -32,6 +32,21 @@
       bold = { style = "Bold"; };
       size = 11;
     };
+  };
+
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+    vimdiffAlias = true;
+
+    plugins = with pkgs.vimPlugins; [
+      gruvbox-nvim
+
+
+
+    ];
   };
 
   home.stateVersion = "24.05";

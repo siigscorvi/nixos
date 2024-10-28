@@ -22,7 +22,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   nix = {
-    package = pkgs.nixFlakes;
+    package = pkgs.nixVersions.latest;
     settings.experimental-features = [ "nix-command" "flakes" ];
   };
 
@@ -138,12 +138,12 @@
     arandr
   ];
 
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
+  environment.variables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+    TERM = "alacritty";
   };
-  environment.variables.EDITOR = "nvim";
+
 
   programs.tmux = {
     enable = true;
