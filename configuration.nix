@@ -125,9 +125,14 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     p7zip
+    drawio
     spotify
+    pandoc
+    texlivePackages.collection-latexrecommended
+    texliveTeTeX
     fastfetch
     btop
+    discord
     vlc
     firefox
     git
@@ -147,6 +152,18 @@
 
   programs.tmux = {
     enable = true;
+  };
+  programs.bash.shellAliases = {
+    gs = "git status";
+    gc = "git commit";
+    gp = "git push";
+    ga = "git add";
+    gd = "git diff";
+
+    con = "vi ~/.dotfiles";
+    cdcon = "cd  ~/.dotfiles";
+    
+    nhs = "nh os switch -H siigs ~/.dotfiles/";
   };
 
   fonts.packages = with pkgs; [

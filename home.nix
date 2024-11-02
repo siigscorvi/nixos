@@ -9,7 +9,9 @@
     home-manager.enable = true;
     git.enable = true;
     alacritty.enable = true;
+    zsh.enable = true;
     fzf.enable = true;
+    ripgrep.enable = true;
     lf.enable = true;
   };
   
@@ -123,9 +125,10 @@
       '';
 
     plugins = with pkgs.vimPlugins; [
-
-
-
+#     {
+#        plugin = nvim-lspconfig;
+#        config = toLuaFile ./nvim/plugin/lsp.lua;
+#     }
       {
         plugin = gruvbox-nvim;
         config = "colorscheme gruvbox";
@@ -137,12 +140,8 @@
       }
       telescope-fzf-native-nvim
 
-      #(nvim-treesitter.withPlugins (p: [
-      #  p.tree-sitter-nix
-      #  p.tree-sitter-vim
-      #  p.tree-sitter-bash
-      #  p.tree-sitter-lua
-      #]))
+      nvim-treesitter.withAllGrammars
+
     ];
   };
 
