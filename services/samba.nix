@@ -1,9 +1,10 @@
 { config, pkgs, ... }:
 {
+  services.samba.enable = true;
   # For mount.cifs, required unless domain name resolution is not needed.
   environment.systemPackages = [ pkgs.cifs-utils ];
   fileSystems."/mnt/share" = {
-    device = "//192.168.42.3/share";
+    device = "//192.168.42.3/shared";
     fsType = "cifs";
     options = let
       # this line prevents hanging on network split
