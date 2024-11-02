@@ -9,6 +9,7 @@
     home-manager.enable = true;
     git.enable = true;
     alacritty.enable = true;
+    fzf.enable = true;
     lf.enable = true;
   };
   
@@ -34,14 +35,24 @@
     };
   };
 
-  programs.neovim = {
+  programs.neovim =
+  let
+    toLua = str: "lua << EOF\n${str}\nEOF\n";
+    toLuaFile = file: "lua << EOF\n${builtins.readFile file}\nEOF\n";
+  in
+  {
     enable = true;
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
-
-    programs.neovin.extraLuaConfig = ''
+    extraPackages = with pkgs; [
+      lua-language-server
+      xclip
+    ];
+    extraLuaConfig =
+    # set.lua 
+    ''
       -- show current line number
       vim.opt.nu = true
       -- show relative line number in relation to cursor
@@ -73,9 +84,9 @@
 
       -- time without input until swapped file is written to disk. this is safer
       vim.opt.updatetime = 50
-
-
-      '' ++
+      '' 
+      +
+    # keymaps.lua
       ''
       -- Make sure to setup `mapleader` and `maplocalleader` before loading lazy.nvim so that mappings are correct.
       vim.g.mapleader = " "
@@ -102,21 +113,36 @@
       -- replace current word
       vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
+      local builtin = require('telescope.builtin')
+      vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+      vim.keymap.set('n', '<leader><leader>', builtin.find_files, {})
+      vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+      vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+      vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+
       '';
 
     plugins = with pkgs.vimPlugins; [
-      nvim-lspconfig
+
+
+
       {
         plugin = gruvbox-nvim;
         config = "colorscheme gruvbox";
       }
 
-      (nvim-treesitter.withPlugins (p: [
-        p.tree-sitter-nix
-        p.tree-sitter-vim
-        p.tree-sitter-bash
-        p.tree-sitter-lua
-      ]))
+      {
+        plugin = telescope-nvim;
+        config = toLuaFile ./nvim/plugin/telescope.lua;
+      }
+      telescope-fzf-native-nvim
+
+      #(nvim-treesitter.withPlugins (p: [
+      #  p.tree-sitter-nix
+      #  p.tree-sitter-vim
+      #  p.tree-sitter-bash
+      #  p.tree-sitter-lua
+      #]))
     ];
   };
 
