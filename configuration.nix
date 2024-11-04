@@ -33,6 +33,22 @@
     powerOnBoot = true;
   };
   services.blueman.enable = true;
+    security.polkit.extraConfig = ''
+    polkit.addRule(function(action, subject) {
+      if (
+        subject.isInGroup("users")
+          && (
+            action.id == "org.freedesktop.login1.reboot" ||
+            action.id == "org.freedesktop.login1.reboot-multiple-sessions" ||
+            action.id == "org.freedesktop.login1.power-off" ||
+            action.id == "org.freedesktop.login1.power-off-multiple-sessions"
+          )
+        )
+      {
+        return polkit.Result.YES;
+      }
+    });
+  '';
 
   services.pipewire = {
     enable = true;
@@ -78,8 +94,12 @@
     xkb.layout = "de";
 
     windowManager.i3.enable = true;
-    # windowManager.i3.package = pkgs.i3;  # to remove all other packages 
-    displayManager.lightdm.enable = true;
+    displayManager = {
+      lightdm.enable = true;
+      defaultSession ="";
+      autoLogin.user = "siigs";
+      autoLogin.enable = true;
+    };
    
     videoDrivers = [ "nvidia" ];
 
@@ -88,13 +108,12 @@
       "DP-5"
       {
         output = "HMDI-0";
-	primary = true;
+      	primary = true;
       }
     ];
   };
 
   services.playerctld.enable = true;
-
 
   nixpkgs.config = {
     allowUnfree = true;
@@ -116,10 +135,6 @@
   users.users.siigs = {
     isNormalUser = true;
     extraGroups = [ "wheel" "video" "audio" "networkmanager" "lp" "scanner" ]; # Enable ‘sudo’ for the user.
-  #   packages = with pkgs; [
-  #     firefox
-  #     tree
-  #   ];
   };
 
   # List packages installed in system profile. To search, run:
@@ -154,8 +169,9 @@
   programs.tmux = {
     enable = true;
   };
+
   programs.bash.shellAliases = {
-    gs = "git status";
+    gst = "git status";
     gc = "git commit";
     gp = "git push";
     ga = "git add";
@@ -165,6 +181,7 @@
     cdcon = "cd  ~/.dotfiles";
     
     nhs = "nh os switch -H siigs ~/.dotfiles/";
+    vnc0 = "x0vncserver -rfbauth ~/.config/tigervnc/passwd -Display=:0";
   };
 
   fonts.packages = with pkgs; [

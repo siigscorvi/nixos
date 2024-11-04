@@ -1,4 +1,5 @@
 ### these are set from i3
+exec --no-startup-id feh --bg-scale '~/images/wp12329536-nixos-wallpapers.png'
 
 ### Style configurations
 font pango:JetBrains\ Mono, FontAwesome 8
