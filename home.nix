@@ -8,12 +8,21 @@
   programs = {
     home-manager.enable = true;
     git.enable = true;
-    alacritty.enable = true;
     zsh.enable = true;
+    alacritty.enable = true;
     fzf.enable = true;
     ripgrep.enable = true;
     lf.enable = true;
   };
+
+  programs.zsh = {
+    autocd = true;
+    autosuggestion.enable = true;
+    autosuggestion.highlight = "fg=#ff00ff,bg=cyan,bold,underline";
+    enableCompletion = true;
+    syntaxHighlighting.enable = true;
+  };
+  programs.fzf.enableZshIntegration = true;
   
   programs.git = {
     userEmail = "s76rhart@uni-bonn.de";

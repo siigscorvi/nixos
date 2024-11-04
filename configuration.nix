@@ -26,6 +26,8 @@
     settings.experimental-features = [ "nix-command" "flakes" ];
   };
 
+  environment.pathsToLink = [ "/share/zsh" ];
+  
   hardware.nvidia.open = true;
 
   hardware.bluetooth = {
