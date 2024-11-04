@@ -90,17 +90,12 @@
 
   services.xserver = {
     enable = true;
-  
     xkb.layout = "de";
-
     windowManager.i3.enable = true;
     displayManager = {
       lightdm.enable = true;
-      defaultSession ="";
-      autoLogin.user = "siigs";
-      autoLogin.enable = true;
     };
-   
+
     videoDrivers = [ "nvidia" ];
 
     # monitor configuration
@@ -111,6 +106,11 @@
       	primary = true;
       }
     ];
+  };
+  services.displayManager = {
+    defaultSession ="none+i3";
+    autoLogin.user = "siigs";
+    autoLogin.enable = true;
   };
 
   services.playerctld.enable = true;
