@@ -55,9 +55,12 @@
 
   services.pipewire = {
     enable = true;
+    audio.enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
+    wireplumber.enable = true;
     pulse.enable = true;
+    jack.enable = true;
   };
 
   networking = {
@@ -127,16 +130,18 @@
     useXkbConfig = true;
   };
 
-
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager). -- test with laptop??
   # services.libinput.enable = true;
+  programs.zsh.enable = true;
+
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.siigs = {
     isNormalUser = true;
+    shell = pkgs.zsh;
     extraGroups = [ "wheel" "video" "audio" "networkmanager" "lp" "scanner" ]; # Enable ‘sudo’ for the user.
   };
 
@@ -155,6 +160,7 @@
     vlc
     firefox
     git
+    qjackctl
     wget
     rofi
     alsa-utils
@@ -166,12 +172,11 @@
     EDITOR = "nvim";
     VISUAL = "nvim";
     TERM = "alacritty";
+    TERMINAL = "alacritty";
+    SHELL = "zsh";
   };
 
 
-  programs.tmux = {
-    enable = true;
-  };
 
   programs.bash.shellAliases = {
     gst = "git status";

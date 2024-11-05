@@ -9,11 +9,15 @@
     home-manager.enable = true;
     git.enable = true;
     zsh.enable = true;
+    starship.enable = true;
     alacritty.enable = true;
+    tmux.enable = true;
     fzf.enable = true;
     ripgrep.enable = true;
     lf.enable = true;
   };
+  
+  home.packages = [ pkgs.zsh ];
 
   programs.zsh = {
     autocd = true;
@@ -30,12 +34,6 @@
     enableCompletion = true;
     syntaxHighlighting.enable = true;
 
-    prezto = {
-      enable = true;
-      tmux.autoStartLocal = true;
-      tmux.autoStartRemote = true;
-    };
-
     shellAliases = {
       gst = "git status";
       gc = "git commit";
@@ -49,9 +47,12 @@
       nhs = "nh os switch -H siigs ~/.dotfiles/";
       vnc0 = "x0vncserver -rfbauth ~/.config/tigervnc/passwd -Display=:0";
     };
-
   };
   programs.fzf.enableZshIntegration = true;
+
+  home.file.".config/starship.toml" = {
+    source = ./configfiles/starship.toml;
+  };
   
 # home.file.".vnc/xstartup" = {
 #   text = ''
