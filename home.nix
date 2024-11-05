@@ -17,13 +17,49 @@
 
   programs.zsh = {
     autocd = true;
-    autosuggestion.enable = true;
-    autosuggestion.highlight = "fg=#ff00ff,bg=cyan,bold,underline";
+    autosuggestion = {
+      enable = true;
+      #highlight = "fg=#ff00ff,bg=cyan,bold,underline";
+      strategy = [
+        "history"
+        "completion"
+        "match_prev_cmd"
+      ];
+    };
+    # dotDir = "";
     enableCompletion = true;
     syntaxHighlighting.enable = true;
+
+    prezto = {
+      enable = true;
+      tmux.autoStartLocal = true;
+      tmux.autoStartRemote = true;
+    };
+
+    shellAliases = {
+      gst = "git status";
+      gc = "git commit";
+      gp = "git push";
+      ga = "git add";
+      gd = "git diff";
+
+      con = "vi ~/.dotfiles";
+      cdcon = "cd  ~/.dotfiles";
+      
+      nhs = "nh os switch -H siigs ~/.dotfiles/";
+      vnc0 = "x0vncserver -rfbauth ~/.config/tigervnc/passwd -Display=:0";
+    };
+
   };
   programs.fzf.enableZshIntegration = true;
   
+# home.file.".vnc/xstartup" = {
+#   text = ''
+#     #!/bin/sh
+#     exec i3
+#   '';
+# };
+
   programs.git = {
     userEmail = "s76rhart@uni-bonn.de";
     userName = "siigscorvi";

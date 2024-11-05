@@ -15,7 +15,7 @@
   boot.loader = {
     systemd-boot = {
       enable = true;
-      configurationLimit = 12;
+      configurationLimit = 6;
     };
     timeout = 2;
   };  
@@ -34,6 +34,7 @@
     enable = true;
     powerOnBoot = true;
   };
+
   services.blueman.enable = true;
     security.polkit.extraConfig = ''
     polkit.addRule(function(action, subject) {
@@ -111,8 +112,8 @@
   };
   services.displayManager = {
     defaultSession ="none+i3";
-    autoLogin.user = "siigs";
-    autoLogin.enable = true;
+#   autoLogin.user = "siigs";
+#   autoLogin.enable = true;
   };
 
   services.playerctld.enable = true;
