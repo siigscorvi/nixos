@@ -2,6 +2,6 @@
   ./ssh.nix
   ./nh.nix
   ./samba.nix
-  ./rdp.nix
-  ./vnc.nix
+#  ./rdp.nix
+#  ./vnc.nix
 ]
