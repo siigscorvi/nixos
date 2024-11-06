@@ -45,21 +45,18 @@
       cdcon = "cd  ~/.dotfiles";
       
       nhs = "nh os switch -H siigs ~/.dotfiles/";
-      vnc0 = "x0vncserver -rfbauth ~/.config/tigervnc/passwd -Display=:0";
+#      vnc0 = "x0vncserver -rfbauth ~/.config/tigervnc/passwd -Display=:0";
     };
   };
   programs.fzf.enableZshIntegration = true;
 
-  home.file.".config/starship.toml" = {
-    source = ./configfiles/starship.toml;
-  };
-  
-# home.file.".vnc/xstartup" = {
-#   text = ''
-#     #!/bin/sh
-#     exec i3
-#   '';
-# };
+#  programs.starship.settings = {
+#    add_newline = false;
+#  };
+
+ home.file.".config/starship.toml" = {
+   source = ./configfiles/starship.toml;
+ };
 
   programs.git = {
     userEmail = "s76rhart@uni-bonn.de";
