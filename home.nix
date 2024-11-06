@@ -11,7 +11,6 @@
     zsh.enable = true;
     starship.enable = true;
     alacritty.enable = true;
-    tmux.enable = true;
     fzf.enable = true;
     ripgrep.enable = true;
     lf.enable = true;
@@ -19,7 +18,28 @@
   
   home.packages = [ pkgs.zsh ];
 
+  programs.tmux = {
+   enable = true;
+   baseIndex = 1;
+   mouse = true;
+   shell = "${pkgs.zsh}/bin/zsh";
+   sensibleOnTop = false;
+   extraConfig = ''
+
+   '';
+  };
+    
   programs.zsh = {
+
+    # options
+    history = {
+      append = true;
+      ignoreAllDups = true;
+      ignoreDups = true;
+      ignoreSpace = true;
+      share = true;
+    };
+
     # plugins
     autocd = true;
     autosuggestion = {
@@ -41,6 +61,9 @@
       then
           tmux attach -t default || tmux new -s default
       fi
+      # In .zshrc
+
+      bindkey -v
     '';
 
     # aliases
