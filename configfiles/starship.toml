@@ -53,13 +53,13 @@ read_only_style = 'color_red'
 format =' [$path]($style)[$read_only]($read_only_style)'
 
 [git_branch]
-symbol = ' '
+symbol = ''
 style = 'bold color_purple'
-format = ' [$symbol \[$branch(:$remote_branch)]($style) '
+format = ' [$symbol \[$branch(:$remote_branch)]($style)'
 
 [git_status]
 style = 'bold color_purple'
-format = '[$all_status$ahead_behind]($style)'
+format = ' [$all_status$ahead_behind]($style)'
 
 [git_metrics]
 disabled = false
