@@ -8,11 +8,22 @@ $directory\
 $git_branch\
 $git_status\
 $git_metrics\
-\n$character
+$line_break$character
 """
 right_format = """
+$nix_shell\
 $os\
 """
+# has to be configured
+#  $c\
+#  $sudo\
+#  $cmake\
+#  $conda\
+#  $go\
+#  $pyhton\
+#  $rlang\
+#  $rust\
+#  $time\
 palette = 'gruvbox_dark'
 # Inserts a blank line between shell prompts
 add_newline = true
@@ -34,6 +45,7 @@ color_red2 = '#fb4934'
 color_yellow = '#d79921'
 
 [username]
+# show_always = true
 style_root = 'bold color_red'
 style_user = 'bold color_yellow'
 format ='[$user]($style)'
@@ -43,14 +55,15 @@ ssh_only = true
 trim_at = ''
 style = 'bold color_blue'
 ssh_symbol = ' via  '
-format = '[@$hostname$ssh_symbol:]($style)'
+format = '[@$hostname$ssh_symbol: ]($style)'
 
 [directory]
-fish_style_pwd_dir_length = 5
-style = 'color_aqua'
+fish_style_pwd_dir_length = 3
+truncation_length = 3
+style = 'bold color_aqua'
 read_only = ''
-read_only_style = 'color_red'
-format =' [$path]($style)[$read_only]($read_only_style)'
+read_only_style = 'bold color_red'
+format ='[$path]($style)[$read_only]($read_only_style)'
 
 [git_branch]
 symbol = ''
@@ -63,19 +76,25 @@ format = ' [$all_status$ahead_behind]($style)'
 
 [git_metrics]
 disabled = false
-added_style = 'color_green'
-deleted_style = 'color_red'
+added_style = 'bold color_green'
+deleted_style = 'bold color_red'
 format = ' [+$added]($added_style) [|](bold color_purple) [-$deleted]($deleted_style)[\]](bold color_purple)'
 
-# Replace the '❯' symbol 
+[line_break]
+disabled = false
+
+# Replace the '' symbol ➜
 [character] 
-success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+success_symbol = '[❯](bold color_green)'
+error_symbol = '[❯](bold color_red)' 
+
 
 [os]
 disabled = false
+style = 'bold color_blue'
 
 [os.symbols]
-NixOS = '[ ](color_blue)'
+NixOS = ' '
 
 # [battery]
 # full_symbol = '🔋 '

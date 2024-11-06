@@ -20,6 +20,7 @@
   home.packages = [ pkgs.zsh ];
 
   programs.zsh = {
+    # plugins
     autocd = true;
     autosuggestion = {
       enable = true;
@@ -34,6 +35,15 @@
     enableCompletion = true;
     syntaxHighlighting.enable = true;
 
+    # additional stuff for .zshrc
+    initExtraFirst = ''
+      if [ -z "$TMUX" ]
+      then
+          tmux attach -t default || tmux new -s default
+      fi
+    '';
+
+    # aliases
     shellAliases = {
       gst = "git status";
       gc = "git commit";
@@ -48,15 +58,12 @@
 #      vnc0 = "x0vncserver -rfbauth ~/.config/tigervnc/passwd -Display=:0";
     };
   };
+
   programs.fzf.enableZshIntegration = true;
 
-#  programs.starship.settings = {
-#    add_newline = false;
-#  };
-
- home.file.".config/starship.toml" = {
-   source = ./configfiles/starship.toml;
- };
+  home.file.".config/starship.toml" = {
+    source = ./configfiles/starship.toml;
+  };
 
   programs.git = {
     userEmail = "s76rhart@uni-bonn.de";
