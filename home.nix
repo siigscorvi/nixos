@@ -23,10 +23,9 @@
    baseIndex = 1;
    mouse = true;
    shell = "${pkgs.zsh}/bin/zsh";
+   escapeTime = 0;
    sensibleOnTop = false;
-   extraConfig = ''
-
-   '';
+   # extraConfig = '' '';
   };
     
   programs.zsh = {
@@ -61,10 +60,12 @@
       then
           tmux attach -t default || tmux new -s default
       fi
-      # In .zshrc
-
-      bindkey -v
     '';
+
+    initExtra = ''
+        source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+      '';
+
 
     # aliases
     shellAliases = {
@@ -122,9 +123,66 @@
     vimAlias = true;
     vimdiffAlias = true;
     extraPackages = with pkgs; [
-      lua-language-server
-      xclip
+      nil # nix lang - language server
+      lua-language-server # lua language server
+      cmake-language-server # CMAKE language server
+      ccls # C/C++/Objective-C language server
+      pylyzer # python language server. can also try https://github.com/python-lsp/python-lsp-server + https://github.com/python-rope/pylsp-rope in the future
+#     rPackages.languageserver # R language server
+      ltex-ls # markdown and LaTeX language server for grammar checks (also supports Quarto, git commit messages, R Markdown) 
+#     markdown-oxide # lsp for personal-knowledge management system like obsidian
+      marksman # lsp for markdown-specific features 
+#     gopls # official go-lang language server
+#     golangci-lint-langserver # language server for the "golangci linter"
+#     golangci-lint # linter for go - use golangci-lint-langserver with this?
+#     superhtml # html language server
+#     asm-lsp # nasm/gas/go assembly lsp
+#     rust-analyzer # rust language server
+      bash-language-server # bash language server
+#     dockerfile-language-server-nodejs # docker file/compose language server by docker developer. !!only works with nodejs
+      taplo # toml toolkit, with language server
+      yaml-language-server # yaml language server
     ];
+
+    plugins = with pkgs.vimPlugins; [
+      {
+        # lsp configs for all language server, so I dont have to set it up everything for every language server
+        plugin = nvim-lspconfig;
+        config = toLuaFile ./nvim/plugin/lsp.lua;
+      }
+
+#      # "completion engine for nvim"
+#      nvim-cmp
+#      # support for lsps in nvim-cmp and additional signature highlihgting on completion
+#      cmp-nvim-lsp
+#      cmp-nvim-lsp-signature-help
+#
+#      # nvim-cmp source for luasnips. see below
+#      cmp_luasnip
+#      # luasnips allows to create snippets of code to use in code
+#      luasnip
+       
+      {
+        plugin = gruvbox-nvim;
+        config = "colorscheme gruvbox";
+      }
+
+      {
+        plugin = telescope-nvim;
+        config = toLuaFile ./nvim/plugin/telescope.lua;
+      }
+       
+      telescope-fzf-native-nvim
+       
+      {
+        plugin = mason-nvim;
+        config  = toLua "require(\"mason\").setup()";
+      }
+
+      nvim-treesitter.withAllGrammars
+
+    ];
+
     extraLuaConfig =
     # set.lua 
     ''
@@ -196,26 +254,6 @@
       vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
       '';
-
-    plugins = with pkgs.vimPlugins; [
-#     {
-#        plugin = nvim-lspconfig;
-#        config = toLuaFile ./nvim/plugin/lsp.lua;
-#     }
-      {
-        plugin = gruvbox-nvim;
-        config = "colorscheme gruvbox";
-      }
-
-      {
-        plugin = telescope-nvim;
-        config = toLuaFile ./nvim/plugin/telescope.lua;
-      }
-      telescope-fzf-native-nvim
-
-      nvim-treesitter.withAllGrammars
-
-    ];
   };
 
   home.stateVersion = "24.05";
