@@ -153,6 +153,7 @@
     spotify
     pandoc
     texlivePackages.collection-latexrecommended
+    xclip
     texliveTeTeX
     fastfetch
     btop
