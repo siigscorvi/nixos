@@ -46,6 +46,7 @@
         '';
       }
 
+      # better shortcuts for tmux sessions
       tmuxPlugins.sessionist
 
     ];
@@ -212,7 +213,11 @@
       nvim-treesitter.withAllGrammars
       # needed for tmux-resurrect to save nvim sessions
       vim-obsession
-        
+      # needed for vim-like tmux navigation
+      {
+        plugin = tmux-nvim;
+        config = toLuaFile ./nvim/plugin/tmux_nav.lua;
+      }
 
     ];
 
