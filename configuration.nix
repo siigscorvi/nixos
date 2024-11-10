@@ -149,8 +149,8 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     p7zip
+    unzip
     drawio
-    spotify
     pandoc
     texlivePackages.collection-latexrecommended
     xclip
@@ -161,7 +161,6 @@
     discord
     vlc
     firefox
-    nodejs_22
     git
     qjackctl
     wget
@@ -169,6 +168,13 @@
     alsa-utils
     #polybar
     arandr
+
+    nodejs_22
+    python313
+    go
+    R
+
+    spotify
   ];
 
   environment.variables = {
