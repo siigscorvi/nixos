@@ -19,13 +19,38 @@
   home.packages = [ pkgs.zsh ];
 
   programs.tmux = {
-   enable = true;
-   baseIndex = 1;
-   mouse = true;
-   shell = "${pkgs.zsh}/bin/zsh";
-   escapeTime = 0;
-   sensibleOnTop = false;
-   # extraConfig = '' '';
+    enable = true;
+    baseIndex = 1;
+    mouse = true;
+    shell = "${pkgs.zsh}/bin/zsh";
+    escapeTime = 10;
+    sensibleOnTop = false;
+    plugins = with pkgs; [
+      # saving and restoring tmux sessions
+      {
+        plugin = tmuxPlugins.resurrect;
+        extraConfig = ''
+          # for vim
+          set -g @resurrect-strategy-vim 'session'
+          # for neovim
+          set -g @resurrect-strategy-nvim 'session'
+          set -g @resurrect-capture-pane-contents 'on'
+        '';
+      }
+      # automatic saving and restoring
+      {
+        plugin = tmuxPlugins.continuum;
+        extraConfig = ''
+          set -g @continuum-restore 'on'
+          set -g @continuum-boot 'on'
+        '';
+      }
+
+      tmuxPlugins.sessionist
+
+    ];
+
+    # extraConfig = '' '';
   };
     
   programs.zsh = {
@@ -151,16 +176,21 @@
         config = toLuaFile ./nvim/plugin/lsp.lua;
       }
 
-#      # "completion engine for nvim"
-#      nvim-cmp
-#      # support for lsps in nvim-cmp and additional signature highlihgting on completion
-#      cmp-nvim-lsp
-#      cmp-nvim-lsp-signature-help
-#
-#      # nvim-cmp source for luasnips. see below
-#      cmp_luasnip
-#      # luasnips allows to create snippets of code to use in code
-#      luasnip
+      # "completion engine for nvim"
+      {
+        plugin = nvim-cmp;
+        config = toLuaFile ./nvim/plugin/cmp.lua;
+      }
+
+      # support for lsps in nvim-cmp and additional signature highlihgting on completion
+      cmp-nvim-lsp
+      cmp-nvim-lsp-signature-help
+      cmp-path
+
+      # nvim-cmp source for luasnips. see below
+      cmp_luasnip
+      # luasnips allows to create snippets of code to use in code
+      luasnip
        
       {
         plugin = gruvbox-nvim;
@@ -180,6 +210,9 @@
       }
 
       nvim-treesitter.withAllGrammars
+      # needed for tmux-resurrect to save nvim sessions
+      vim-obsession
+        
 
     ];
 
