@@ -12,8 +12,8 @@ local on_attach = function(_, bufnr)
   bufmap('<leader>D', vim.lsp.buf.type_definition)
 
   bufmap('gr', require('telescope.builtin').lsp_references)
-  bufmap('<leader>s', require('telescope.builtin').lsp_document_symbols)
-  bufmap('<leader>S', require('telescope.builtin').lsp_dynamic_workspace_symbols)
+  --- bufmap('<leader>s', require('telescope.builtin').lsp_document_symbols)
+  --- bufmap('<leader>S', require('telescope.builtin').lsp_dynamic_workspace_symbols)
 
   bufmap('K', vim.lsp.buf.hover)
 end
@@ -40,13 +40,15 @@ require('lspconfig').lua_ls.setup {
 	root_dir = function()
         return vim.loop.cwd()
     end,
-	cmd = { "lua-lsp" },
-    settings = {
-        Lua = {
-            workspace = { checkThirdParty = false },
-            telemetry = { enable = false },
-        },
-    }
+  settings = {
+    Lua = {
+      workspace = { checkThirdParty = false },
+      telemetry = { enable = false },
+      diagnostics = {
+        globals = { 'vim' },
+      },
+    },
+  },
 }
 require'lspconfig'.cmake.setup{
     on_attach = on_attach,
@@ -58,15 +60,23 @@ require'lspconfig'.pylyzer.setup{
     capabilities = capabilities,
 }
 --- require'lspconfig'.r_language_server.setup{}
+local function combined_attach()
+  on_attach()
+  require("ltex_extra").setup({
+    load_langs = { 'de-DE', 'en-US' }, -- Which languages do you want to load on init.
+  })
+end
 require'lspconfig'.ltex.setup{
-    on_attach = on_attach,
+    on_attach = combined_attach,
     capabilities = capabilities,
   settings = {
     ltex = {
-      language = "en", "de",
+      language = { "de-DE","en-US", },
     },
   },
 }
+
+
 -- this needs to cleaned up, automated and synchronized
 --- require'lspconfig'.markdown_oxide.setup{}
 require'lspconfig'.marksman.setup{

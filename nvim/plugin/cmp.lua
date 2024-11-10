@@ -78,35 +78,3 @@ local luasnip = require 'luasnip'
     }),
     matching = { disallow_symbol_nonprefix_matching = false }
   })
-
-  -- Set up lspconfig.
-  local capabilities = require('cmp_nvim_lsp').default_capabilities()
-  -- this needs to cleaned up, automated and synchronized
- require('lspconfig')['nil_ls'].setup {
-    capabilities = capabilities
-  }
-
-  require('lspconfig')['lua_ls'].setup {
-    capabilities = capabilities
-  }
-  require('lspconfig')['cmake'].setup {
-    capabilities = capabilities
-  }
-  require('lspconfig')['pylyzer'].setup {
-    capabilities = capabilities
-  }
-  require('lspconfig')['ltex'].setup {
-    capabilities = capabilities
-  }
-  require('lspconfig')['marksman'].setup {
-    capabilities = capabilities
-  }
-  require('lspconfig')['bashls'].setup {
-    capabilities = capabilities
-  }
-  require('lspconfig')['taplo'].setup {
-    capabilities = capabilities
-  }
-  require('lspconfig')['yamlls'].setup {
-    capabilities = capabilities
-  }

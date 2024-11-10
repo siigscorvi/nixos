@@ -187,7 +187,6 @@
       cmp-nvim-lsp
       cmp-nvim-lsp-signature-help
       cmp-path
-
       # nvim-cmp source for luasnips. see below
       cmp_luasnip
       # luasnips allows to create snippets of code to use in code
@@ -198,17 +197,20 @@
         config = "colorscheme gruvbox";
       }
 
+      plenary-nvim
       {
         plugin = telescope-nvim;
         config = toLuaFile ./nvim/plugin/telescope.lua;
       }
-       
       telescope-fzf-native-nvim
+      telescope-file-browser-nvim
+      nvim-web-devicons
        
       {
         plugin = mason-nvim;
         config  = toLua "require(\"mason\").setup()";
       }
+      ltex_extra-nvim
 
       nvim-treesitter.withAllGrammars
       # needed for tmux-resurrect to save nvim sessions
@@ -218,6 +220,13 @@
         plugin = tmux-nvim;
         config = toLuaFile ./nvim/plugin/tmux_nav.lua;
       }
+
+      {
+        plugin = undotree;
+      }
+
+
+      vim-startuptime
 
     ];
 
@@ -263,9 +272,6 @@
       vim.g.mapleader = " "
       vim.g.maplocalleader = "\\"
 
-      -- open Explorer
-      vim.keymap.set("n", "<leader>fe", vim.cmd.Ex)
-
       -- when scrolling with <C-d> or <C-u>, cursor stays at its position
       vim.keymap.set("n", "<C-d>", "<C-d>zz")
       vim.keymap.set("n", "<C-u>", "<C-u>zz")
@@ -273,6 +279,16 @@
       -- when moving through search terms, cursor stays at its position
       vim.keymap.set("n", "n", "nzzzv")
       vim.keymap.set("n", "N", "Nzzzv")
+
+      --- keymaps for telescope. For some reason, when moving them into telescope.lua they no longer work
+      --- possibly because of the order they are loaded? since undotree had some strange behavior aswell
+      local builtin = require('telescope.builtin')
+      vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+      vim.keymap.set('n', '<leader><leader>', builtin.find_files, {})
+      vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+      vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+      vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+      vim.keymap.set("n", "<leader><u>", vim.cmd.UndotreeToggle)
 
       -- for copying to the system clipboard
       vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
@@ -283,13 +299,6 @@
 
       -- replace current word
       vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-
-      local builtin = require('telescope.builtin')
-      vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-      vim.keymap.set('n', '<leader><leader>', builtin.find_files, {})
-      vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-      vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-      vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
       '';
   };

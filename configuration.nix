@@ -154,12 +154,14 @@
     pandoc
     texlivePackages.collection-latexrecommended
     xclip
+    fd
     texliveTeTeX
     fastfetch
     btop
     discord
     vlc
     firefox
+    nodejs_22
     git
     qjackctl
     wget

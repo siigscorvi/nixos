@@ -1,1 +1,3 @@
-require("tmux").setup()
+require("tmux").setup({
+  copy_sync = { enable = false, },
+})
