@@ -7,7 +7,6 @@
 {
   imports =
     [ ./hardware-configuration.nix
-      ./i3-config.nix 
     ] ++ 
     (import ./desktop-env) ++
     (import ./services);
@@ -166,7 +165,6 @@
     wget
     rofi
     alsa-utils
-    #polybar
     arandr
 
     nodejs_22

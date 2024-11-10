@@ -7,10 +7,7 @@
 
   programs = {
     home-manager.enable = true;
-    git.enable = true;
-    zsh.enable = true;
     starship.enable = true;
-    alacritty.enable = true;
     fzf.enable = true;
     ripgrep.enable = true;
     lf.enable = true;
@@ -31,8 +28,6 @@
       {
         plugin = tmuxPlugins.resurrect;
         extraConfig = ''
-          # for vim
-          set -g @resurrect-strategy-vim 'session'
           # for neovim
           set -g @resurrect-strategy-nvim 'session'
           set -g @resurrect-capture-pane-contents 'on'
@@ -49,6 +44,26 @@
 
       # better shortcuts for tmux sessions
       tmuxPlugins.sessionist
+      # open visual selection with default applications
+      tmuxPlugins.open
+
+      {
+        plugin = tmuxPlugins.yank;
+        extraConfig = ''
+          # set vi-mode
+          set-window-option -g mode-keys vi
+          # keybindings
+          bind-key -T copy-mode-vi v send-keys -X begin-selection
+          bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
+          bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel 
+        '';
+      }
+      {
+        plugin = tmuxPlugins.gruvbox;
+        extraConfig = ''
+          set -g @tmux-gruvbox 'dark'
+        '';
+      }
 
     ];
 
@@ -80,6 +95,7 @@
   };
     
   programs.zsh = {
+    enable = true;
 
     # options
     history = {
@@ -106,12 +122,12 @@
     syntaxHighlighting.enable = true;
 
     # additional stuff for .zshrc
-    initExtraFirst = ''
-      if [ -z "$TMUX" ]
-      then
-          tmux attach -t default || tmux new -s default
-      fi
-    '';
+#    initExtraFirst = ''
+#      if [ -z "$TMUX" ]
+#      then
+#          tmux attach -t default || tmux new -s default
+#      fi
+#    '';
 
     initExtra = ''
         source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
@@ -128,7 +144,10 @@
 
       con = "vi ~/.dotfiles";
       cdcon = "cd  ~/.dotfiles";
-      
+
+      t = "tmux";
+      ta = "tmux a";      
+
       nhs = "nh os switch -H siigs ~/.dotfiles/";
 #      vnc0 = "x0vncserver -rfbauth ~/.config/tigervnc/passwd -Display=:0";
     };
@@ -140,7 +159,12 @@
     source = ./configfiles/starship.toml;
   };
 
+  home.file.".config/polybar.ini" = {
+    source = ./configfiles/polybar.ini;
+  };
+
   programs.git = {
+    enable = true;
     userEmail = "s76rhart@uni-bonn.de";
     userName = "siigscorvi";
     extraConfig = {
@@ -154,6 +178,7 @@
     };
   };
   
+  programs.alacritty.enable = true;
   programs.alacritty.settings = {
     font = {
       normal.family = "JetBrainsMono Nerd Font Mono";
@@ -313,7 +338,7 @@
       vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
       vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
       vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-      vim.keymap.set("n", "<leader><u>", vim.cmd.UndotreeToggle)
+      vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
       -- for copying to the system clipboard
       vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
