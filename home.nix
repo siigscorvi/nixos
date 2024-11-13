@@ -15,6 +15,26 @@
   
   home.packages = [ pkgs.zsh ];
 
+  home.file.".config/starship.toml" = {
+    source = ./configfiles/starship.toml;
+  };
+  
+  services.picom = {
+    enable = true;
+  };
+#  services.polybar = {
+#    enable = true;
+#    package = {
+#
+#
+#    };
+#
+#  };
+
+#  home.file.".config/polybar.ini" = {
+#    source = ./configfiles/polybar.ini;
+#  };
+
   programs.tmux = {
     enable = true;
     baseIndex = 1;
@@ -154,14 +174,6 @@
   };
 
   programs.fzf.enableZshIntegration = true;
-
-  home.file.".config/starship.toml" = {
-    source = ./configfiles/starship.toml;
-  };
-
-  home.file.".config/polybar.ini" = {
-    source = ./configfiles/polybar.ini;
-  };
 
   programs.git = {
     enable = true;
