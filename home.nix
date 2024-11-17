@@ -23,19 +23,15 @@
     source = ./configfiles/polybar.ini;
   };
   
-  #services.picom = { enable = true; };
-#  services.polybar = {
-#    enable = true;
-#    package = {
-#
-#
-#    };
-#
-#  };
+  home.file.".config/xborders/config.json" = {
+    source = ./configfiles/xborders.json;
+    force = true;
+  };
 
-#  home.file.".config/polybar.ini" = {
-#    source = ./configfiles/polybar.ini;
-#  };
+  home.file.".config/picom/picom.conf" = {
+    source = ./configfiles/picom.conf;
+    force = true;
+  };
 
   programs.tmux = {
     enable = true;
@@ -61,6 +57,7 @@
         extraConfig = ''
           set -g @continuum-restore 'on'
           set -g @continuum-boot 'on'
+          set -g @continuum-save-interval '30'
         '';
       }
 
@@ -199,6 +196,7 @@
       bold = { style = "Bold"; };
       size = 11;
     };
+    general = {import = ["~/.config/alacritty/themes/themes/gruvbox_dark.toml"];};
   };
 
   programs.neovim =

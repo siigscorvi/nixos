@@ -2,12 +2,14 @@
 exec --no-startup-id dex --autostart --environment i3
 exec_always --no-startup-id feh --bg-fill ~/.config/wallpapers/current
 exec_always --no-startup-id ~/.dotfiles/scripts/polybar.sh &
+exec_always --no-startup-id picom -b --log-file /tmp/picom.log --log-level "INFO"
+exec --no-startup-id xborders -c ~/.config/xborders/config.json
 
 ### Style configurations
 font pango:JetBrains\ Mono, FontAwesome 8
 
 default_orientation auto
-default_border pixel 2
+default_border none
 hide_edge_borders none
 gaps inner 3
 gaps outer 2
@@ -70,6 +72,10 @@ assign [class="^discord"] $ws8
 # spotify doesn't like assign keyword, spotify doesn't even like for_window keyword
 # this only works sometimes...
 for_window [class="potify"] move to workspace $ws4
+for_window [title="Pipewire Volume Control"] floating enable
+for_window [title="Pipewire Volume Control"] resize set 860 640 
+for_window [class="Thunar"] floating enable
+for_window [class="Thunar"] resize set 1080 640
 
 # vim keys
 bindsym $mod+h focus left
