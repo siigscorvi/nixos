@@ -28,6 +28,7 @@
   environment.pathsToLink = [ "/share/zsh" ];
   
   hardware.nvidia.open = true;
+  hardware.nvidia.nvidiaSettings = true;
 
   hardware.bluetooth = {
     enable = true;
@@ -161,6 +162,7 @@
     vlc
     firefox
     git
+    file
     qjackctl
     wget
     rofi

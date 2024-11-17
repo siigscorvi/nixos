@@ -2,7 +2,6 @@
 exec --no-startup-id dex --autostart --environment i3
 exec_always --no-startup-id feh --bg-fill ~/.dotfiles/wallpapers/current
 exec_always --no-startup-id ~/.dotfiles/scripts/polybar.sh &
-#exec_always --no-startup-id polybar #???
 
 ### Style configurations
 font pango:JetBrains\ Mono, FontAwesome 8
@@ -26,8 +25,8 @@ set $ws1 "1  "
 set $ws2 "2  "
 set $ws3 "3  "
 set $ws4 "4 󰝚 "
-set $ws5 "5"
-set $ws6 "6"
+set $ws5 "5   "
+set $ws6 "6   "
 set $ws7 "7  "
 set $ws8 "8  "
 set $ws9 "9  "
