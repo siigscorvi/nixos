@@ -1,6 +1,6 @@
 ### these are set from i3
 exec --no-startup-id dex --autostart --environment i3
-exec_always --no-startup-id feh --bg-fill ~/.dotfiles/wallpapers/current
+exec_always --no-startup-id feh --bg-fill ~/.config/wallpapers/current
 exec_always --no-startup-id ~/.dotfiles/scripts/polybar.sh &
 
 ### Style configurations
