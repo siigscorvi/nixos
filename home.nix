@@ -166,6 +166,7 @@
 
       t = "tmux";
       ta = "tmux a";      
+      ff = "fastfetch";
 
       nhs = "nh os switch -H siigs ~/.dotfiles/";
 #      vnc0 = "x0vncserver -rfbauth ~/.config/tigervnc/passwd -Display=:0";
