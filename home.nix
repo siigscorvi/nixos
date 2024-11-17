@@ -18,6 +18,10 @@
   home.file.".config/starship.toml" = {
     source = ./configfiles/starship.toml;
   };
+
+  home.file.".config/polybar/config.ini" = {
+    source = ./configfiles/polybar.ini;
+  };
   
   #services.picom = { enable = true; };
 #  services.polybar = {

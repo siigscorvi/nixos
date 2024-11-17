@@ -77,6 +77,7 @@
     };
   };
   networking.firewall.extraCommands = ''iptables -t raw -A OUTPUT -p udp -m udp --dport 137 -j CT --helper netbios-ns'';
+  programs.nm-applet.enable = true;
 
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "de_DE.UTF-8";
@@ -163,10 +164,8 @@
     firefox
     git
     file
-    qjackctl
     wget
     rofi
-    alsa-utils
     arandr
 
     nodejs_22
@@ -174,7 +173,10 @@
     go
     R
 
+    # audio stuff
     spotify
+    alsa-utils
+    qjackctl
   ];
 
   environment.variables = {
