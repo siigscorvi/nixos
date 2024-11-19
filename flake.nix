@@ -21,15 +21,11 @@
 
   outputs = inputs @ { self, nixpkgs, nixpkgs-stable, home-manager, ... }:
     let 
-      # system = "x86_64-linux"; TODO define system in the host
-
       vars = {
         user = "siigs";
         terminal = "alacritty";
         editor = "nvim";
       };
-
-
     in 
     {
       nixosConfigurations = (
@@ -46,23 +42,5 @@
 
         }
       );
-
-#        siigs = lib.nixosSystem {
-#          inherit system;
-#          modules = [ 
-#            ./configuration.nix 
-#        
-#            home-manager.nixosModules.home-manager {
-#              home-manager.useGlobalPkgs = true;
-#              home-manager.useUserPackages = true;
-#              home-manager.users.siigs = {
-#                imports = [ ./home.nix ];  
-#              };
-#            }
-#
-#          ];
-#
-#        };
-#      };
     };
 }
