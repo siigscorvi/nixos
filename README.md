@@ -5,33 +5,58 @@
 .dotfiles/
 |-- flake.nix
 |-- flake.lock
+|-- README.md
 |-- hosts/
-|   |-- main/
+|   |-- z790/
 |   |   |--- default.nix
 |   |   |--- hardware-configuration.nix
 |   |-- surface/
 |   |   |--- default.nix
 |   |   |--- hardware-configuration.nix
-|   |-- vm/
+|   |-- t480s/
 |   |   |--- default.nix
 |   |   |--- hardware-configuration.nix
-|-- desktop-env/
+|-- desktop/
 |   |-- default.nix
 |   |-- i3.nix
-|   |-- thunar.nix
 |   |-- alacritty.nix
+|   |-- thunar.nix
 |   |-- rofi.nix
-|   |-- ...
-|-- programs/
-|   |-- firefox.nix
-|   |-- spotify.nix
+|   |-- picom.nix
 |   |-- nvim.nix
-|   |-- multimedia.nix
-|   |-- ...
+|   |-- p7zip.nix
+|   |-- xclip.nix
+|   |-- btop.nix
+|   |-- firefox.nix
+|   |-- sound.nix
+|   |-- git.nix
+|   |-- wget.nix
+|   |-- zsh.nix
 |-- services/
-|   |-- ...
-|-- security/
-|   |-- ...
-|-- theming/
-|   |-- vars 
+|   |-- default.nix
+|   |-- ssh.nix
+|   |-- rdp.nix
+|   |-- samba.nix
+|   |-- otherfileshare.nix
+|   |-- nh.nix
+|   |-- vnc.nix
+|-- config/
+|   |-- i3config
+|   |-- picom.conf
+|   |-- polybar.ini
+|   |-- starship.toml
+|   |-- xborders.json
+|   |-- nvim/...
+|-- programs/
+|   |-- spotify.nix
+|   |-- vlc.nix
+|   |-- discord.nix
+|   |-- drawio.nix
+|-- hardening/
+|   |-- firejail.nix
+|   |-- apparmor.nix
+|-- vars/
+|   |-- secrets.nix
+|   |-- keys.nix
+|   |-- theming.nix
 ```
