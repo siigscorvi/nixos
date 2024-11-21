@@ -17,20 +17,20 @@ let
 
 in
 {
-  # main desktop profile
-  base = lib.nixosSystem {
+  # z790 
+  z790 = lib.nixosSystem {
     inherit sys_x86;
     specialArgs = {
       inherit inputs sys_x86 stable vars;
       host = {
-        hostname = "base";
+        hostname = "z790";
         # not sure I like to set it up like this
         mainMonitor = "HDMI-0";
         secondMonitor = "DP-5";
       };
     };
     modules = [
-      ./genesis
+      ./z790
       ./configuration.nix
 
       home-manager.nixosModules.home-manager {
@@ -40,19 +40,19 @@ in
     ];
   };
 
-  # surface laptop profile
-  nomad = lib.nixosSystem {
+  # surface 
+  surface = lib.nixosSystem {
     inherit sys_x86;
     specialArgs = {
       inherit inputs sys_x86 stable vars;
       host = {
-        hostname = "nomad";
+        hostname = "surface";
         #mainMonitor = "HDMI-0";
         #secondMonitor = "DP-5";
       };
     };
     modules = [
-      ./nomad
+      ./surface
       ./configuration.nix
 
       home-manager.nixosModules.home-manager {
@@ -61,6 +61,30 @@ in
       }
     ];
   };
+
+  # t480s
+  t480s = lib.nixosSystem {
+    inherit sys_x86;
+    specialArgs = {
+      inherit inputs sys_x86 stable vars;
+      host = {
+        hostname = "t480s";
+        #mainMonitor = "HDMI-0";
+        #secondMonitor = "DP-5";
+      };
+    };
+    modules = [
+      ./t480s
+      ./configuration.nix
+
+      home-manager.nixosModules.home-manager {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+      }
+    ];
+  };
+
+  # pi4
 
 }
 
