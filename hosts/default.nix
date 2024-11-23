@@ -1,4 +1,4 @@
-{inputs, nixpkgs, nixpkgs-stable, home-manager, vars, ...}:
+{inputs, nixpkgs, nixpkgs-stable, home-manager, myvars, ...}:
 
 let
   sys_x86 = "x86_64-linux";
@@ -21,7 +21,7 @@ in
   z790 = lib.nixosSystem {
     inherit sys_x86;
     specialArgs = {
-      inherit inputs sys_x86 stable vars;
+      inherit inputs sys_x86 stable myvars;
       host = {
         hostname = "z790";
         # not sure I like to set it up like this
@@ -44,7 +44,7 @@ in
   surface = lib.nixosSystem {
     inherit sys_x86;
     specialArgs = {
-      inherit inputs sys_x86 stable vars;
+      inherit inputs sys_x86 stable myvars;
       host = {
         hostname = "surface";
         #mainMonitor = "HDMI-0";
@@ -66,7 +66,7 @@ in
   t480s = lib.nixosSystem {
     inherit sys_x86;
     specialArgs = {
-      inherit inputs sys_x86 stable vars;
+      inherit inputs sys_x86 stable myvars;
       host = {
         hostname = "t480s";
         #mainMonitor = "HDMI-0";
@@ -83,9 +83,5 @@ in
       }
     ];
   };
-
   # pi4
-
 }
-
-

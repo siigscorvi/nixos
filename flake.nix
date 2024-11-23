@@ -21,24 +21,20 @@
 
   outputs = inputs @ { self, nixpkgs, nixpkgs-stable, home-manager, ... }:
     let 
-      vars = {
-        user = "siigs";
-        terminal = "alacritty";
-        editor = "nvim";
-      };
+      myvars = import ./vars/var.nix;
     in 
     {
       nixosConfigurations = (
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs nixpkgs-stable home-manager vars;
+          inherit inputs nixpkgs nixpkgs-stable home-manager myvars;
         }
       );
 
       homeConfigurations = (
         import ./nix{
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs nixpkgs-stable home-manager vars;
+          inherit inputs nixpkgs nixpkgs-stable home-manager myvars;
 
         }
       );
