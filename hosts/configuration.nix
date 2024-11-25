@@ -1,4 +1,4 @@
-{ lib, config, pkgs, stable, inputs, myvars, ... }:
+{ lib, config, pkgs, stable, inputs, myvars, host, ... }:
 
 # this let in might not be necessary if incorporated into desktop import
 let
@@ -48,6 +48,12 @@ in
     rtkit.enable = true; # realtime scheduling permissions for user processes.
     polkit.enable = true; # since it might not be supplied by the DE I need a policy kit.
   };
+
+  networking = {
+    hostName = host.hostname;
+    networkmanager.enable = true;
+  };
+
 
   # default fonts on each system
   fonts.packages = with pkgs; [
