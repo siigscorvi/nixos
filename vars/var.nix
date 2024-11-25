@@ -1,9 +1,10 @@
 {
   username = "siigs";
-  fullname = "siigs";
+  fullname = "siigscorvi";
+  gitusername = "siigscorvi";
   # mail = "";
   # altmail = "";
-  # uni mail = "";
+  unimail = "s76rhart@uni-bonn.de";
   terminal = "alacritty";
   editor = "nvim";
 }
