@@ -1,15 +1,23 @@
 { lib, config, pkgs, stable, inputs, myvars, ... }:
 
+# this let in might not be necessary if incorporated into desktop import
 let
   terminal = pkgs.${myvars.terminal};
 in 
 {
-  #imports 
+  #imports zsh, ssh, users, git, btop
+  imports = [
+    ../services/ssh.nix
+    ../programs/zsh.nix
+    ../programs/nh.nix
+    ../programs/tmux.nix
+    ../programs/git.nix
+    ../programs/btop.nix
+  ];
 
   # default single user settings
   users.users.${myvars.username} = {
     isNormalUser = true;
-    shell = pkgs.zsh;
     extraGroups = [ "wheel" "video" "audio" "camera" "networkmanager" "lp" "scanner" ];
   };
 
@@ -30,6 +38,7 @@ in
     LC_TIME = "de_DE.UTF-8";
   };
 
+  # console settings
   console = {
     font = "Lat2-Terminus16";
     useXkbConfig = "de";
@@ -40,40 +49,21 @@ in
     polkit.enable = true; # since it might not be supplied by the DE I need a policy kit.
   };
 
+  # default fonts on each system
   fonts.packages = with pkgs; [
     font-awesome
-    vegur
-    carlito
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 
+  # default environment variables
   environment.variables = {
     TERMINAL = "${myvars.terminal}";
     EDITOR = "${myvars.editor}";
     VISUAL = "${myvars.editor}";
   };
 
-#TODO this should be a module that is always imported
-  programs.zsh.enable = true;
-
-#TODO this should be a module that is always imported
-  services.ssh = {
-    enable = true;
-    # allowSFTP = true;
-    ports = [ 22 ];
-    settings = {
-      PasswordAuthentication = false;
-      AllowUsers = [ "${myvars.username}" ]; 
-      UseDns = true;
-      X11Forwarding = false;
-      PermitRootLogin = "no"; 
-    };
-  };
-
   systemPackages = with pkgs; [
     coreutils # GNU core utilities.
-    git
-    btop # better top alternative.
     nano
     wget
 
@@ -93,9 +83,27 @@ in
     lf
   ];
 
+  nix = {
+    settings = {
+      auto-optimise-store = true;
+      experimental-features = [ "nix-command" "flakes"];
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 5d";
+    };
 
+    registry.nixpkgs.flake = inputs.nixpkgs;
+    #extraOptions = '' '';
+  };
+  nixpkgs.config.allowUnfree = true;
 
-  
+  system.stateVersion = "24.05";
 
+  home-manager.users.${myvars.username} = {
+    home.stateVersion = "22.05";
+    programs.home-manager.enable = true;
+  };
 
 }

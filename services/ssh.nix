@@ -1,20 +1,23 @@
-{ config, ... }:
+{ config, myvars, ... }:
 
 {
   services.openssh = {
     enable = true;
+    allowSFTP = true;
     ports = [ 22 ];
+
     settings = {
       PasswordAuthentication = false;
-      AllowUsers = [ "siigs" ]; # Allows all users by default. Can be [ "user1" "user2" ]
-      UseDns = true;
+      AllowUsers = [ "${myvars.username}" ]; 
+      UseDns = true; # this from the default config, not sure what it does
       X11Forwarding = false;
-      PermitRootLogin = "no"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
+      PermitRootLogin = "no";
     };
   };
 
-  users.users.siigs.openssh.authorizedKeys.keys = [
+  #TODO import from keys.nix
+  users.users.${myvars.username}.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPVeo7HfiwprBHKJC55YbFf7uLfd5+7bGw0KucZ+lIb+ ruven@W51195"
-
   ];
 }
+
