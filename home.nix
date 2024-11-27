@@ -168,7 +168,7 @@
       ta = "tmux a";      
       ff = "fastfetch";
 
-      nhs = "nh os switch -H siigs ~/.dotfiles/";
+      nhs = "nh os switch -H moses ~/.dotfiles/";
 #      vnc0 = "x0vncserver -rfbauth ~/.config/tigervnc/passwd -Display=:0";
     };
   };
