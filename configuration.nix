@@ -26,9 +26,17 @@
   };
 
   environment.pathsToLink = [ "/share/zsh" ];
-  
-  hardware.nvidia.open = true;
-  hardware.nvidia.nvidiaSettings = true;
+
+  hardware.graphics.enable = true; 
+  hardware.nvidia = {
+    open = true;
+    modesetting.enable = true;
+    powerManagement.enable = false;
+    powerManagement.finegrained = false;
+
+    nvidiaSettings = true;
+  };
+
 
   hardware.bluetooth = {
     enable = true;
