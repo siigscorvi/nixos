@@ -33,6 +33,12 @@
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
+    input = {
+      General = {
+        UserspaceHID  = true;
+
+      };
+    };
   };
 
   services.blueman.enable = true;
@@ -107,11 +113,12 @@
 
     # monitor configuration
     xrandrHeads = [
-      "DP-5"
       {
-        output = "HMDI-0";
+        output = "DP-0";
       	primary = true;
+
       }
+      "HDMI-0"
     ];
   };
   services.displayManager = {
@@ -167,6 +174,8 @@
     wget
     rofi
     arandr
+
+    bluez
 
     nodejs_22
     python313
