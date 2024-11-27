@@ -1,4 +1,4 @@
-{inputs, nixpkgs, nixpkgs-stable, home-manager, myvars, ...}:
+{inputs, nixpkgs, nixpkgs-stable, home-manager, nixos-hardware, myvars, ...}:
 
 let
   sys_x86 = "x86_64-linux";
@@ -18,19 +18,19 @@ let
 in
 {
   # z790 
-  z790 = lib.nixosSystem {
+  genesis = lib.nixosSystem {
     inherit sys_x86;
     specialArgs = {
       inherit inputs sys_x86 stable myvars;
       host = {
-        hostname = "z790";
+        hostname = "genesis";
         # not sure I like to set it up like this
-        mainMonitor = "HDMI-0";
-        secondMonitor = "DP-5";
+        mainMonitor = "DP-0";
+        secondMonitor= "HDMI-0";
       };
     };
     modules = [
-      ./z790
+      ./genesis
       ./configuration.nix
 
       home-manager.nixosModules.home-manager {
@@ -40,19 +40,19 @@ in
     ];
   };
 
-  # surface 
-  surface = lib.nixosSystem {
+  # surface - kain and abel, since my nixos will slay the windows system on this dual boot device
+  kain = lib.nixosSystem {
     inherit sys_x86;
     specialArgs = {
       inherit inputs sys_x86 stable myvars;
       host = {
-        hostname = "surface";
+        hostname = "kain";
         #mainMonitor = "HDMI-0";
         #secondMonitor = "DP-5";
       };
     };
     modules = [
-      ./surface
+      ./kain
       ./configuration.nix
 
       home-manager.nixosModules.home-manager {
@@ -62,19 +62,19 @@ in
     ];
   };
 
-  # t480s
-  t480s = lib.nixosSystem {
+  # t480s - paulus the missionary, always on the move
+  moses = lib.nixosSystem {
     inherit sys_x86;
     specialArgs = {
       inherit inputs sys_x86 stable myvars;
       host = {
-        hostname = "t480s";
+        hostname = "moses";
         #mainMonitor = "HDMI-0";
         #secondMonitor = "DP-5";
       };
     };
     modules = [
-      ./t480s
+      ./moses
       ./configuration.nix
 
       home-manager.nixosModules.home-manager {
@@ -83,5 +83,10 @@ in
       }
     ];
   };
-  # pi4
+  # pi4 - eden
+  # router - zion
+  # printer - mose, this ancient technology should have the name of an ancient writer
+  # pve - noah
+  # backup machine - lazarus
+  # phone: gabriel - messenger and communication hub
 }
