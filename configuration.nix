@@ -27,17 +27,6 @@
 
   environment.pathsToLink = [ "/share/zsh" ];
 
-  hardware.graphics.enable = true; 
-  hardware.nvidia = {
-    open = true;
-    modesetting.enable = true;
-    powerManagement.enable = false;
-    powerManagement.finegrained = false;
-
-    nvidiaSettings = true;
-  };
-
-
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
@@ -78,18 +67,10 @@
   };
 
   networking = {
-    hostName = "nixos";
+    hostName = "moses";
     networkmanager.enable = true;  # Easiest to use and most distros use this by default.
-    
-    interfaces = {
-      enp4s0 = {
-        wakeOnLan = {
-          enable = true;
-          policy = ["magic"];
-        };
-      };	  
-    };
   };
+
   networking.firewall.extraCommands = ''iptables -t raw -A OUTPUT -p udp -m udp --dport 137 -j CT --helper netbios-ns'';
   programs.nm-applet.enable = true;
 
@@ -116,23 +97,9 @@
     displayManager = {
       lightdm.enable = true;
     };
-
-    videoDrivers = [ "nvidia" ];
-
-    # monitor configuration
-    xrandrHeads = [
-      {
-        output = "DP-0";
-      	primary = true;
-
-      }
-      "HDMI-0"
-    ];
   };
   services.displayManager = {
     defaultSession ="none+i3";
-#   autoLogin.user = "siigs";
-#   autoLogin.enable = true;
   };
 
   services.playerctld.enable = true;
@@ -146,15 +113,8 @@
     useXkbConfig = true;
   };
 
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
-  # Enable touchpad support (enabled default in most desktopManager). -- test with laptop??
-  # services.libinput.enable = true;
   programs.zsh.enable = true;
 
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.siigs = {
     isNormalUser = true;
     shell = pkgs.zsh;
@@ -166,29 +126,17 @@
   environment.systemPackages = with pkgs; [
     p7zip
     unzip
-    drawio
-    pandoc
-    texlivePackages.collection-latexrecommended
     xclip
     fd
-    texliveTeTeX
     fastfetch
     btop
     discord
-    vlc
     firefox
     git
     file
     wget
     rofi
     arandr
-
-    bluez
-
-    nodejs_22
-    python313
-    go
-    R
 
     # audio stuff
     spotify
@@ -202,22 +150,6 @@
     TERM = "alacritty";
     TERMINAL = "alacritty";
     SHELL = "zsh";
-  };
-
-
-
-  programs.bash.shellAliases = {
-    gst = "git status";
-    gc = "git commit";
-    gp = "git push";
-    ga = "git add";
-    gd = "git diff";
-
-    con = "vi ~/.dotfiles";
-    cdcon = "cd  ~/.dotfiles";
-    
-    nhs = "nh os switch -H siigs ~/.dotfiles/";
-    vnc0 = "x0vncserver -rfbauth ~/.config/tigervnc/passwd -Display=:0";
   };
 
   fonts.packages = with pkgs; [
