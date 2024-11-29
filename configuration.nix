@@ -138,6 +138,8 @@
     rofi
     arandr
 
+    python313
+
     # audio stuff
     spotify
     alsa-utils
