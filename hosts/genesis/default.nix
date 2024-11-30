@@ -20,5 +20,16 @@
   # this is just a gui
   services.blueman.enable = true;
 
+  networking = {
+    interfaces = {
+      enp4s0 = {
+        wakeOnLan = {
+          enable = true;
+          policy = [ "magic" ];
+        };
+      };
+    };
+  };
+
   
 }
