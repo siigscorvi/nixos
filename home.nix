@@ -169,7 +169,10 @@
       ff = "fastfetch";
 
       nhs = "nh os switch -H moses ~/.dotfiles/";
-#      vnc0 = "x0vncserver -rfbauth ~/.config/tigervnc/passwd -Display=:0";
+
+      wup = "nmcli con up peer_Misc1";
+      wdw = "nmcli con down peer_Misc1";
+#      vnc0 = "x0vncserver -rfbauth ~/.config/tigervnc/passwd -Display=:0";wup = "nmcli con up id 
     };
   };
 

@@ -14,7 +14,6 @@
 #      peers = [
 #
 #        {
-#          name = "pi";
 #          publicKey = "6a2cIVSPaFXTDg1HMeoZEw6esX1HkXM63gxzxULbCwc=";
 #          presharedKeyFile = "/home/siigs/.config/wg/presharedKeyFile";
 #
