@@ -40,7 +40,29 @@ in
     ];
   };
 
-  # surface - kain and abel, since my nixos will slay the windows system on this dual boot device
+  # t480s
+  moses = lib.nixosSystem {
+    inherit sys_x86;
+    specialArgs = {
+      inherit inputs sys_x86 stable myvars;
+      host = {
+        hostname = "moses";
+        #mainMonitor = "eDP-0";
+        #secondMonitor = "HDMI-2";
+      };
+    };
+    modules = [
+      ./moses
+      ./configuration.nix
+
+      home-manager.nixosModules.home-manager {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+      }
+    ];
+  };
+
+  # surface
   kain = lib.nixosSystem {
     inherit sys_x86;
     specialArgs = {
@@ -62,27 +84,6 @@ in
     ];
   };
 
-  # t480s - paulus the missionary, always on the move
-  moses = lib.nixosSystem {
-    inherit sys_x86;
-    specialArgs = {
-      inherit inputs sys_x86 stable myvars;
-      host = {
-        hostname = "moses";
-        #mainMonitor = "HDMI-0";
-        #secondMonitor = "DP-5";
-      };
-    };
-    modules = [
-      ./moses
-      ./configuration.nix
-
-      home-manager.nixosModules.home-manager {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-      }
-    ];
-  };
   # pi4 - eden
   # router - zion
   # printer - mose, this ancient technology should have the name of an ancient writer
