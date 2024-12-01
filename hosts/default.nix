@@ -1,4 +1,4 @@
-{inputs, nixpkgs, nixpkgs-stable, home-manager, nixos-hardware, myvars, ...}:
+{inputs, nixpkgs, nixpkgs-stable, home-manager, nixos-hardware, vars, ...}:
 
 let
   sys_x86 = "x86_64-linux";
@@ -21,7 +21,7 @@ in
   genesis = lib.nixosSystem {
     inherit sys_x86;
     specialArgs = {
-      inherit inputs sys_x86 stable myvars;
+      inherit inputs sys_x86 stable vars;
       host = {
         hostname = "genesis";
         # not sure I like to set it up like this
@@ -44,11 +44,11 @@ in
   moses = lib.nixosSystem {
     inherit sys_x86;
     specialArgs = {
-      inherit inputs sys_x86 stable myvars;
+      inherit inputs sys_x86 stable vars;
       host = {
         hostname = "moses";
-        #mainMonitor = "eDP-0";
-        #secondMonitor = "HDMI-2";
+        mainMonitor = "eDP-0";
+        secondMonitor = "HDMI-2";
       };
     };
     modules = [
@@ -66,7 +66,7 @@ in
   kain = lib.nixosSystem {
     inherit sys_x86;
     specialArgs = {
-      inherit inputs sys_x86 stable myvars;
+      inherit inputs sys_x86 stable vars;
       host = {
         hostname = "kain";
         #mainMonitor = "HDMI-0";

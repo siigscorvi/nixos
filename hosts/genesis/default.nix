@@ -4,15 +4,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ] ++ 
-    ( import ./../../services) ++
-    ( import ./../../desktops ) ++
-    ( import ./../../programs ) ++
-    ( import ./../../hardening );
-
-    # wlancon.nix wireguard.nix sound.nix
-    # ../../desktops/
-  
+    ];
 
   boot.loader = {
     systemd-boot = {

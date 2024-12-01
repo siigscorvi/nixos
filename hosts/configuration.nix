@@ -6,14 +6,7 @@ let
 in 
 {
   #imports zsh, ssh, users, git, btop
-  imports = [
-    ../services/ssh.nix
-    ../programs/zsh.nix
-    ../programs/nh.nix
-    ../programs/tmux.nix
-    ../programs/git.nix
-    ../programs/btop.nix
-  ];
+  imports = [ ../modules ];
 
   # default single user settings
   users.users.${myvars.username} = {

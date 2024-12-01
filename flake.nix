@@ -23,20 +23,20 @@
 
   outputs = inputs @ { self, nixpkgs, nixpkgs-stable, home-manager, nixos-hardware, ... }:
     let 
-      myvars = import ./vars/var.nix;
+      vars = import ./modules/vars/var.nix;
     in 
     {
       nixosConfigurations = (
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs nixpkgs-stable home-manager nixos-hardware myvars;
+          inherit inputs nixpkgs nixpkgs-stable home-manager nixos-hardware vars;
         }
       );
 
       homeConfigurations = (
         import ./nix{
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs nixpkgs-stable home-manager myvars;
+          inherit inputs nixpkgs nixpkgs-stable home-manager vars;
 
         }
       );
