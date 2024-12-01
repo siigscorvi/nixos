@@ -1,5 +1,5 @@
 # this should contain everything that can/should not be exported to a module or is not hardware related
-{ pkgs, config, host }:
+{ pkgs, config, host, ... }:
 
 {
   imports = [
