@@ -1,15 +1,15 @@
 {inputs, nixpkgs, nixpkgs-stable, home-manager, nixos-hardware, vars, ...}:
 
 let
-  sys_x86 = "x86_64-linux";
+  system = "x86_64-linux";
   
   pkgs = import nixpkgs {
-    inherit sys_x86;
+    inherit system;
     config.allowUnfree = true;
   };
 
   stable = import nixpkgs-stable {
-    inherit sys_x86;
+    inherit system;
     config.allowUnfree = true;
   };
   
@@ -19,9 +19,9 @@ in
 {
   # z790 
   genesis = lib.nixosSystem {
-    inherit sys_x86;
+    inherit system;
     specialArgs = {
-      inherit inputs sys_x86 stable vars;
+      inherit inputs system stable vars;
       host = {
         hostname = "genesis";
         # not sure I like to set it up like this
@@ -42,9 +42,9 @@ in
 
   # t480s
   moses = lib.nixosSystem {
-    inherit sys_x86;
+    inherit system;
     specialArgs = {
-      inherit inputs sys_x86 stable vars;
+      inherit inputs system stable vars;
       host = {
         hostname = "moses";
         mainMonitor = "eDP-0";
@@ -64,9 +64,9 @@ in
 
   # surface
   kain = lib.nixosSystem {
-    inherit sys_x86;
+    inherit system;
     specialArgs = {
-      inherit inputs sys_x86 stable vars;
+      inherit inputs system stable vars;
       host = {
         hostname = "kain";
         #mainMonitor = "HDMI-0";
