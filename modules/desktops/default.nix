@@ -12,7 +12,7 @@ let cfg.desktop; in {
     ./xserver.nix # this should always be enabled 
     ./notifier.nix
     ./alacritty.nix
-    ./sound_gui.nix
+    ./soundgui.nix
   ];
 
 
