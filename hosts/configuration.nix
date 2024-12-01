@@ -80,6 +80,7 @@ in
     unzip
     unrar
     lf
+    fd
   ];
 
   nix = {

@@ -1,28 +1,40 @@
 { pkgs, config, lib, ... }:
 
+with lib;
+let cfg = config.desktop.thunar; in
 {
-  programs = {
-    thunar = {
-      enable = true;
-      plugins = with pkgs.xfce; [
-        thunar-archive-plugin
-        thunar-volman
-        thunar-media-tags-plugin
-      ];
-    };
-    xfconf.enable = true;
+  options.desktop.thunar = {
+    enable = mkOption {
+      type = types.bool;
+      default = true;
+      example = false;
+      description = "enable thunar";
+   };
   };
 
-  services = {
-    tumbler.enable = true;
-    gvfs = {
+  config = mkIf cfg.enable {
+    programs = {
+      thunar = {
+        enable = true;
+        plugins = with pkgs.xfce; [
+          thunar-archive-plugin
+          thunar-volman
+          thunar-media-tags-plugin
+        ];
+      };
+      xfconf.enable = true;
+    };
+
+    services.gvfs = {
       enable = true;
       package = lib.mkForce pkgs.gnome.gvfs;
     };
-  };
 
-  environment.systemPackages = with pkgs; [
-    file-roller
-    lxqt.lxqt-policykit 
-  ];
+    services.tumbler.enable = true;
+
+    environment.systemPackages = with pkgs; [
+      file-roller
+      lxqt.lxqt-policykit 
+    ];
+  };
 }

@@ -3,28 +3,7 @@
 {
   imports =
     [ ./hardware-configuration.nix
-    ] ++ 
-    (import ./desktop-env) ++
-    (import ./services);
-
-
-
-  security.polkit.extraConfig = ''
-    polkit.addRule(function(action, subject) {
-      if (
-        subject.isInGroup("users")
-          && (
-            action.id == "org.freedesktop.login1.reboot" ||
-            action.id == "org.freedesktop.login1.reboot-multiple-sessions" ||
-            action.id == "org.freedesktop.login1.power-off" ||
-            action.id == "org.freedesktop.login1.power-off-multiple-sessions"
-          )
-        )
-      {
-        return polkit.Result.YES;
-      }
-    });
-  '';
+    ];
 
   services.pipewire = {
     enable = true;
@@ -72,13 +51,11 @@
     pandoc
     texlivePackages.collection-latexrecommended
     xclip
-    fd
     texliveTeTeX
     discord
     vlc
     firefox
     qjackctl
-    wget
     rofi
     alsa-utils
     arandr
