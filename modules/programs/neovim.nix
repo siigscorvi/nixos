@@ -6,8 +6,8 @@
 
     programs.neovim =
       let
-        toLua = str: "lua << EOF\n../../config{str}\nEOF\n";
-        toLuaFile = file: "lua << EOF\n../../config{builtins.readFile file}\nEOF\n";
+        toLua = str: "lua << EOF\n${str}\nEOF\n";
+        toLuaFile = file: "lua << EOF\n${builtins.readFile file}\nEOF\n";
       in
     {
       enable = true;
@@ -93,14 +93,12 @@
           plugin = undotree;
         }
 
-#      vim-startuptime
+        vim-startuptime
 
       ];
 
-      extraLuaConfig =
-      # set.lua 
-      ''
-        -- show current line number
+      extraLuaConfig = ''
+      
         vim.opt.nu = true
         -- show relative line number in relation to cursor
         vim.opt.relativenumber = true
@@ -131,10 +129,7 @@
 
         -- time without input until swapped file is written to disk. this is safer
         vim.opt.updatetime = 50
-        '' 
-        +
-      # keymaps.lua
-        ''
+
         -- Make sure to setup `mapleader` and `maplocalleader` before loading lazy.nvim so that mappings are correct.
         vim.g.mapleader = " "
         vim.g.maplocalleader = "\\"

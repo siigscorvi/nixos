@@ -17,7 +17,7 @@
     python313
     go
     R
-
+    
     spotify
   ];
 }
