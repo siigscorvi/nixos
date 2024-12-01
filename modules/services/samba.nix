@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   services.samba.enable = true;
   # For mount.cifs, required unless domain name resolution is not needed.
@@ -12,4 +12,6 @@
 
     in ["${automount_opts},credentials=/etc/nixos/smb-secrets,uid=1000,gid=1000"];
   };
+
+  networking.firewall.extraCommands = ''iptables -t raw -A OUTPUT -p udp -m udp --dport 137 -j CT --helper netbios-ns'';
 }
