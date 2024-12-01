@@ -3,8 +3,8 @@ exec --no-startup-id dex --autostart --environment i3
 exec_always --no-startup-id feh --bg-fill ~/.config/wallpapers/current
 exec_always --no-startup-id ~/.dotfiles/scripts/polybar.sh &
 exec_always --no-startup-id ~/.dotfiles/scripts/dual.sh &
-exec_always --no-startup-id picom -b --log-file /tmp/picom.log --log-level "INFO"
-exec --no-startup-id xborders -c ~/.config/xborders/config.json
+exec_always --no-startup-id picom -b --log-file /tmp/picom.log --log-level "INFO" &
+exec --no-startup-id xborders -c ~/.config/xborders/config.json &
 
 ### Style configurations
 font pango:JetBrains\ Mono, FontAwesome 8
