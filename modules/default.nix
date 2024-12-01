@@ -1,7 +1,7 @@
 {
   imports = [
-    ./vars
     ./services
+    ./vars
     ./programs
     ./hardening
     ./desktops 
