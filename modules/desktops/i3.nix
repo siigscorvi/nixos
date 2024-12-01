@@ -4,11 +4,30 @@
   environment.systemPackages = with pkgs; [
     feh
     dex
+
+    xborders
   ];
 
   services.xserver.windowManager.i3.configFile = /home/${vars.username}/.config/i3/config;
 
   home-manager.users.${vars.username} = {
+    home.file.".config/xborders/config.json" = {
+      text = ''
+       {
+        "border-rgba": "0xfbf1c7aa",
+        "border-width": 2,
+        "border-mode": "outside",
+        "disable-version-warning": false,
+
+        "positive-x-offset": 0,
+        "positive-y-offset": 0,
+        "negative-x-offset": 0,
+        "negative-y-offset": 0
+       }
+      '';
+    };
+
+
     home.file.".config/i3/config" = {
       text = ''
         ### these are set from i3

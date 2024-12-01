@@ -4,6 +4,7 @@ let cfg.desktop; in {
 
   imports = [
     ./i3.nix # this should always be enabled - for now
+    ./picom.nix
     ./thunar.nix
     ./lock.nix # this should be enablable
     ./applets.nix

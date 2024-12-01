@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 {
+  programs.ripgrep.enable = true;
+
   programs.neovim =
     let
       toLua = str: "lua << EOF\n../../config{str}\nEOF\n";
