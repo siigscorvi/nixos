@@ -34,7 +34,7 @@
       );
 
       homeConfigurations = (
-        import ./nix{
+        import ./nix {
           inherit (nixpkgs) lib;
           inherit inputs nixpkgs nixpkgs-stable home-manager vars;
 
