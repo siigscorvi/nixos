@@ -6,8 +6,8 @@ let cfg = config.desktop.thunar; in
   options.desktop.thunar = {
     enable = mkOption {
       type = types.bool;
-      default = true;
-      example = false;
+      default = false;
+      example = true;
       description = "enable thunar";
    };
   };

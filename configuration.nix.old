@@ -18,14 +18,6 @@
   networking.firewall.extraCommands = ''iptables -t raw -A OUTPUT -p udp -m udp --dport 137 -j CT --helper netbios-ns'';
 
   services.xserver = {
-    enable = true;
-    xkb.layout = "de";
-    windowManager.i3.enable = true;
-    displayManager = {
-      lightdm.enable = true;
-    };
-
-    videoDrivers = [ "nvidia" ];
 
     # monitor configuration
     xrandrHeads = [

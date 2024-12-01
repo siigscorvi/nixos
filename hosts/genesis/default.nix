@@ -29,5 +29,7 @@
     };
   };
 
+  services.xserver.videoDrivers = [ "nvidia" ];
+
   
 }
