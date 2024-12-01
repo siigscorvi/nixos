@@ -1,6 +1,6 @@
-{ pkgs, myvars }:
+{ pkgs, vars }:
 {
-  home-manager.users.${myvars.username} = {
+  home-manager.users.${vars.username} = {
     programs.tmux = {
       enable = true;
       baseIndex = 1;

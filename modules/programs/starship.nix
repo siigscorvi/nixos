@@ -1,7 +1,7 @@
-{ myvars }:
+{ vars }:
 
 {
-  home-manager.users.${myvars.username} = {
+  home-manager.users.${vars.username} = {
     programs.starship.enable = true;
 
     home.file.".config/starship.toml" = {

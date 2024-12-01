@@ -1,12 +1,12 @@
-{ myvars }:
+{ vars }:
 
 {
-  home-manager.users.${myvars.username} = {
+  home-manager.users.${vars.username} = {
 
     programs.git = {
       enable = true;
-      userEmail = "${myvars.unimail}";
-      userName = "${myvars.gitusername}";
+      userEmail = "${vars.unimail}";
+      userName = "${vars.gitusername}";
       extraConfig = {
         color.ui = true;
         init.defaultBranch = "main";

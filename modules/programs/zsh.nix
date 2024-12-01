@@ -1,14 +1,14 @@
-{ pkgs, myvars }:
+{ pkgs, vars }:
 
 {
   import = [
     ./starship.nix
   ];
 
-  users.users.${myvars.username}.shell = pkgs.zsh;
+  users.users.${vars.username}.shell = pkgs.zsh;
   environment.pathsToLink = [ "/share/zsh" ];
   
-  home-manager.users.${myvars.username} = {
+  home-manager.users.${vars.username} = {
     programs.fzf = {
       enable = true;
       enableZshIntegration = true;
@@ -55,7 +55,7 @@
         gd = "git diff";
 
         ff = "fastfetch";
-        nhs = "nh os switch -H ${myvars.username} ~/.dotfiles/";
+        nhs = "nh os switch -H ${vars.username} ~/.dotfiles/";
 #      vnc0 = "x0vncserver -rfbauth ~/.config/tigervnc/passwd -Display=:0";
       };
     };

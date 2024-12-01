@@ -1,7 +1,7 @@
-{ myvars, pkgs }:
+{ vars, pkgs }:
 
 {
-  home-manager.users.${myvars.username} = {
+  home-manager.users.${vars.username} = {
 
     programs.btop = {
       enable = true;

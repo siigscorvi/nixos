@@ -1,15 +1,15 @@
-{ lib, config, pkgs, stable, inputs, myvars, host, ... }:
+{ lib, config, pkgs, stable, inputs, vars, host, ... }:
 
 # this let in might not be necessary if incorporated into desktop import
 let
-  terminal = pkgs.${myvars.terminal};
+  terminal = pkgs.${vars.terminal};
 in 
 {
   #imports zsh, ssh, users, git, btop
   imports = [ ../modules ];
 
   # default single user settings
-  users.users.${myvars.username} = {
+  users.users.${vars.username} = {
     isNormalUser = true;
     extraGroups = [ "wheel" "video" "audio" "camera" "networkmanager" "lp" "scanner" ];
   };
@@ -56,9 +56,9 @@ in
 
   # default environment variables
   environment.variables = {
-    TERMINAL = "${myvars.terminal}";
-    EDITOR = "${myvars.editor}";
-    VISUAL = "${myvars.editor}";
+    TERMINAL = "${vars.terminal}";
+    EDITOR = "${vars.editor}";
+    VISUAL = "${vars.editor}";
   };
 
   systemPackages = with pkgs; [
@@ -100,7 +100,7 @@ in
 
   system.stateVersion = "24.05";
 
-  home-manager.users.${myvars.username} = {
+  home-manager.users.${vars.username} = {
     home.stateVersion = "24.05";
     programs.home-manager.enable = true;
   };
