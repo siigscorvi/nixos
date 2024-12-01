@@ -1,4 +1,4 @@
-{ vars }:
+{ vars, ... }:
 
 {
   home-manager.users.${vars.username} = {

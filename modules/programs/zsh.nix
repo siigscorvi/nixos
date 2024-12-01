@@ -1,12 +1,14 @@
-{ pkgs, vars }:
+{ pkgs, vars, ... }:
 
 {
-  import = [
+  imports = [
     ./starship.nix
   ];
 
+  programs.zsh.enable = true;
   users.users.${vars.username}.shell = pkgs.zsh;
   environment.pathsToLink = [ "/share/zsh" ];
+
   
   home-manager.users.${vars.username} = {
     programs.fzf = {
@@ -15,7 +17,7 @@
     };
 
     programs.zsh = {
-      enable = true;
+      #enable = true;
 
       # options
       history = {

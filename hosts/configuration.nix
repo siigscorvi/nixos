@@ -34,7 +34,7 @@ in
   # console settings
   console = {
     font = "Lat2-Terminus16";
-    useXkbConfig = "de";
+    keyMap = "de";
   };
 
   security = {
@@ -61,7 +61,7 @@ in
     VISUAL = "${vars.editor}";
   };
 
-  systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     coreutils # GNU core utilities.
     nano
     wget

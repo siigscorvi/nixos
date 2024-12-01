@@ -1,6 +1,7 @@
-[
-  ./ssh.nix
-  ./sound.nix
-  ./nh.nix
-  ./samba.nix
-]
+{
+  imports = [
+    ./ssh.nix
+    ./sound.nix
+    ./samba.nix
+  ];
+}

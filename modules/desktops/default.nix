@@ -1,7 +1,5 @@
 { config, lib, ...}:
-with lib;
-let cfg.desktop; in {
-
+{
   imports = [
     ./i3.nix # this should always be enabled - for now
     ./picom.nix
