@@ -1,18 +1,18 @@
 { pkgs, config, lib, ... }:
 
-with lib;
-let cfg = config.desktop.thunar; in
+#  with lib;
+#  let cfg = config.desktop.thunar; in
 {
-  options.desktop.thunar = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-      example = true;
-      description = "enable thunar";
-   };
-  };
+#  options.desktop.thunar = {
+#    enable = mkOption {
+#      type = types.bool;
+#       default = false;
+#       example = true;
+#      description = "enable thunar";
+#   };
+#  };
 
-  config = mkIf cfg.enable {
+  #config = mkIf cfg.enable {
     programs = {
       thunar = {
         enable = true;
@@ -36,5 +36,5 @@ let cfg = config.desktop.thunar; in
       file-roller
       lxqt.lxqt-policykit 
     ];
-  };
+  #};
 }

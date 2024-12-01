@@ -60,7 +60,7 @@
 
         [hostname]
         ssh_only = true
-        trim_at = \'\'
+        trim_at = '''
         style = 'bold color_blue'
         ssh_symbol = ' via  '
         format = '[@$hostname$ssh_symbol: ]($style)'
@@ -91,7 +91,7 @@
         [line_break]
         disabled = false
 
-        # Replace the \'\' symbol ➜
+        # Replace the ''' symbol ➜
         [character] 
         success_symbol = '[❯](bold color_green)'
         error_symbol = '[❯](bold color_red)' 

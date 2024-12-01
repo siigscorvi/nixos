@@ -17,7 +17,7 @@
     };
 
     programs.zsh = {
-      #enable = true;
+      enable = true;
 
       # options
       history = {

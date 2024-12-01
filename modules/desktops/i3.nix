@@ -8,8 +8,6 @@
     xborders
   ];
 
-  services.xserver.windowManager.i3.configFile = /home/${vars.username}/.config/i3/config;
-
   home-manager.users.${vars.username} = {
     home.file.".config/xborders/config.json" = {
       text = ''

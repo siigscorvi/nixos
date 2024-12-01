@@ -44,8 +44,8 @@
         bottom = false
         font-0 = "JetBrains Mono Nerd Font:size=9;2"
         enable-ipc = true
-        background = \$\{colors.bg0_h}
-        foreground = \$\{colors.fg0}
+        background = ''${colors.bg0_h}
+        foreground = ''${colors.fg0}
         border-size = 0
         padding = 1
         height = 15
@@ -73,7 +73,7 @@
         #
         #warn-percentage = 90
         #label-warn = "  %percentage%"
-        #label-warn-foreground = \$\{colors.red}
+        #label-warn-foreground = ''${colors.red}
         #label-warn-minlen = 7
         #
         #format = <label>
@@ -85,7 +85,7 @@
         #label-minlen = 12
         #warn-percentage = 90
         #label-warn = "  %gb_used%"
-        #label-warn-foreground = \$\{colors.red}
+        #label-warn-foreground = ''${colors.red}
         #label-warn-minlen = 12
         #
         #format = <label>
@@ -142,7 +142,7 @@
         time-format = %H:%M
         format-charging = <animation-charging> <label-charging>
         format-charging-padding = 1
-        format-charging-foreground = \$\{colors.green}
+        format-charging-foreground = ''${colors.green}
 
         format-discharging = <ramp-capacity> <label-discharging>
         format-full-padding = 1
@@ -168,13 +168,13 @@
         # TODO my way of making it the same size seems not right
         type = internal/alsa
 
-        #format-volume-background = \$\{colors.bg0}
+        #format-volume-background = ''${colors.bg0}
         label-volume-minlen = 4
         ramp-volume-0 = "󰖀 "
         ramp-volume-1 = "󰕾 "
         format-volume = "<ramp-volume><label-volume> "
 
-        #format-muted-background = \$\{colors.bg0}
+        #format-muted-background = ''${colors.bg0}
         label-muted-minlen = 6
         label-muted = "󰖁 " 
         format-muted = "<label-muted> "
@@ -193,22 +193,22 @@
 
         label-mode = %mode%
         label-mode-padding = 3
-        label-mode-background = \$\{colors.bg0}
+        label-mode-background = ''${colors.bg0}
 
         label-focused = %name%
-        label-focused-foreground = \$\{colors.fg0}
+        label-focused-foreground = ''${colors.fg0}
         label-focused-padding = 3
 
         label-unfocused = %name%
-        label-unfocused-foreground = \$\{colors.bg2}
+        label-unfocused-foreground = ''${colors.bg2}
         label-unfocused-padding = 3
 
         label-visible = %name%
-        label-visible-foreground = \$\{colors.fg3}
+        label-visible-foreground = ''${colors.fg3}
         label-visible-padding = 3
 
         label-urgent = %name%
-        label-urgent-foreground = \$\{colors.red}
+        label-urgent-foreground = ''${colors.red}
         label-urgent-padding = 3
 
         [colors]
