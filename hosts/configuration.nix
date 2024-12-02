@@ -51,7 +51,7 @@ in
   # default fonts on each system
   fonts.packages = with pkgs; [
     font-awesome
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    nerd-fonts.jetbrains-mono
   ];
 
   # default environment variables

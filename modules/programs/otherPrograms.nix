@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    drawio
+    #drawio
     pandoc
     texlivePackages.collection-latexrecommended
     texliveTeTeX
