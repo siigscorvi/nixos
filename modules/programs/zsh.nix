@@ -56,6 +56,9 @@
         ga = "git add";
         gd = "git diff";
 
+        wup = "nmcli con up peer_Misc1";
+        wdw = "nmcli con down peer_Misc1";
+
         ff = "fastfetch";
         nhs = "nh os switch -H ${vars.username} ~/.dotfiles/";
 #      vnc0 = "x0vncserver -rfbauth ~/.config/tigervnc/passwd -Display=:0";
