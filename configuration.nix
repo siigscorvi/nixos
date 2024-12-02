@@ -133,6 +133,7 @@
     discord
     firefox
     git
+    xorg.xbacklight
     file
     wget
     rofi

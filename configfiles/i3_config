@@ -35,7 +35,7 @@ set $ws8 "8  "
 set $ws9 "9  "
 set $ws10 "10"
 
-set $primary "DP-0"
+set $primary "eDP-1"
 set $secondary "HDMI-0"
 ## specific for dual monitor
 workspace $ws1 output $primary
