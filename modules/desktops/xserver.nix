@@ -9,7 +9,10 @@
     displayManager.lightdm.enable = true;
   };
 
-  environment.systemPackages = [ pkgs.xclip ];
+  environment.systemPackages = with pkgs; [
+    xclip
+    xorg.xbacklight
+  ];
 
 
 
