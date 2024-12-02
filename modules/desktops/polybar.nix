@@ -111,8 +111,8 @@
         interface-type = wireless
         interval = 5
 
-        label-connected = "󰖩 %essid%"
-        format-connected = <label-connected> <ramp-signal>
+        label-connected = "%essid%"
+        format-connected = <ramp-signal><label-connected> 
 
         ramp-signal-0 = "󰤟 "
         ramp-signal-1 = "󰤢 "
@@ -120,40 +120,39 @@
         ramp-signal-3 = "󰤨 "
 
 
-        label-disconnected = "󰖪 "
+        label-disconnected = "󰤭 "
         format-disconnected = <label-disconnected>
 
         [module/battery]
-        # for laptop
-        # TODO this is copied from someone else. Change it when applicable on the laptop
+        # only applied if the battery is found
         type = internal/battery
         full-at = 100
         battery = BAT0
         adapter = ACAD
 
-        time-format = %H:%M
-        format-charging = <animation-charging> <label-charging>
+        format-charging = <animation-charging><label-charging>
         format-charging-padding = 1
-        format-charging-foreground = ''${colors.green}
+        #format-charging-foreground = ''${colors.green}
 
-        format-discharging = <ramp-capacity> <label-discharging>
+        format-discharging = "<ramp-capacity><label-discharging> "
         format-full-padding = 1
+        format-full-foreground = ''${colors.green}
 
-        label-charging = %{F#b7b8b9}%percentage:2%%%{F-} %time%
-        label-discharging = %percentage:2%% %time% %{o- -o}
-        label-full = %{F#31a354}%{F-} %percentage%% %{F#d7a645}%{F-}
+        label-charging = "%percentage:2%%  "
+        label-discharging = %percentage:2%%
+        label-full = "󰁹 %percentage: 2%%  "
 
-        ramp-capacity-0 = %{F#e31a1c o#e31a1c +o} %{F-}
-        ramp-capacity-1 = %{F#e31a1c o#e31a1c +o} %{F-}
-        ramp-capacity-2 = %{F#d7a645 o#d7a645 +o} %{F-}
-        ramp-capacity-3 = %{F#31a354 o#31a354 +o} %{F-}
-        ramp-capacity-4 = %{F#31a354 o#31a354 +o} %{F-}
+        ramp-capacity-0 = "󰂎 "
+        ramp-capacity-1 = "󰁼 "
+        ramp-capacity-2 = "󰁾 "
+        ramp-capacity-3 = "󰂀 " 
+        ramp-capacity-4 = "󰁹 "
 
-        animation-charging-0 = 
-        animation-charging-1 = 
-        animation-charging-2 = 
-        animation-charging-3 = 
-        animation-charging-4 = 
+        animation-charging-0 = "󰂎 "
+        animation-charging-1 = "󰁼 "
+        animation-charging-2 = "󰁾 "
+        animation-charging-3 = "󰂀 "
+        animation-charging-4 = "󰁹 "
 
         [module/alsa]
         # TODO 󰟳 make it show if my surround sound is on.
@@ -161,15 +160,15 @@
         type = internal/alsa
 
         #format-volume-background = ''${colors.bg0}
-        label-volume-minlen = 4
+        #label-volume-minlen = 4
         ramp-volume-0 = "󰖀 "
         ramp-volume-1 = "󰕾 "
         format-volume = "<ramp-volume><label-volume> "
 
         #format-muted-background = ''${colors.bg0}
-        label-muted-minlen = 6
+        #label-muted-minlen = 6
         label-muted = "󰖁 " 
-        format-muted = "<label-muted> "
+        format-muted = "<label-muted>"
 
         click-middle = qjackctl
         click-right = pwvucontrol
