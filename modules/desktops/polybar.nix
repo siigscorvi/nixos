@@ -22,19 +22,11 @@
       text = ''
         [bar/primary]
         # monitor setting might need to be changed for laptop
-        monitor = DP-0
         inherit = default
         modules-left = date
         modules-center = i3
         modules-right = tray battery alsa ethernet wireless powermenu
         # filesystem cpu memory 
-
-        [bar/secondary]
-        monitor = HDMI-0
-        inherit = default 
-        modules-left = date
-        modules-center = i3
-        modules-right = battery alsa ethernet wireless powermenu
 
         [settings]
         pseudo-transparency = true
