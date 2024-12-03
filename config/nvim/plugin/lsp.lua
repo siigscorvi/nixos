@@ -59,7 +59,10 @@ require'lspconfig'.pylyzer.setup{
     on_attach = on_attach,
     capabilities = capabilities,
 }
---- require'lspconfig'.r_language_server.setup{}
+require'lspconfig'.r_language_server.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
 local function combined_attach()
   on_attach()
   require("ltex_extra").setup({

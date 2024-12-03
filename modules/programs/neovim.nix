@@ -21,7 +21,7 @@
         cmake-language-server # CMAKE language server
         ccls # C/C++/Objective-C language server
         pylyzer # python language server. can also try https://github.com/python-lsp/python-lsp-server + https://github.com/python-rope/pylsp-rope in the future
-#     rPackages.languageserver # R language server
+        rPackages.languageserver # R language server
         ltex-ls # markdown and LaTeX language server for grammar checks (also supports Quarto, git commit messages, R Markdown) 
 #     markdown-oxide # lsp for personal-knowledge management system like obsidian
         marksman # lsp for markdown-specific features 
@@ -94,6 +94,15 @@
         }
 
         vim-startuptime
+
+        {
+          plugin = quarto-nvim;
+          config = toLua "require('quarto').setup{}";
+        }
+        {
+          plugin = otter-nvim;
+          config = toLua "local otter = require'otter'";
+        }
 
       ];
 
