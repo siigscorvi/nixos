@@ -28,11 +28,17 @@
 
     home.file.".config/i3/config" = {
       text = ''
-        ### these are set from i3
+        # autostart 
         exec --no-startup-id dex --autostart --environment i3
+
+        # screenlock timer
+        exec_always --no-startup-id xset s 85 5
+        exec_always --no-startup-id xss-lock -l -- xsecurelock
+
+        # set wallpaper, start bar, picom and xborders
         exec_always --no-startup-id feh --bg-fill ~/.config/wallpapers/current
         exec_always --no-startup-id ~/.dotfiles/scripts/polybar.sh &
-        exec_always --no-startup-id ~/.dotfiles/scripts/dual.sh &
+        # exec_always --no-startup-id ~/.dotfiles/scripts/dual.sh &
         exec_always --no-startup-id picom -b --log-file /tmp/picom.log --log-level "INFO" &
         exec --no-startup-id xborders -c ~/.config/xborders/config.json &
 
@@ -65,8 +71,6 @@
         set $ws9 "9  "
         set $ws10 "10"
 
-        set $primary "DP-0"
-        set $secondary "HDMI-0"
         ## specific for dual monitor
         workspace $ws1 output $primary
         workspace $ws2 output $secondary
@@ -97,6 +101,7 @@
         bindsym $mod+d exec --no-startup-id "rofi -show combi -modes combi -combi-modes \\"window,ssh,drun,run\\""
         bindsym $mod+n exec firefox
         bindsym $mod+Control+n exec --no-startup-id spotify
+        bindsym $mod+p exec --no-startup-id xsecurelock
 
         # open spotify on ws4 and firefox on ws2
         assign [class="^discord"] $ws8
