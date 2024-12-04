@@ -130,7 +130,7 @@
         battery = BAT0
         adapter = ACAD
 
-        format-charging = <animation-charging><label-charging>
+        format-charging = "<animation-charging><label-charging> "
         format-charging-padding = 1
         #format-charging-foreground = ''${colors.green}
 
@@ -138,9 +138,9 @@
         format-full-padding = 1
         format-full-foreground = ''${colors.green}
 
-        label-charging = "%percentage:2%%  "
+        label-charging = %percentage:2%%
         label-discharging = %percentage:2%%
-        label-full = "󰁹 %percentage: 2%%  "
+        label-full = "󰁹 %percentage:2%% "
 
         ramp-capacity-0 = "󰂎 "
         ramp-capacity-1 = "󰁼 "
@@ -149,10 +149,8 @@
         ramp-capacity-4 = "󰁹 "
 
         animation-charging-0 = "󰂎 "
-        animation-charging-1 = "󰁼 "
-        animation-charging-2 = "󰁾 "
-        animation-charging-3 = "󰂀 "
-        animation-charging-4 = "󰁹 "
+        animation-charging-1 = "󰁾 "
+        animation-charging-2 = "󰁹 "
 
         [module/alsa]
         # TODO 󰟳 make it show if my surround sound is on.
