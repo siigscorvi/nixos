@@ -13,11 +13,6 @@
     rofi
     arandr
 
-    nodejs_22
     python313
-    go
-    R
-    
-    spotify
   ];
 }
