@@ -9,9 +9,10 @@
     displayManager.lightdm.enable = true;
   };
 
+  hardware.brillo.enable = true;
+
   environment.systemPackages = with pkgs; [
     xclip
-    xorg.xbacklight
   ];
 
 

@@ -95,6 +95,10 @@
         bindsym XF86AudioPlay exec playerctl --player=spotify play-pause
         bindsym XF86AudioNext exec playerctl --player=spotify next
 
+        bindsym XF86MonBrightnessDown exec brillo -q -U 10
+        bindsym XF86MonBrightnessUp exec brillo -q -A 10
+
+
         bindsym $mod+q kill
         # launch keybindings
         bindsym $mod+Return exec alacritty
