@@ -16,23 +16,29 @@
       vimAlias = true;
       vimdiffAlias = true;
       extraPackages = with pkgs; [
-        nil # nix lang - language server
-        lua-language-server # lua language server
-        cmake-language-server # CMAKE language server
+        lua-language-server
+
+        cmake-language-server 
         ccls # C/C++/Objective-C language server
-        pylyzer # python language server. can also try https://github.com/python-lsp/python-lsp-server + https://github.com/python-rope/pylsp-rope in the future
-        rPackages.languageserver # R language server
+
         ltex-ls # markdown and LaTeX language server for grammar checks (also supports Quarto, git commit messages, R Markdown) 
 #     markdown-oxide # lsp for personal-knowledge management system like obsidian
         marksman # lsp for markdown-specific features 
+
 #     gopls # official go-lang language server
 #     golangci-lint-langserver # language server for the "golangci linter"
 #     golangci-lint # linter for go - use golangci-lint-langserver with this?
+
 #     superhtml # html language server
+
 #     asm-lsp # nasm/gas/go assembly lsp
-#     rust-analyzer # rust language server
-        bash-language-server # bash language server
+
+#     rust-analyzer
+
+        bash-language-server 
+
 #     dockerfile-language-server-nodejs # docker file/compose language server by docker developer. !!only works with nodejs
+
         taplo # toml toolkit, with language server
         yaml-language-server # yaml language server
       ];

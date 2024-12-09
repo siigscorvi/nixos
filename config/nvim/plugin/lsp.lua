@@ -20,20 +20,6 @@ end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-require('lspconfig').nil_ls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    settings = {
-      nix = {
-        flake = {
-          -- calls `nix flake archive` to put a flake and its output to store
-          autoArchive = true,
-          -- auto eval flake inputs for improved completion
-          autoEvalInputs = true,
-        },
-      },
-    },
-}
 require('lspconfig').lua_ls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
@@ -50,19 +36,9 @@ require('lspconfig').lua_ls.setup {
     },
   },
 }
-require'lspconfig'.cmake.setup{
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
+--- require'lspconfig'.cmake.setup{}
 --- require'lspconfig'.ccls.setup{} TODO https://cmake.org/cmake/help/latest/variable/CMAKE_EXPORT_COMPILE_COMMANDS.html
-require'lspconfig'.pylyzer.setup{
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
-require'lspconfig'.r_language_server.setup{
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
+
 local function combined_attach()
   on_attach()
   require("ltex_extra").setup({
@@ -78,7 +54,6 @@ require'lspconfig'.ltex.setup{
     },
   },
 }
-
 
 -- this needs to cleaned up, automated and synchronized
 --- require'lspconfig'.markdown_oxide.setup{}
