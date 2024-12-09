@@ -3,6 +3,6 @@
     ./services
     ./programs
     ./hardening
-    ./desktops 
+    ./desktops
   ];
 }

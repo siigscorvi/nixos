@@ -1,9 +1,18 @@
-{ lib, config, pkgs, stable, inputs, vars, host, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  stable,
+  inputs,
+  vars,
+  host,
+  ...
+}:
 
 # this let in might not be necessary if incorporated into desktop import
 let
   terminal = pkgs.${vars.terminal};
-in 
+in
 {
   #imports zsh, ssh, users, git, btop
   imports = [ ../modules ];
@@ -11,7 +20,15 @@ in
   # default single user settings
   users.users.${vars.username} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "video" "audio" "camera" "networkmanager" "lp" "scanner" ];
+    extraGroups = [
+      "wheel"
+      "video"
+      "audio"
+      "camera"
+      "networkmanager"
+      "lp"
+      "scanner"
+    ];
   };
 
   # locale settings
@@ -46,7 +63,6 @@ in
     hostName = host.hostname;
     networkmanager.enable = true;
   };
-
 
   # default fonts on each system
   fonts.packages = with pkgs; [
@@ -88,7 +104,10 @@ in
   nix = {
     settings = {
       auto-optimise-store = true;
-      experimental-features = [ "nix-command" "flakes"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
     };
     gc = {
       automatic = true;

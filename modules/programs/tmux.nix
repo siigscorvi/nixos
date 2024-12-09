@@ -20,14 +20,14 @@
           '';
         }
         # automatic saving and restoring
-#      {
-#        plugin = tmuxPlugins.continuum;
-#        extraConfig = ''
-#          set -g @continuum-restore 'on'
-#          set -g @continuum-boot 'on'
-#          set -g @continuum-save-interval '30'
-#        '';
-#      }
+        #      {
+        #        plugin = tmuxPlugins.continuum;
+        #        extraConfig = ''
+        #          set -g @continuum-restore 'on'
+        #          set -g @continuum-boot 'on'
+        #          set -g @continuum-save-interval '30'
+        #        '';
+        #      }
 
         # better shortcuts for tmux sessions
         tmuxPlugins.sessionist
@@ -66,7 +66,7 @@
         bind-key -T copy-mode-vi 'C-j' select-pane -D
         bind-key -T copy-mode-vi 'C-k' select-pane -U
         bind-key -T copy-mode-vi 'C-l' select-pane -R
-        
+
         is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
 
         bind -n 'M-h' if-shell "$is_vim" 'send-keys M-h' 'resize-pane -L 1'

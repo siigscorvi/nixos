@@ -9,34 +9,55 @@
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
 
     home-manager = {
-      url = "github:nix-community/home-manager"; 
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-#    home-manager-stable = {
-#      url = "github:nix-community/home-manager/release-23.11";
-#      inputs.nixpkgs.follows = "nixpkgs-stable";
-#    };
+    #    home-manager-stable = {
+    #      url = "github:nix-community/home-manager/release-23.11";
+    #      inputs.nixpkgs.follows = "nixpkgs-stable";
+    #    };
 
-# add nix user repository?
+    # add nix user repository?
 
   };
 
-  outputs = inputs @ { self, nixpkgs, nixpkgs-stable, home-manager, nixos-hardware, ... }:
-    let 
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      nixpkgs-stable,
+      home-manager,
+      nixos-hardware,
+      ...
+    }:
+    let
       vars = import ./modules/vars/var.nix;
-    in 
+    in
     {
       nixosConfigurations = (
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs nixpkgs-stable home-manager nixos-hardware vars;
+          inherit
+            inputs
+            nixpkgs
+            nixpkgs-stable
+            home-manager
+            nixos-hardware
+            vars
+            ;
         }
       );
 
       homeConfigurations = (
         import ./nix {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs nixpkgs-stable home-manager vars;
+          inherit
+            inputs
+            nixpkgs
+            nixpkgs-stable
+            home-manager
+            vars
+            ;
 
         }
       );

@@ -9,7 +9,6 @@
   users.users.${vars.username}.shell = pkgs.zsh;
   environment.pathsToLink = [ "/share/zsh" ];
 
-  
   home-manager.users.${vars.username} = {
     programs.fzf = {
       enable = true;
@@ -43,9 +42,8 @@
       syntaxHighlighting.enable = true;
 
       initExtra = ''
-          source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-        '';
-
+        source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+      '';
 
       # aliases
       shellAliases = {
@@ -61,7 +59,7 @@
 
         ff = "fastfetch";
         nhs = "nh os switch -H ${vars.username} ~/.dotfiles/";
-#      vnc0 = "x0vncserver -rfbauth ~/.config/tigervnc/passwd -Display=:0";
+        #      vnc0 = "x0vncserver -rfbauth ~/.config/tigervnc/passwd -Display=:0";
       };
     };
 

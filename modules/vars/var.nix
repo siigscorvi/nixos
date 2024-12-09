@@ -8,4 +8,3 @@
   terminal = "alacritty";
   editor = "nvim";
 }
-

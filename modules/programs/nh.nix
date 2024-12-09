@@ -2,6 +2,6 @@
 {
   programs.nh = {
     enable = true;
-#    flake = "/home/${vars.username}/.dotfiles/";
+    #    flake = "/home/${vars.username}/.dotfiles/";
   };
 }

@@ -1,8 +1,16 @@
-{inputs, nixpkgs, nixpkgs-stable, home-manager, nixos-hardware, vars, ...}:
+{
+  inputs,
+  nixpkgs,
+  nixpkgs-stable,
+  home-manager,
+  nixos-hardware,
+  vars,
+  ...
+}:
 
 let
   system = "x86_64-linux";
-  
+
   pkgs = import nixpkgs {
     inherit system;
     config.allowUnfree = true;
@@ -12,28 +20,34 @@ let
     inherit system;
     config.allowUnfree = true;
   };
-  
+
   lib = nixpkgs.lib;
 
 in
 {
-  # z790 
+  # z790
   genesis = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs system stable vars;
+      inherit
+        inputs
+        system
+        stable
+        vars
+        ;
       host = {
         hostname = "genesis";
         # not sure I like to set it up like this
         mainMonitor = "DP-0";
-        secondMonitor= "HDMI-0";
+        secondMonitor = "HDMI-0";
       };
     };
     modules = [
       ./genesis
       ./configuration.nix
 
-      home-manager.nixosModules.home-manager {
+      home-manager.nixosModules.home-manager
+      {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
       }
@@ -44,7 +58,12 @@ in
   moses = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs system stable vars;
+      inherit
+        inputs
+        system
+        stable
+        vars
+        ;
       host = {
         hostname = "moses";
         mainMonitor = "eDP-0";
@@ -55,7 +74,8 @@ in
       ./moses
       ./configuration.nix
 
-      home-manager.nixosModules.home-manager {
+      home-manager.nixosModules.home-manager
+      {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
       }
@@ -66,7 +86,12 @@ in
   kain = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs system stable vars;
+      inherit
+        inputs
+        system
+        stable
+        vars
+        ;
       host = {
         hostname = "kain";
         #mainMonitor = "HDMI-0";
@@ -77,7 +102,8 @@ in
       ./kain
       ./configuration.nix
 
-      home-manager.nixosModules.home-manager {
+      home-manager.nixosModules.home-manager
+      {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
       }
