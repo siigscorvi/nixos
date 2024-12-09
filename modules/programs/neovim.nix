@@ -1,6 +1,20 @@
-{ pkgs, vars, ... }:
+{
+  pkgs,
+  vars,
+  inputs,
+  ...
+}:
 
 {
+
+  environment.systemPackages = [
+    pkgs.nixd
+  ];
+
+  nix.nixPath = [
+    "nixpkgs=${inputs.nixpkgs}"
+  ];
+
   home-manager.users.${vars.username} = {
     programs.ripgrep.enable = true;
 

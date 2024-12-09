@@ -20,6 +20,28 @@ end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+require("lspconfig").nixd.setup({
+  cmd = { "nixd" },
+  settings = {
+    nixd = {
+      nixpkgs = {
+        expr = "import <nixpkgs> { }",
+      },
+      formatting = {
+        command = { "alejandra" }, -- or nixfmt or nixpkgs-fmt
+      },
+      options = {
+        nixos = {
+          expr = '(builtins.getFlake "~/.dotfiles/").nixosConfigurations.genesis.options',
+        },
+      --   home_manager = {
+      --       expr = '(builtins.getFlake "/PATH/TO/FLAKE").homeConfigurations.CONFIGNAME.options',
+      --   },
+      },
+    },
+  },
+})
+
 require('lspconfig').lua_ls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
