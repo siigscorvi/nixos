@@ -46,8 +46,10 @@
         type = internal/date
         format = <label>
         label = %time% %date%
-        date = %a %d.%b.%Y%
-        time = %H:%M:%S
+        date = %a %d.%b
+        time = %H:%M
+
+        interval = 30
 
         #[module/filesystem]
         #type = internal/fs
