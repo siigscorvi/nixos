@@ -1,4 +1,4 @@
-{ config, lib, ...}:
+{ config, lib, ... }:
 {
   imports = [
     ./i3.nix # this should always be enabled - for now
@@ -8,12 +8,10 @@
     ./applets.nix
     ./lightdm.nix
     ./polybar.nix
-    ./xserver.nix # this should always be enabled 
+    ./xserver.nix # this should always be enabled
     ./notifier.nix
     ./alacritty.nix
     ./soundgui.nix
   ];
-
-
 
 }

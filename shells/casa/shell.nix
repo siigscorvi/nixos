@@ -7,7 +7,6 @@ pkgs.mkShell {
     texliveFull
     R
 
-
     rPackages.ggplot2
     rPackages.quarto
     rPackages.rmarkdown
@@ -18,4 +17,3 @@ pkgs.mkShell {
     echo "casa shell"
   '';
 }
-

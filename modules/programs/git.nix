@@ -11,7 +11,7 @@
         color.ui = true;
         init.defaultBranch = "main";
         url = {
-          "ssh://git@github.com:siigscorvi" = { 
+          "ssh://git@github.com:siigscorvi" = {
             insteadOf = "https://github.com/siigscorvi";
           };
         };

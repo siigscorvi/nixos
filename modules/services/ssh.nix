@@ -8,7 +8,7 @@
 
     settings = {
       PasswordAuthentication = false;
-      AllowUsers = [ "${vars.username}" ]; 
+      AllowUsers = [ "${vars.username}" ];
       UseDns = true; # this from the default config, not sure what it does
       X11Forwarding = false;
       PermitRootLogin = "no";

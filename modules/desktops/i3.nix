@@ -1,4 +1,4 @@
-{pkgs, vars, ... }:
+{ pkgs, vars, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -11,20 +11,19 @@
   home-manager.users.${vars.username} = {
     home.file.".config/xborders/config.json" = {
       text = ''
-       {
-        "border-rgba": "0xfbf1c7aa",
-        "border-width": 2,
-        "border-mode": "outside",
-        "disable-version-warning": false,
+        {
+         "border-rgba": "0xfbf1c7aa",
+         "border-width": 2,
+         "border-mode": "outside",
+         "disable-version-warning": false,
 
-        "positive-x-offset": 0,
-        "positive-y-offset": 0,
-        "negative-x-offset": 0,
-        "negative-y-offset": 0
-       }
+         "positive-x-offset": 0,
+         "positive-y-offset": 0,
+         "negative-x-offset": 0,
+         "negative-y-offset": 0
+        }
       '';
     };
-
 
     home.file.".config/i3/config" = {
       text = ''
@@ -128,7 +127,7 @@
         bindsym $mod+Control+j move down
         bindsym $mod+Control+k move up
         bindsym $mod+Control+l move right
-        
+
         # arrow keys
         bindsym $mod+Left resize shrink width 10 px or 10 ppt
         bindsym $mod+Down resize grow height 10 px or 10 ppt
