@@ -11,6 +11,8 @@ pkgs.mkShell {
     rPackages.quarto
     rPackages.rmarkdown
     rPackages.tinytex
+    rPackages.sandwich
+    rPackages.lmtest
   ];
   shellHook = ''
     zsh
