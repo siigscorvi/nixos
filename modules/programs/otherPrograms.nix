@@ -9,6 +9,7 @@
     vlc
     firefox
 
+    xournalpp
     # this needs to move to a module!
     rofi
     arandr
