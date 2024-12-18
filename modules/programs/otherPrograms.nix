@@ -10,6 +10,8 @@
     firefox
 
     xournalpp
+    openvpn
+    openssl
     # this needs to move to a module!
     rofi
     arandr
