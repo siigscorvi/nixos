@@ -5,6 +5,7 @@
   # mail = "";
   # altmail = "";
   unimail = "s76rhart@uni-bonn.de";
-  terminal = "alacritty";
+  #terminal = "alacritty";
+  terminal = "kitty";
   editor = "nvim";
 }

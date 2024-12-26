@@ -100,7 +100,7 @@
 
         bindsym $mod+q kill
         # launch keybindings
-        bindsym $mod+Return exec alacritty
+        bindsym $mod+Return exec ${vars.terminal}
         bindsym $mod+d exec --no-startup-id "rofi -show combi -modes combi -combi-modes \\"window,ssh,drun,run\\""
         bindsym $mod+n exec firefox
         bindsym $mod+Control+n exec --no-startup-id spotify

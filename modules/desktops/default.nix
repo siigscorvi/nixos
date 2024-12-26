@@ -11,6 +11,7 @@
     ./xserver.nix # this should always be enabled
     ./notifier.nix
     ./alacritty.nix
+    ./kitty.nix
     ./soundgui.nix
   ];
 
