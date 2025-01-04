@@ -111,10 +111,16 @@
         # spotify doesn't like assign keyword, spotify doesn't even like for_window keyword
         # this only works sometimes...
         for_window [class="potify"] move to workspace $ws4
-        for_window [title="Pipewire Volume Control"] floating enable
+
+        for_window [title="Bluetooth Devices"] floating enable
+        for_window [title="Bluetooth Devices"] resize set 860 700
+
+        for_window [title="Pipewire Volume Control"]  floating enable
         for_window [title="Pipewire Volume Control"] resize set 860 640 
+
         for_window [class="Thunar"] floating enable
         for_window [class="Thunar"] resize set 1080 640
+
         for_window [class=".arandr"] floating enable
         for_window [class=".arandr"] resize set 860 640 
 
