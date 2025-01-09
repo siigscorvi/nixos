@@ -3,8 +3,9 @@
   environment.systemPackages = with pkgs; [
     drawio
     pandoc
-    texlivePackages.collection-latexrecommended
-    texliveTeTeX
+    # texlivePackages.collection-latexrecommended
+    # texliveTeTeX
+    texlive.combined.scheme-full
     discord
     vlc
     firefox
