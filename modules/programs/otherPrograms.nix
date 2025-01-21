@@ -2,6 +2,8 @@
 {
   environment.systemPackages = with pkgs; [
     drawio
+    anki
+
     pandoc
     # texlivePackages.collection-latexrecommended
     # texliveTeTeX
