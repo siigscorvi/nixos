@@ -4,6 +4,8 @@
     drawio
     anki
 
+    obsidian
+
     pandoc
     # texlivePackages.collection-latexrecommended
     # texliveTeTeX
