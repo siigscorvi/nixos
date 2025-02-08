@@ -102,7 +102,7 @@
         # launch keybindings
         bindsym $mod+Return exec ${vars.terminal}
         bindsym $mod+d exec --no-startup-id "rofi -show combi -modes combi -combi-modes \\"drun,run\\""
-        bindsym $mod+b exec --no-startup-id "rofi -show window"
+        bindsym $mod+c exec --no-startup-id "rofi -show window"
         bindsym $mod+n exec firefox
         bindsym $mod+Control+n exec --no-startup-id spotify
         bindsym $mod+p exec --no-startup-id xsecurelock
