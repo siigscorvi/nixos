@@ -8,9 +8,9 @@
   outputs =
     { self, nixpkgs }:
     let
-      pkgs = nixpkgs.legacyPackages."x84_64-linux";
+      pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; config.segger-jlink.acceptLicense = true; };
     in
     {
-      devShells."x84_64-linux".default = import ./shell.nix { inherit pkgs; };
+      devShells."x86_64-linux".default = import ./shell.nix { inherit pkgs; };
     };
 }
