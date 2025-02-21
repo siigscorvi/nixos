@@ -25,6 +25,7 @@ in
       "video"
       "audio"
       "camera"
+      "plugdev"
       "networkmanager"
       "lp"
       "scanner"
