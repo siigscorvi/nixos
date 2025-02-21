@@ -8,7 +8,17 @@
   outputs =
     { self, nixpkgs }:
     let
-      pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; config.segger-jlink.acceptLicense = true; };
+      pkgs = import nixpkgs { 
+        system = "x86_64-linux";
+        config = {
+          allowUnfree = true; 
+          segger-jlink.acceptLicense = true;
+          permittedInsecurePackages = [
+            "segger-jlink-qt4-810"
+          ];
+
+        };
+      };
     in
     {
       devShells."x86_64-linux".default = import ./shell.nix { inherit pkgs; };

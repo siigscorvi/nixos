@@ -2,16 +2,23 @@
 
 pkgs.mkShell {
   packages = with pkgs; [
-    pkgs.python312Packages.west
     nrf5-sdk
     nrfutil
-    #nrfconnect
+    nrf-command-line-tools
+    nrfconnect
     cmake
+    ninja
+    dtc
 
+    python312Packages.pip
   ];
 
   shellHook = ''
+    cd ~/nc/uni/5sem/pg/ble-framework
+    echo "================================================== \n
+                    DO NOT FORGET TO ENTER VENV \n
+          =================================================="
+    source ~/nc/uni/5sem/pg/ble-framework/.ble-venv/bin/activate
     zsh
-    echo "casa shell"
   '';
 }
