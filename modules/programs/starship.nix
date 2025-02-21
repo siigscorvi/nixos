@@ -21,6 +21,7 @@
         right_format = """
         $nix_shell\
         $os\
+        $pyhton\
         """
         # has to be configured
         #  $c\
@@ -28,7 +29,6 @@
         #  $cmake\
         #  $conda\
         #  $go\
-        #  $pyhton\
         #  $rlang\
         #  $rust\
         #  $time\
