@@ -40,7 +40,6 @@
   services.xserver.videoDrivers = [ "nvidia" ];
 
   # changes for pg
-  programs.nix-ld.enable = true;
   services.udev.packages = [
     pkgs.nrf-udev
     pkgs.openocd

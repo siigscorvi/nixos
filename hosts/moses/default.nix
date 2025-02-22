@@ -1,7 +1,5 @@
 {
   pkgs,
-  config,
-  host,
   ...
 }:
 
@@ -41,5 +39,10 @@
 
     };
   };
+
+  services.udev.packages = [
+    pkgs.nrf-udev
+    pkgs.openocd
+  ];
 
 }

@@ -32,6 +32,8 @@ in
     ];
   };
 
+  programs.nix-ld.enable = true;
+
   # locale settings
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "de_DE.UTF-8";
