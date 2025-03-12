@@ -21,7 +21,7 @@
         right_format = """
         $nix_shell\
         $os\
-        $pyhton\
+        $python\
         """
         # has to be configured
         #  $c\

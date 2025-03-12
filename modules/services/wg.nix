@@ -1,9 +1,13 @@
 {
   networking.firewall = {
-    allowedUDPPorts = [ 51820 ];
+    allowedUDPPorts = [
+    51820
+    58210
+    ];
   };
 
-  networking.wireguard.enable = true;
+# TODO: Switch from networking.wireguard to systemd.network
+  # networking.wireguard.enable = true;
 
   #  networking.wireguard.interfaces = {
   #    wg0 = {

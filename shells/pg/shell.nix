@@ -9,8 +9,18 @@ pkgs.mkShell {
     cmake
     ninja
     dtc
+    gperf
+    ccache
+    dfu-util
+    tk-8_5
+    segger-jlink-headless
+    segger-jlink
+    zulu23
+    nrf-udev
 
     python312Packages.pip
+    python312Packages.west
+    python312Packages.wheel
   ];
 
   shellHook = ''

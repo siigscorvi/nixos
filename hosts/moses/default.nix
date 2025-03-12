@@ -19,6 +19,22 @@
 
   services.blueman.enable = true;
 
+  environment.systemPackages = [ pkgs.jetbrains.clion ];
+
+  services.udev.packages = [
+    pkgs.nrf-udev
+    pkgs.openocd
+    pkgs.segger-jlink
+  ];
+
+  
+   nixpkgs.config.permittedInsecurePackages = [
+     "segger-jlink-qt4-810"
+   ];
+   nixpkgs.config.segger-jlink.acceptLicense = true;
+
+
+
   services.tlp = {
     enable = true;
     settings = {
@@ -39,10 +55,5 @@
 
     };
   };
-
-  services.udev.packages = [
-    pkgs.nrf-udev
-    pkgs.openocd
-  ];
 
 }
