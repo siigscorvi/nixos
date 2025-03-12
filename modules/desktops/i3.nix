@@ -32,7 +32,6 @@
 
         # screenlock timer
         exec_always --no-startup-id xset s 85 5
-        exec_always --no-startup-id xss-lock -l -- xsecurelock
 
         # set wallpaper, start bar, picom and xborders
         exec_always --no-startup-id feh --bg-fill ~/.config/wallpapers/current
@@ -105,7 +104,7 @@
         bindsym $mod+c exec --no-startup-id "rofi -show window"
         bindsym $mod+n exec firefox
         bindsym $mod+Control+n exec --no-startup-id spotify
-        bindsym $mod+p exec --no-startup-id xsecurelock
+        bindsym $mod+p exec --no-startup-id xset s activate
 
         # open spotify on ws4 and firefox on ws2
         assign [class="^discord"] $ws8
