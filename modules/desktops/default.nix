@@ -6,7 +6,8 @@
     ./thunar.nix
     ./lock.nix # this should be enablable
     ./applets.nix
-    ./lightdm.nix
+#    ./lightdm.nix
+    ./ly.nix
     ./polybar.nix
     ./xserver.nix # this should always be enabled
     ./notifier.nix

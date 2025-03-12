@@ -6,7 +6,7 @@
 
     windowManager.i3.enable = true;
 
-    displayManager.lightdm.enable = true;
+    displayManager.lightdm.enable = false;
   };
 
   hardware.brillo.enable = true;
