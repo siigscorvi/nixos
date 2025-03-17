@@ -23,7 +23,22 @@
   # this is just a gui
   services.blueman.enable = true;
   
-  environment.systemPackages = [ pkgs.jetbrains.clion ];
+  programs.steam.enable = true;
+  programs.steam.gamescopeSession.enable = true;
+  programs.gamemode.enable = true;
+  hardware.xone.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    mangohud
+    protonup
+
+    jetbrains.clion
+  ];
+
+  environment.sessionVariables = {
+    STEAM_EXTRA_COMPAT_TOOLS_PATH = "/home/siigs/.steam/root/compatibilitytools.d";
+
+  };
 
 
   networking = {
