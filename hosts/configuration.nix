@@ -92,7 +92,6 @@ in
     fastfetch
 
     # file management
-    gvfs # gnome virtual filesystem
     file
     p7zip
     zip # not sure if I need both

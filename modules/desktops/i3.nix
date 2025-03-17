@@ -32,6 +32,7 @@
 
         # screenlock timer
         exec_always --no-startup-id xset s 85 5
+        exec systemctl --user restart xss-lock.service
 
         # set wallpaper, start bar, picom and xborders
         exec_always --no-startup-id feh --bg-fill ~/.config/wallpapers/current
