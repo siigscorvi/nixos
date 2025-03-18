@@ -40,6 +40,7 @@
           segger-jlink-headless
           segger-jlink
           zulu23
+          screen
           nrf-udev
 
           (python.withPackages(p: with p; [
@@ -147,6 +148,8 @@
 
         shellHook = ''
           cd ~/nc/uni/5sem/pg/ble-framework
+          export PYTHONPATH=$(python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"):$PYTHONPATH
+          echo "PYTHONPATH set to: $PYTHONPATH"
           zsh
         '';
       };
