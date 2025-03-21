@@ -16,12 +16,9 @@
         $git_branch\
         $git_status\
         $git_metrics\
-        $line_break$character
-        """
-        right_format = """
         $nix_shell\
-        $os\
         $python\
+        $character
         """
         # has to be configured
         #  $c\
@@ -93,8 +90,8 @@
 
         # Replace the ''' symbol ➜
         [character] 
-        success_symbol = '[❯](bold color_green)'
-        error_symbol = '[❯](bold color_red)' 
+        success_symbol = '[ ❯](bold color_green)'
+        error_symbol = '[ ❯](bold color_red)' 
 
 
         [os]
