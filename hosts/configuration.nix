@@ -82,6 +82,7 @@ in
 
   environment.systemPackages = with pkgs; [
     coreutils # GNU core utilities.
+    bat
     nano
     wget
 
