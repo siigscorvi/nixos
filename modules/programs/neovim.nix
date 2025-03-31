@@ -84,6 +84,7 @@
             config = "colorscheme gruvbox";
           }
 
+          # requried by telescope and other plugins
           plenary-nvim
 
           {
@@ -115,6 +116,18 @@
 
           vim-startuptime
 
+          {
+            plugin = gitsigns-nvim;
+            config = toLuaFile ../../config/nvim/plugin/gitsigns.lua;
+          }
+
+          {
+            # for some reason I cannot add files to harpoon list
+            plugin = harpoon2;
+            config = toLuaFile ../../config/nvim/plugin/harpoon.lua;
+          }
+
+          # needed for casa
           {
             plugin = quarto-nvim;
             config = toLua "require('quarto').setup{}";
