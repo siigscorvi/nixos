@@ -28,13 +28,10 @@
     pkgs.segger-jlink
   ];
 
-  
-   nixpkgs.config.permittedInsecurePackages = [
+  nixpkgs.config.permittedInsecurePackages = [
      "segger-jlink-qt4-810"
-   ];
-   nixpkgs.config.segger-jlink.acceptLicense = true;
-
-
+  ];
+  nixpkgs.config.segger-jlink.acceptLicense = true;
 
   services.tlp = {
     enable = true;
