@@ -24,6 +24,7 @@ in
       "wheel"
       "video"
       "audio"
+      "docker"
       "camera"
       "plugdev"
       "networkmanager"
@@ -33,6 +34,7 @@ in
   };
 
   programs.nix-ld.enable = true;
+  virtualisation.docker.enable = true;
 
   # locale settings
   time.timeZone = "Europe/Berlin";
