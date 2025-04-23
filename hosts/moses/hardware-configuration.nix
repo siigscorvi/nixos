@@ -25,6 +25,10 @@
 
   };
 
+  services.fprintd.enable = true;
+  services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix-550a;
+  services.fprintd.tod.enable = true;
+
   boot.initrd.availableKernelModules = [
     "xhci_pci"
     "nvme"
