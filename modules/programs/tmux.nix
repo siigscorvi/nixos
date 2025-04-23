@@ -78,6 +78,12 @@
         bind-key -T copy-mode-vi M-j resize-pane -D 1
         bind-key -T copy-mode-vi M-k resize-pane -U 1
         bind-key -T copy-mode-vi M-l resize-pane -R 1
+      ''
+      + # for images.nvim
+      ''
+        set -gq allow-passthrough on
+        set -g visual-activity off
+
       '';
     };
 
