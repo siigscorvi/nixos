@@ -102,8 +102,6 @@ in
     unrar
     lf
     fd
-
-    nixfmt-rfc-style
   ];
 
   nix = {
