@@ -104,6 +104,17 @@ in
     fd
   ];
 
+  nix.nixPath = [
+    "nixpkgs=${inputs.nixpkgs}"
+  ];
+
+  programs.neovim = {
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+    vimdiffAlias = true;
+  };
+
   nix = {
     settings = {
       auto-optimise-store = true;

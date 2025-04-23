@@ -7,7 +7,8 @@
     ./zsh.nix
     ./btop.nix
     ./tmux.nix
-    ./neovim.nix
+    # moved to its own flake and added to hosts/configuration.ni
+#    ./neovim.nix
     ./otherPrograms.nix
   ];
 }
