@@ -41,7 +41,7 @@
       enableCompletion = true;
       syntaxHighlighting.enable = true;
 
-      initExtra = ''
+      initContent = ''
         source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
       '';
 
