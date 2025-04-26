@@ -6,16 +6,6 @@ pkgs.mkShell {
     pwndbg
       
     ghidra
-
-    jadx
-    frida-tools
-    android-tools
-    jdk
-    android-studio-tools
-    androidStudioPackages.dev
-    android-studio
-    vscode
-
   ];
   shellHook = ''
     zsh
