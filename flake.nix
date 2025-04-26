@@ -19,6 +19,8 @@
 
     # add nix user repository?
 
+    nvim-config.url = "github:siigscorvi/.nvim";
+
   };
 
   outputs =

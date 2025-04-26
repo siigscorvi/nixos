@@ -54,8 +54,8 @@
         ga = "git add";
         gd = "git diff";
 
-        nvim = "nix run ~/.nvim --";
-        #      vnc0 = "x0vncserver -rfbauth ~/.config/tigervnc/passwd -Display=:0";
+        vi = "nvim";
+        vim = "nvim";
       };
     };
 

@@ -82,38 +82,21 @@ in
     VISUAL = "${vars.editor}";
   };
 
-  environment.systemPackages = with pkgs; [
-    coreutils # GNU core utilities.
+  environment.systemPackages =
+  (with stable; [
+    coreutils nano wget
+    pciutils usbutils lshw fastfetch
+    file p7zip zip unzip unrar lf fd
+  ])
+  ++
+  (with pkgs; [
     bat
-    nano
-    wget
-
-    # hardware-near
-    pciutils
-    usbutils
-    lshw # ls for hardware
-    fastfetch
-
-    # file management
-    file
-    p7zip
-    zip # not sure if I need both
-    unzip
-    unrar
-    lf
-    fd
-  ];
+    myNeovim
+  ]);
 
   nix.nixPath = [
     "nixpkgs=${inputs.nixpkgs}"
   ];
-
-  programs.neovim = {
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-    vimdiffAlias = true;
-  };
 
   nix = {
     settings = {
@@ -133,6 +116,7 @@ in
     #extraOptions = '' '';
   };
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = inputs.nvim-config.overlays.default;
 
   system.stateVersion = "24.05";
 
