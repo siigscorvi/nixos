@@ -20,8 +20,6 @@
 
   services.blueman.enable = true;
 
-  environment.systemPackages = [ pkgs.jetbrains.clion ];
-
   services.udev.packages = [
     pkgs.nrf-udev
     pkgs.openocd

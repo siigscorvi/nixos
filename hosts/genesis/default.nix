@@ -31,8 +31,6 @@
   environment.systemPackages = with pkgs; [
     mangohud
     protonup
-
-    jetbrains.clion
   ];
 
   environment.sessionVariables = {

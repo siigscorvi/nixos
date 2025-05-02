@@ -83,7 +83,6 @@
       ''
         set -gq allow-passthrough on
         set -g visual-activity off
-
       '';
     };
 
