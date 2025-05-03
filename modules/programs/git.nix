@@ -1,6 +1,8 @@
 { vars, ... }:
 
 {
+  programs.lazygit.enable = true;
+
   home-manager.users.${vars.username} = {
 
     programs.git = {
