@@ -1,7 +1,7 @@
-{ stable, ... }:
+{ pkgs, ... }:
 
 {
-  environment.systemPackages = with stable; [
+  environment.systemPackages = with pkgs; [
     spotify
   ];
 }
