@@ -56,6 +56,9 @@
 
         vi = "nvim";
         vim = "nvim";
+        v = "nvim";
+        lg = "lazygit";
+
       };
     };
 
