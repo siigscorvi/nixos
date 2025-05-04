@@ -35,10 +35,11 @@
               title = "Breaking change";
               options = [ { name = "no";  value = ""; } { name = "yes"; value = "!"; } ];
             }
-            { type = "input"; title = "message"; key = "Message"; initialValue = ""; }
+            { type = "input"; title = "Summary"; key = "Summary"; initialValue = ""; }
+            { type = "input"; title = "Description"; key = "Description"; initialValue = ""; }
             { type = "confirm"; key = "Confirm"; title = "Commit"; body = "Are you sure you want to commit?"; }
           ];
-          command = "git commit --message '{{.Form.Type}}{{ if .Form.Scope }}({{ .Form.Scope }}){{ end }}{{.Form.Breaking}}: {{.Form.Message}}'";
+          command = "git commit --message '{{.Form.Type}}{{ if .Form.Scope }}({{ .Form.Scope }}){{ end }}{{.Form.Breaking}}: {{.Form.Summary}} -m {{.Form.Description}}'";
           loadingText = "Creating conventional git commit...";
         }
       ];
