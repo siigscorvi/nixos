@@ -39,7 +39,7 @@
             { type = "input"; title = "Description"; key = "Description"; initialValue = ""; }
             { type = "confirm"; key = "Confirm"; title = "Commit"; body = "Are you sure you want to commit?"; }
           ];
-          command = "git commit --message '{{.Form.Type}}{{ if .Form.Scope }}({{ .Form.Scope }}){{ end }}{{.Form.Breaking}}: {{.Form.Summary}} -m {{.Form.Description}}'";
+          command = "git commit --message '{{.Form.Type}}{{ if .Form.Scope }}({{ .Form.Scope }}){{ end }}{{.Form.Breaking}}: {{.Form.Summary}}' -m '{{.Form.Description}}'";
           loadingText = "Creating conventional git commit...";
         }
       ];
