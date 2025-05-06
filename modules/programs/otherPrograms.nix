@@ -18,5 +18,7 @@
     arandr
 
     python313
+
+    zathura
   ];
 }
