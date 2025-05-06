@@ -4,11 +4,7 @@
     drawio
     anki
 
-    obsidian
-
     pandoc
-    # texlivePackages.collection-latexrecommended
-    # texliveTeTeX
     texlive.combined.scheme-full
     discord
     vlc
