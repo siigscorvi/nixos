@@ -276,19 +276,20 @@
     "nvim-config": {
       "inputs": {
         "neovim": "neovim",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "telescope-luasnip-nvim": "telescope-luasnip-nvim"
       },
       "locked": {
-        "lastModified": 1745676790,
-        "narHash": "sha256-6INro8NMZXa066lEkFtgl1JHbWJLttiFNFTzYcLvcXQ=",
+        "lastModified": 1746523300,
+        "narHash": "sha256-FhGGnbGIQGELgKyhyAx2z+3vn2D/DX/uPfLf9VuClpc=",
         "owner": "siigscorvi",
-        "repo": ".nvim",
-        "rev": "01fdbb2dfe64c8bcf5aef969260143c16d2dae90",
+        "repo": "nvim",
+        "rev": "1efeef52753778f63b93b71f9e286628c36d6f82",
         "type": "github"
       },
       "original": {
         "owner": "siigscorvi",
-        "repo": ".nvim",
+        "repo": "nvim",
         "type": "github"
       }
     },
@@ -299,6 +300,22 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable",
         "nvim-config": "nvim-config"
+      }
+    },
+    "telescope-luasnip-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1734145237,
+        "narHash": "sha256-9XsV2hPjt05q+y5FiSbKYYXnznDKYOsDwsVmfskYd3M=",
+        "owner": "benfowler",
+        "repo": "telescope-luasnip.nvim",
+        "rev": "07a2a2936a7557404c782dba021ac0a03165b343",
+        "type": "github"
+      },
+      "original": {
+        "owner": "benfowler",
+        "repo": "telescope-luasnip.nvim",
+        "type": "github"
       }
     },
     "treefmt-nix": {

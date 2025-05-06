@@ -19,7 +19,7 @@
 
     # add nix user repository?
 
-    nvim-config.url = "github:siigscorvi/.nvim";
+    nvim-config.url = "github:siigscorvi/nvim";
 
   };
 
