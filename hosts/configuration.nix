@@ -94,9 +94,7 @@ in
     myNeovim
   ]);
 
-  nix.nixPath = [
-    "nixpkgs=${inputs.nixpkgs}"
-  ];
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
   nix = {
     settings = {
