@@ -31,6 +31,19 @@
   ];
   nixpkgs.config.segger-jlink.acceptLicense = true;
 
+  # default dir setup
+  environment.sessionVariables = {
+    XDG_DESKTOP_DIR="$HOME/documents/";
+    XDG_DOCUMENTS_DIR="$HOME/documents/";
+    XDG_DOWNLOAD_DIR="$HOME/downloads";
+    XDG_MUSIC_DIR="$HOME/music";
+    XDG_PICTURES_DIR="$HOME/images";
+    # XDG_PUBLICSHARE_DIR="$HOME/nc";
+    XDG_VIDEOS_DIR="$HOME/videos";
+    # XDG_CONFIG_HOME = "$HOME/.config";
+  };
+
+
   services.tlp = {
     enable = true;
     settings = {

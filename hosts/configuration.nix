@@ -87,6 +87,7 @@ in
     coreutils nano wget
     pciutils usbutils lshw fastfetch
     file p7zip zip unzip unrar lf fd
+    xdg-user-dirs
   ])
   ++
   (with pkgs; [
