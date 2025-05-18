@@ -22,7 +22,7 @@
 
   # this is just a gui
   services.blueman.enable = true;
-  
+
   programs.steam.enable = true;
   programs.steam.gamescopeSession.enable = true;
   programs.gamemode.enable = true;
@@ -35,7 +35,6 @@
 
   environment.sessionVariables = {
     STEAM_EXTRA_COMPAT_TOOLS_PATH = "/home/siigs/.steam/root/compatibilitytools.d";
-
   };
 
 
