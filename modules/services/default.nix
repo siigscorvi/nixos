@@ -4,6 +4,6 @@
     ./ssh.nix
     ./sound.nix
     ./samba.nix
-    ./ollama.nix
+    #./ollama.nix
   ];
 }
