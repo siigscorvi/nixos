@@ -18,6 +18,8 @@
     };
   };
   home-manager.users.${vars.username} = {
+    #TODO: 󰟳 make it show if my surround sound is on.
+    #TODO: my way of making it the same size seems not right
     home.file.".config/polybar/config.ini" = {
       text = ''
         [bar/primary]
@@ -155,8 +157,8 @@
         animation-charging-2 = "󰁹 "
 
         [module/alsa]
-        # TODO 󰟳 make it show if my surround sound is on.
-        # TODO my way of making it the same size seems not right
+        #TODO: 󰟳 make it show if my surround sound is on.
+        #TODO: my way of making it the same size seems not right
         type = internal/alsa
 
         #format-volume-background = ''${colors.bg0}
