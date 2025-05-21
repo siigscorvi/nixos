@@ -29,9 +29,6 @@
 
         fade-exclude = [];
 
-        # vsync
-        vsync = true; #TODO dont use with two monitors with different refresh rates
-
         # window rules
         rules = (
                 { match = "name = 'Alacritty'"; opacity = 0.8; },
