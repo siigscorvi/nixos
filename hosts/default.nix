@@ -1,12 +1,4 @@
-{
-  inputs,
-  nixpkgs,
-  nixpkgs-stable,
-  home-manager,
-  nixos-hardware,
-  vars,
-  ...
-}:
+{ inputs, nixpkgs, nixpkgs-stable, home-manager, vars, ... }:
 
 let
   system = "x86_64-linux";
@@ -23,29 +15,17 @@ let
 
   lib = nixpkgs.lib;
 
-in
-{
-  # z790
+in {
   genesis = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit
-        inputs
-        system
-        stable
-        vars
-        ;
-      host = {
-        hostname = "genesis";
-        # not sure I like to set it up like this
-        mainMonitor = "DP-0";
-        secondMonitor = "HDMI-0";
-      };
+      inherit inputs system stable vars;
+      host = { hostname = "genesis"; };
     };
+
     modules = [
       ./genesis
       ./configuration.nix
-
       home-manager.nixosModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
@@ -54,26 +34,20 @@ in
     ];
   };
 
-  # t480s
   moses = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit
-        inputs
-        system
-        stable
-        vars
-        ;
+      inherit inputs system stable vars;
       host = {
         hostname = "moses";
         mainMonitor = "eDP-0";
         secondMonitor = "HDMI-2";
       };
     };
+
     modules = [
       ./moses
       ./configuration.nix
-
       home-manager.nixosModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
@@ -86,17 +60,8 @@ in
   kain = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit
-        inputs
-        system
-        stable
-        vars
-        ;
-      host = {
-        hostname = "kain";
-        #mainMonitor = "HDMI-0";
-        #secondMonitor = "DP-5";
-      };
+      inherit inputs system stable vars;
+      host = { hostname = "kain"; };
     };
     modules = [
       ./kain
@@ -109,11 +74,4 @@ in
       }
     ];
   };
-
-  # pi4 - eden
-  # router - zion
-  # printer - mose, this ancient technology should have the name of an ancient writer
-  # pve - noah
-  # backup machine - lazarus
-  # phone: gabriel - messenger and communication hub
 }
