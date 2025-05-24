@@ -1,4 +1,5 @@
 # My Nixos Configuration
+This README is TODO
 
 ## file structure
 ```
@@ -9,7 +10,6 @@
 |-- hosts/
 |   |-- genesis/
 |   |-- moses/
-|   |-- kain/
 |-- modules/
 |   |-- desktop/
 |   |-- services/
