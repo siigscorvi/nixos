@@ -1,4 +1,4 @@
-{ inputs, nixpkgs, nixpkgs-stable, home-manager, vars, ... }:
+{ inputs, nixpkgs, nixpkgs-stable, home-manager, vars, keys, ... }:
 
 let
   system = "x86_64-linux";
@@ -19,7 +19,7 @@ in {
   genesis = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs system stable vars;
+      inherit inputs system stable vars keys;
       host = { hostname = "genesis"; };
     };
 
@@ -37,12 +37,8 @@ in {
   moses = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs system stable vars;
-      host = {
-        hostname = "moses";
-        mainMonitor = "eDP-0";
-        secondMonitor = "HDMI-2";
-      };
+      inherit inputs system stable vars keys;
+      host = { hostname = "moses"; };
     };
 
     modules = [
@@ -60,7 +56,7 @@ in {
   kain = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs system stable vars;
+      inherit inputs system stable vars keys;
       host = { hostname = "kain"; };
     };
     modules = [

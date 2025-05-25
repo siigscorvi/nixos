@@ -23,6 +23,7 @@
     }:
     let
       vars = import ./modules/vars/var.nix;
+      keys = import ./modules/keys/keys.nix;
     in
     {
       nixosConfigurations = (
@@ -34,6 +35,7 @@
             nixpkgs-stable
             home-manager
             vars
+            keys
             ;
         }
       );
@@ -47,6 +49,7 @@
             nixpkgs-stable
             home-manager
             vars
+            keys
             ;
 
         }
