@@ -1,19 +1,11 @@
 { config, lib, ... }:
 {
   imports = [
-    ./i3.nix # this should always be enabled - for now
-    ./picom.nix
     ./thunar.nix
-    ./lock.nix # this should be enablable
-    ./applets.nix
-#    ./lightdm.nix
+    ./soundgui.nix
     ./ly.nix
-    ./polybar.nix
     ./xserver.nix # this should always be enabled
-    ./notifier.nix
     ./alacritty.nix
     ./kitty.nix
-    ./soundgui.nix
   ];
-
 }
