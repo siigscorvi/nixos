@@ -13,9 +13,6 @@
   };
 
   services.blueman.enable = true;
-  environment.systemPackages = with pkgs; [
-    plasma5Packages.plasma-thunderbolt
-  ];
 
   services.udev.packages = [ pkgs.nrf-udev pkgs.openocd pkgs.segger-jlink ];
 
