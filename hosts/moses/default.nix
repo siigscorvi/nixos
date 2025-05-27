@@ -16,6 +16,11 @@
 
   services.udev.packages = [ pkgs.nrf-udev pkgs.openocd pkgs.segger-jlink ];
 
+  networking.wg-quick.interfaces.wg0 = {
+    configFile = "/etc/wireguard/wg0.conf";
+    autostart = true;
+  };
+
   nixpkgs.config.permittedInsecurePackages = [ "segger-jlink-qt4-810" ];
   nixpkgs.config.segger-jlink.acceptLicense = true;
 
