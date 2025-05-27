@@ -1,13 +1,7 @@
-{
-  pkgs,
-  ...
-}:
+{ pkgs, ... }:
 
 {
-  imports = [
-    ./hardware-configuration.nix
-    ./wireguard.nix
-  ];
+  imports = [ ./hardware-configuration.nix ./wireguard.nix ];
 
   boot.loader = {
     systemd-boot = {
@@ -19,30 +13,26 @@
   };
 
   services.blueman.enable = true;
-
-  services.udev.packages = [
-    pkgs.nrf-udev
-    pkgs.openocd
-    pkgs.segger-jlink
+  environment.systemPackages = with pkgs; [
+    plasma5Packages.plasma-thunderbolt
   ];
 
-  nixpkgs.config.permittedInsecurePackages = [
-     "segger-jlink-qt4-810"
-  ];
+  services.udev.packages = [ pkgs.nrf-udev pkgs.openocd pkgs.segger-jlink ];
+
+  nixpkgs.config.permittedInsecurePackages = [ "segger-jlink-qt4-810" ];
   nixpkgs.config.segger-jlink.acceptLicense = true;
 
   # default dir setup
   environment.sessionVariables = {
-    XDG_DESKTOP_DIR="$HOME/documents/";
-    XDG_DOCUMENTS_DIR="$HOME/documents/";
-    XDG_DOWNLOAD_DIR="$HOME/downloads";
-    XDG_MUSIC_DIR="$HOME/music";
-    XDG_PICTURES_DIR="$HOME/images";
-    # XDG_PUBLICSHARE_DIR="$HOME/nc";
-    XDG_VIDEOS_DIR="$HOME/videos";
-    # XDG_CONFIG_HOME = "$HOME/.config";
+    XDG_DESKTOP_DIR = "$HOME/documents/";
+    XDG_DOCUMENTS_DIR = "$HOME/documents/";
+    XDG_DOWNLOAD_DIR = "$HOME/downloads";
+    XDG_MUSIC_DIR = "$HOME/music";
+    XDG_PICTURES_DIR = "$HOME/images";
+    XDG_PUBLICSHARE_DIR="$HOME/nc";
+    XDG_VIDEOS_DIR = "$HOME/videos";
+    XDG_CONFIG_HOME = "$HOME/.config";
   };
-
 
   services.tlp = {
     enable = true;

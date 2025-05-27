@@ -23,7 +23,7 @@
     }:
     let
       vars = import ./modules/vars/var.nix;
-      keys = import ./modules/keys/keys.nix;
+      keys = import ./modules/vars/keys.nix;
     in
     {
       nixosConfigurations = (
