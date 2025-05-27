@@ -1,23 +1,14 @@
-{
-  lib,
-  config,
-  pkgs,
-  stable,
-  inputs,
-  vars,
-  host,
-  ...
-}:
+# This configuration is used in ALL systems!
+{ pkgs, stable, inputs, vars, host, ... }:
 
 # this let in might not be necessary if incorporated into desktop import
-let
-  terminal = pkgs.${vars.terminal};
-in
+# TODO: If I move to have systems without a desktop environment, I should move this code as it would be unnecessary.
 {
-  #imports zsh, ssh, users, git, btop
   imports = [ ../modules ];
+  # TODO: after import ../modules activate my configuration of zsh, ssh, git, btop
 
   # default single user settings
+  # TODO: this shoulld be host specific
   users.users.${vars.username} = {
     isNormalUser = true;
     extraGroups = [
@@ -33,6 +24,7 @@ in
     ];
   };
 
+  # TODO: this shoulld be host specific
   programs.nix-ld.enable = true;
   virtualisation.docker.enable = true;
 
@@ -59,9 +51,11 @@ in
     keyMap = "de";
   };
 
+  # TODO: research if this is always needed
   security = {
     rtkit.enable = true; # realtime scheduling permissions for user processes.
-    polkit.enable = true; # since it might not be supplied by the DE I need a policy kit.
+    polkit.enable =
+      true; # since it might not be supplied by the DE I need a policy kit.
   };
 
   networking = {
@@ -70,40 +64,42 @@ in
   };
 
   # default fonts on each system
-  fonts.packages = with pkgs; [
-    font-awesome
-    nerd-fonts.jetbrains-mono
-  ];
+  fonts.packages = with pkgs; [ font-awesome nerd-fonts.jetbrains-mono ];
 
   # default environment variables
+  # TODO: Maybe not every Host has a DE, so not all need TERMINAL and EDITOR
   environment.variables = {
     TERMINAL = "${vars.terminal}";
     EDITOR = "${vars.editor}";
     VISUAL = "${vars.editor}";
   };
 
-  environment.systemPackages =
-  (with stable; [
-    coreutils nano wget
-    pciutils usbutils lshw fastfetch
-    file p7zip zip unzip unrar lf fd
+  # TODO:move xdg-user-dirs to a program, along with its environment variables for config
+  # TODO: find out if I need all: p7zip, zip, unzip, unrar...?
+  environment.systemPackages = (with stable; [
+    coreutils
+    nano
+    wget
+    pciutils
+    usbutils
+    lshw
+    fastfetch
+    file
+    p7zip
+    zip
+    unzip
+    unrar
+    lf
+    fd
     xdg-user-dirs
-  ])
-  ++
-  (with pkgs; [
-    bat
-    myNeovim
-  ]);
+  ]) ++ (with pkgs; [ bat myNeovim ]);
 
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
   nix = {
     settings = {
       auto-optimise-store = true;
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
+      experimental-features = [ "nix-command" "flakes" ];
     };
     gc = {
       automatic = true;
