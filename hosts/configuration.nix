@@ -92,6 +92,7 @@
     lf
     fd
     xdg-user-dirs
+    dysk
   ]) ++ (with pkgs; [ bat myNeovim ]);
 
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
