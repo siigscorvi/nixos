@@ -7,5 +7,6 @@
     ./xserver.nix # this should always be enabled
     ./alacritty.nix
     ./kitty.nix
+    ./kdeconnect.nix
   ];
 }
