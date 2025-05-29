@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ./wireguard.nix ];
+  imports = [ ./hardware-configuration.nix ];
 
   boot.loader = {
     systemd-boot = {
@@ -16,8 +16,9 @@
 
   services.udev.packages = [ pkgs.nrf-udev pkgs.openocd pkgs.segger-jlink ];
 
-  networking.firewall = { allowedUDPPorts = [ 52810 ]; };
   environment.systemPackages = [ pkgs.wireguard-tools ];
+
+  networking.firewall = { allowedUDPPorts = [ 52810 ]; };
   networking.wg-quick.interfaces.wg0 = {
     configFile = "/etc/wireguard/wg0.conf";
     autostart = true;
