@@ -1,15 +1,8 @@
 # this should contain everything that can/should not be exported to a module or is not hardware related
-{
-  pkgs,
-  config,
-  host,
-  ...
-}:
+{ pkgs, config, host, ... }:
 
 {
-  imports = [
-    ./hardware-configuration.nix
-  ];
+  imports = [ ./hardware-configuration.nix ];
 
   boot.loader = {
     systemd-boot = {
@@ -28,15 +21,12 @@
   programs.gamemode.enable = true;
   hardware.xone.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    mangohud
-    protonup
-  ];
+  environment.systemPackages = with pkgs; [ mangohud protonup wireguard-tools ];
 
   environment.sessionVariables = {
-    STEAM_EXTRA_COMPAT_TOOLS_PATH = "/home/siigs/.steam/root/compatibilitytools.d";
+    STEAM_EXTRA_COMPAT_TOOLS_PATH =
+      "/home/siigs/.steam/root/compatibilitytools.d";
   };
-
 
   networking = {
     interfaces = {
@@ -52,9 +42,6 @@
   services.xserver.videoDrivers = [ "nvidia" ];
 
   # changes for pg
-  services.udev.packages = [
-    pkgs.nrf-udev
-    pkgs.openocd
-  ];
+  services.udev.packages = [ pkgs.nrf-udev pkgs.openocd ];
 
 }
