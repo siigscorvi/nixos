@@ -16,6 +16,8 @@
 
   services.udev.packages = [ pkgs.nrf-udev pkgs.openocd pkgs.segger-jlink ];
 
+  networking.firewall = { allowedUDPPorts = [ 52810 ]; };
+  environment.systemPackages = [ pkgs.wireguard-tools ];
   networking.wg-quick.interfaces.wg0 = {
     configFile = "/etc/wireguard/wg0.conf";
     autostart = true;
