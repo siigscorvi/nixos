@@ -1,4 +1,4 @@
-{ inputs, nixpkgs, nixpkgs-stable, home-manager, vars, keys, ... }:
+{ inputs, nixpkgs, nixpkgs-stable, home-manager, vars, keys, stylix, ... }:
 
 let
   system = "x86_64-linux";
@@ -26,6 +26,7 @@ in {
     modules = [
       ./genesis
       ./configuration.nix
+      stylix.nixosModules.stylix
       home-manager.nixosModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
@@ -42,6 +43,7 @@ in {
     };
 
     modules = [
+      stylix.nixosModules.stylix
       ./moses
       ./configuration.nix
       home-manager.nixosModules.home-manager
@@ -60,6 +62,7 @@ in {
       host = { hostname = "kain"; };
     };
     modules = [
+      stylix.nixosModules.stylix
       ./kain
       ./configuration.nix
 

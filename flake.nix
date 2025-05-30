@@ -5,54 +5,33 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     nvim-config.url = "github:siigscorvi/nvim";
+
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs =
-    inputs@{
-      self,
-      nixpkgs,
-      nixpkgs-stable,
-      home-manager,
-      ...
-    }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-stable, home-manager, stylix, ... }:
     let
       vars = import ./modules/vars/var.nix;
       keys = import ./modules/vars/keys.nix;
-    in
-    {
-      nixosConfigurations = (
-        import ./hosts {
-          inherit (nixpkgs) lib;
-          inherit
-            inputs
-            nixpkgs
-            nixpkgs-stable
-            home-manager
-            vars
-            keys
-            ;
-        }
-      );
+    in {
 
-      homeConfigurations = (
-        import ./nix {
-          inherit (nixpkgs) lib;
-          inherit
-            inputs
-            nixpkgs
-            nixpkgs-stable
-            home-manager
-            vars
-            keys
-            ;
+      nixosConfigurations = (import ./hosts {
+        inherit (nixpkgs) lib;
+        inherit inputs nixpkgs nixpkgs-stable home-manager vars keys stylix;
+      });
 
-        }
-      );
+      homeConfigurations = (import ./nix {
+        inherit (nixpkgs) lib;
+        inherit inputs nixpkgs nixpkgs-stable home-manager vars keys stylix;
+      });
     };
 }

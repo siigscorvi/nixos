@@ -1,6 +1,7 @@
 {
   imports = [
     ./nh.nix
+    ./stylix.nix
     ./nextcloud.nix
     ./git.nix
     ./spotify.nix
