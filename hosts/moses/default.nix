@@ -14,7 +14,12 @@
 
   services.blueman.enable = true;
 
-  services.udev.packages = [ pkgs.nrf-udev pkgs.openocd pkgs.segger-jlink ];
+  services.udev.packages = [ pkgs.openocd ];
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="thunderbolt", ATTR{authorized}=="0", ATTR{authorized}="1"
+  '';
+
+  services.fwupd.enable = true;
 
   environment.systemPackages = [ pkgs.wireguard-tools ];
 
