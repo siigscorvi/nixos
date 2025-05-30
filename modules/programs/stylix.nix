@@ -13,6 +13,7 @@
       i3.enable = false;
       kitty.enable = false;
       lazygit.enable = false;
+      kde.enable = false;
       neovim.enable = false;
       starship.enable = false;
       tmux.enable = false;
