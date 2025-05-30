@@ -27,12 +27,13 @@
 
     home.file.".config/i3/config" = {
       text = ''
-        # autostart 
+        # autostart
         exec --no-startup-id dex --autostart --environment i3
 
         # screenlock timer
         exec_always --no-startup-id xset s 85 5
         exec systemctl --user restart xss-lock.service
+        exec --no-startup-id kdeconnect-indicator &
 
         # set wallpaper, start bar, picom and xborders
         exec_always --no-startup-id feh --bg-fill ~/.config/wallpapers/current
@@ -57,8 +58,8 @@
         client.placeholder      #00040D #00040D #FFFFFF #00040D   #00040D
         client.background       #000000
 
-        ### workspace settings 
-        # workspace variables with displayed names 
+        ### workspace settings
+        # workspace variables with displayed names
         set $ws1 "1  "
         set $ws2 "2  "
         set $ws3 "3  "
@@ -86,8 +87,8 @@
         set $mod Mod4
         focus_follows_mouse no
         # multimedia volume controls
-        bindsym XF86AudioMute exec amixer sset 'Master' toggle 
-        bindsym XF86AudioLowerVolume exec amixer sset 'Master' 5%- 
+        bindsym XF86AudioMute exec amixer sset 'Master' toggle
+        bindsym XF86AudioLowerVolume exec amixer sset 'Master' 5%-
         bindsym XF86AudioRaiseVolume exec amixer sset 'Master' 5%+
 
         bindsym XF86AudioPrev exec playerctl --player=spotify previous
@@ -117,13 +118,13 @@
         for_window [title="Bluetooth Devices"] resize set 860 700
 
         for_window [title="Pipewire Volume Control"]  floating enable
-        for_window [title="Pipewire Volume Control"] resize set 860 640 
+        for_window [title="Pipewire Volume Control"] resize set 860 640
 
         for_window [class="Thunar"] floating enable
         for_window [class="Thunar"] resize set 1080 640
 
         for_window [class=".arandr"] floating enable
-        for_window [class=".arandr"] resize set 860 640 
+        for_window [class=".arandr"] resize set 860 640
 
         # vim keys
         bindsym $mod+h focus left
