@@ -33,14 +33,14 @@
         # screenlock timer
         exec_always --no-startup-id xset s 85 5
         exec systemctl --user restart xss-lock.service
-        exec --no-startup-id kdeconnect-indicator &
 
         # set wallpaper, start bar, picom and xborders
         exec_always --no-startup-id feh --bg-fill ~/.config/wallpapers/current
         exec_always --no-startup-id ~/.dotfiles/scripts/polybar.sh &
-        # exec_always --no-startup-id ~/.dotfiles/scripts/dual.sh &
         exec_always --no-startup-id picom -b --log-file /tmp/picom.log --log-level "INFO" &
         exec --no-startup-id xborders -c ~/.config/xborders/config.json &
+        exec --no-startup-id kdeconnect-indicator &
+        exec --no-startup-id spotify_player -d
 
         ### Style configurations
         font pango:JetBrains\ Mono, FontAwesome 8
