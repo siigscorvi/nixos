@@ -58,6 +58,8 @@
         vim = "nvim";
         v = "nvim";
         lg = "lazygit";
+        sp = "spotify_player";
+        spp = "spotify_player playback";
 
       };
     };
