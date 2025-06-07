@@ -14,4 +14,19 @@
       withFuzzy = true;
     })
   ];
+
+  systemd.user.services.spotify-player = {
+    enable = true;
+    description = "Spotify Player daemon";
+
+    after = [ "network-online.target" "sound.target" ];
+    wants = [ "network-online.target" "sound.target" ];
+    wantedBy = [ "default.target" ];
+
+    serviceConfig = {
+      Type = "forking";
+      ExecStart = "${pkgs.spotify-player}/bin/spotify_player -d";
+      Restart = "on-failure";
+    };
+  };
 }

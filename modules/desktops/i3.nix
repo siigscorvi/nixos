@@ -40,7 +40,6 @@
         exec_always --no-startup-id picom -b --log-file /tmp/picom.log --log-level "INFO" &
         exec --no-startup-id xborders -c ~/.config/xborders/config.json &
         exec --no-startup-id kdeconnect-indicator &
-        exec --no-startup-id spotify_player -d
 
         ### Style configurations
         font pango:JetBrains\ Mono, FontAwesome 8
