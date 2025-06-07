@@ -1,8 +1,9 @@
 { vars, pkgs, ... }:
 
 {
-  home-manager.users.${vars.username} = {
+  environment.systemPackages = with pkgs; [ intel-gpu-tools ];
 
+  home-manager.users.${vars.username} = {
     programs.btop = {
       enable = true;
       settings = {
@@ -15,6 +16,5 @@
         proc_tree = true;
       };
     };
-
   };
 }
