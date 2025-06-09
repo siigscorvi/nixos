@@ -1,12 +1,11 @@
+{ config, lib, pkgs, ... }:
 {
   imports = [
     ./nh.nix
     ./git.nix
     ./spotify.nix
-    ./zsh.nix
-    ./btop.nix
-    ./tmux.nix
     ./thunderbird.nix
+    ./terminal/
   ];
 
   environment.systemPackages = with pkgs; [
