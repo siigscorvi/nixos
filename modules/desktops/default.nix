@@ -8,5 +8,6 @@
     ./alacritty.nix
     ./kitty.nix
     ./kdeconnect.nix
+    ./stylix.nix
   ];
 }
