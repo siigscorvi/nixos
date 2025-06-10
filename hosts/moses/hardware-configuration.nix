@@ -13,7 +13,11 @@
 
   };
 
+  # Thunderbold support
   services.hardware.bolt.enable = true;
+
+  # screen brightness
+  hardware.brillo.enable = true;
 
   # FIX: fingerprint reader does not work, I need to use open-fprintd and configure some more things
   # services.fprintd.enable = true;

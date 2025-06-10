@@ -16,8 +16,6 @@
     displayManager.lightdm.enable = false;
   };
 
-  hardware.brillo.enable = true;
-
   environment.systemPackages = with pkgs; [
     xclip
     dunst
