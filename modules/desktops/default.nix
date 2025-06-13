@@ -13,11 +13,12 @@
 # applications purely for theming / ricing
 # applications for
   # display manipulation (order, lighting)
-  # 
+  #
 
   imports = [
     ./displayManager.nix
     ./stylix.nix
+    ./wayland/wayland.nix
     ./X/xserver.nix
   ];
   # imports = [
