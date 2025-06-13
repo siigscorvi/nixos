@@ -19,7 +19,7 @@ in {
     {
       assertions = [
         {
-          assertion = !(cfg.ly.enable && cfg.greetd.enable);
+          assertion = !(cfg.ly.enable && cfg.tuigreet.enable);
           message   = "Only one display manager can be enabled at a time.";
         }
       ];
