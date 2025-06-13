@@ -5,7 +5,7 @@
     ./git.nix
     ./spotify.nix
     ./thunderbird.nix
-    ./terminal/
+    ./terminal
   ];
 
   environment.systemPackages = with pkgs; [

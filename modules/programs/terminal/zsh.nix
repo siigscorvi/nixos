@@ -1,9 +1,7 @@
 { pkgs, vars, ... }:
 
 {
-  imports = [
-    ./starship.nix
-  ];
+  imports = [ ./starship.nix ];
 
   programs.zsh.enable = true;
   users.users.${vars.username}.shell = pkgs.zsh;
@@ -18,7 +16,6 @@
     programs.zsh = {
       enable = true;
 
-      # options
       history = {
         append = true;
         ignoreAllDups = true;
@@ -27,16 +24,11 @@
         share = true;
       };
 
-      # plugins
       autocd = true;
       autosuggestion = {
         enable = true;
         #highlight = "fg=#ff00ff,bg=cyan,bold,underline";
-        strategy = [
-          "history"
-          "completion"
-          "match_prev_cmd"
-        ];
+        strategy = [ "history" "completion" "match_prev_cmd" ];
       };
       enableCompletion = true;
       syntaxHighlighting.enable = true;
