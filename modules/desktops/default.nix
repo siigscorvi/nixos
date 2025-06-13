@@ -18,7 +18,7 @@
   imports = [
     ./displayManager.nix
     ./stylix.nix
-    ./wayland/wayland.nix
+    ./wayland
     ./X/xserver.nix
   ];
   # imports = [
