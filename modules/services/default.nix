@@ -6,6 +6,7 @@
     ./sound.nix
     ./samba.nix
     ./nextcloud.nix
+    ./kdeconnect.nix
     #./ollama.nix
   ];
 }

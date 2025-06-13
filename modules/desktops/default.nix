@@ -16,12 +16,7 @@
   # 
 
   imports = [
-    ./thunar.nix
-    ./soundgui.nix
     ./displayManager.nix
-    ./alacritty.nix
-    ./kitty.nix
-    ./kdeconnect.nix
     ./stylix.nix
     ./X/xserver.nix
   ];
