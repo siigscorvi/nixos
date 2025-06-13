@@ -6,6 +6,11 @@
     ./spotify.nix
     ./thunderbird.nix
     ./terminal
+
+    ./alacritty.nix
+    ./kitty.nix
+    ./soundgui.nix
+    ./thunar.nix
   ];
 
   environment.systemPackages = with pkgs; [
