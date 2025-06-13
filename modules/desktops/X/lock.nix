@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, config, pkgs, ... }:
 {
   environment.systemPackages = [ pkgs.xsecurelock ];
   programs.xss-lock = {
@@ -9,7 +9,7 @@
     ];
     lockerCommand = "${pkgs.xsecurelock}/bin/xsecurelock";
   };
-  
+
   # xsecurelock configuration
   environment.variables = {
     XSECURELOCK_AUTH_FOREGROUND_COLOR = "#fbf1c7";

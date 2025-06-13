@@ -19,11 +19,11 @@
     ./thunar.nix
     ./soundgui.nix
     ./displayManager.nix
-    ./xserver.nix # this should always be enabled
     ./alacritty.nix
     ./kitty.nix
     ./kdeconnect.nix
     ./stylix.nix
+    ./X/xserver.nix
   ];
   # imports = [
   #   ./thunar.nix
