@@ -5,13 +5,13 @@ in {
 
   options.system.desktop.displayManager.ly.enable = mkOption {
     type = types.bool;
-    default = true;
+    default = false;
     description = "Enable the ly display manager";
   };
 
   options.system.desktop.displayManager.tuigreet.enable = mkOption {
     type = types.bool;
-    default = false;
+    default = true;
     description = "Enable the ly display manager";
   };
 
