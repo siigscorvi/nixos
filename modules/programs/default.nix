@@ -28,6 +28,7 @@
     openssl
     # this needs to move to a module!
     rofi
+    rofi-wayland
     arandr
 
     python313
