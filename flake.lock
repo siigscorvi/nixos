@@ -511,11 +511,11 @@
         "telescope-luasnip-nvim": "telescope-luasnip-nvim"
       },
       "locked": {
-        "lastModified": 1749304715,
-        "narHash": "sha256-OQ+9xfig6P2robZWet+BjkiOw8B4Pa7dOL/RhDQ8FBE=",
+        "lastModified": 1750153366,
+        "narHash": "sha256-gO7HYkyySqU9DvkeNXopSdKxwS2NIol6RTR2JCuA5vM=",
         "owner": "siigscorvi",
         "repo": "nvim",
-        "rev": "55bc2ac57b4631926bd6d6483a9c8243c9690bc0",
+        "rev": "320bb0a6a3ef5132864bd7dccc264d6fd7a85963",
         "type": "github"
       },
       "original": {
