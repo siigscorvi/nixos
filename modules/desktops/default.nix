@@ -16,7 +16,7 @@
   #
 
   imports = [
-    ./displayManager.nix
+    ./login-manager.nix
     ./stylix.nix
     ./wayland
     ./X/xserver.nix
