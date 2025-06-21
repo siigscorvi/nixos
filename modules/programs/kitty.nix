@@ -21,7 +21,7 @@
       settings = {
         confirm_os_window_close = 0;
         enable_audio_bell = true;
-        background_opacity = 0.8;
+        background_opacity = 1.0;
         mouse_hide_wait = "1.0";
       };
 
