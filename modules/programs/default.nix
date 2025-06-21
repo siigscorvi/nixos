@@ -6,6 +6,7 @@
     ./spotify.nix
     ./thunderbird.nix
     ./terminal
+    ./networkmanager.nix
 
     ./alacritty.nix
     ./kitty.nix
@@ -27,7 +28,6 @@
     openvpn
     openssl
     # this needs to move to a module!
-    rofi
     rofi-wayland
     arandr
 

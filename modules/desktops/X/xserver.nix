@@ -21,7 +21,4 @@
     dunst
   ];
 
-  # moved from applets.nix
-  programs.nm-applet.enable = true;
-
 }
