@@ -97,7 +97,7 @@
         [module/powermenu]
         type = custom/text
         format = "  "
-        click-left = exec ~/.dotfiles/scripts/rofi_powermenu.sh &
+        click-left = exec ~/.dotfiles/scripts/rofi/rofi-Xpowermenu.sh &
 
         [module/ethernet]
         type = internal/network
