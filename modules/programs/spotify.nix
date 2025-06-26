@@ -10,7 +10,7 @@
       withDaemon = true;
       withNotify = true;
       withStreaming = true;
-      withSixel = true;
+      # withSixel = true;
       withFuzzy = true;
     })
   ];
