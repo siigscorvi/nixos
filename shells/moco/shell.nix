@@ -6,8 +6,13 @@ pkgs.mkShell {
     glibc.dev
     gnumake42
 
+    esptool
+    espflash
+
     (python3.withPackages(p: with p; [
       matplotlib
+      meshtastic
+      esptool
     ]))
 
   ];
