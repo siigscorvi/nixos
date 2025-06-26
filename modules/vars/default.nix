@@ -1,5 +1,1 @@
-[
-  ./keys.nix
-  ./secrets.nix
-  ./theming.nix
-]
+{ imports = [ ./secrets.nix ./theming.nix ]; }
