@@ -4,7 +4,7 @@
 # this let in might not be necessary if incorporated into desktop import
 # TODO: If I move to have systems without a desktop environment, I should move this code as it would be unnecessary.
 {
-  imports = [ ../modules ];
+  imports = [ ../modules ../scripts ];
   # TODO: after import ../modules activate my configuration of zsh, ssh, git, btop
 
   # default single user settings
