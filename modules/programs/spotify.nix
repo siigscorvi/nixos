@@ -1,32 +1,22 @@
-{ pkgs, vars, ... }:
+{ pkgs, vars, lib, config, ... }:
 
+with lib;
+let
+  cfg = config.programs.spotify-gui;
+in
 {
-  environment.systemPackages = with pkgs; [
-    spotify
-    (spotify-player.override {
-      withAudioBackend = "pulseaudio";
-      withMediaControl = true;
-      withImage = true;
-      withDaemon = true;
-      withNotify = true;
-      withStreaming = true;
-      # withSixel = true;
-      withFuzzy = true;
-    })
-  ];
 
-  systemd.user.services.spotify-player = {
-    enable = true;
-    description = "Spotify Player daemon";
-
-    after = [ "network-online.target" "sound.target" ];
-    wants = [ "network-online.target" "sound.target" ];
-    wantedBy = [ "default.target" ];
-
-    serviceConfig = {
-      Type = "forking";
-      ExecStart = "${pkgs.spotify-player}/bin/spotify_player -d";
-      Restart = "on-failure";
+  options.programs.spotify-gui = {
+    enable = mkOption {
+      type = types.bool;
+      default = false;
+      description = "enable spotify player";
     };
+  };
+
+  config = mkIf cfg.enable {
+    environment.systemPackages = with pkgs; [
+      spotify
+    ];
   };
 }

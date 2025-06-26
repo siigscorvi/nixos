@@ -1,19 +1,21 @@
 { config, lib, pkgs, ... }:
 {
   imports = [
-    ./nh.nix
-    ./git.nix
     ./spotify.nix
-    ./thunderbird.nix
-    ./terminal
+    ./spotify-cli.nix
     ./networkmanager.nix
 
+    ./nh.nix
+    ./git.nix
+    ./thunderbird.nix
+    ./terminal
     ./alacritty.nix
     ./kitty.nix
     ./soundgui.nix
     ./thunar.nix
   ];
 
+  # all of these should be optional
   environment.systemPackages = with pkgs; [
     drawio
     anki
@@ -29,6 +31,7 @@
     openssl
     # this needs to move to a module!
     rofi-wayland
+    # this is no longer necessary with hyprland. Make it optional
     arandr
 
     python313
