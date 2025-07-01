@@ -27,7 +27,7 @@ in {
     #   };
     # };
 
-    environment.systemPackages = with pkgs; [ hyprpaper hyprpolkitagent rofi-wayland ];
+    environment.systemPackages = with pkgs; [ hyprpaper hyprpolkitagent rofi-wayland wl-clipboard-rs ];
 
   };
 }
