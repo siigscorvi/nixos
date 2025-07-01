@@ -52,6 +52,7 @@
         lg = "lazygit";
         sp = "spotify_player";
         spp = "spotify_player playback";
+        spr = "systemctl --user restart spotify-player";
 
       };
     };
