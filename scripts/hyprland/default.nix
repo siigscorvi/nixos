@@ -1,1 +1,1 @@
-{ imports = [ ./hyprland-reload.nix ]; }
+{ imports = [ ./hypr-reload.nix ]; }
