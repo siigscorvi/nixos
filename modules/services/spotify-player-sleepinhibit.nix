@@ -9,7 +9,6 @@ let
     acquire() {
       systemd-inhibit --what=sleep --why="spotify-player is playing" sleep infinity &
       LOCKPID=$!
-      ${pkgs.libnotify}/bin/notify-send "Spotify Player" "Inhibiting sleep while Spotify is playing"
     }
 
     release() {
@@ -17,7 +16,6 @@ let
         kill "$LOCKPID"; wait "$LOCKPID" 2>/dev/null
       fi
       LOCKPID=
-      ${pkgs.libnotify}/bin/notify-send "Spotify Player" "stopped inhibiting sleep because playback stopped"
     }
 
     prev=0
