@@ -9,6 +9,8 @@
     ./samba.nix
     ./nextcloud.nix
     ./kdeconnect.nix
+
+    ./fingerprint.nix
     #./ollama.nix
   ];
 }

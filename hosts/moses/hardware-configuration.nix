@@ -19,11 +19,6 @@
   # screen brightness
   hardware.brillo.enable = true;
 
-  # FIX: fingerprint reader does not work, I need to use open-fprintd and configure some more things
-  # services.fprintd.enable = true;
-  # services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix-550a;
-  # services.fprintd.tod.enable = true;
-
   boot.initrd.availableKernelModules =
     [ "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
