@@ -6,9 +6,9 @@
           background:     ${config.theming.colors.bg0_h};
           background-alt: ${config.theming.colors.bg2};
           foreground:     ${config.theming.colors.fg};
-          selected:       ${config.theming.colors.yellow1};
-          active:         ${config.theming.colors.green1};
-          urgent:         ${config.theming.colors.red1};
+          selected:       ${config.theming.colors.accent};
+          active:         ${config.theming.colors.green};
+          urgent:         ${config.theming.colors.red};
         }
       '';
     };
