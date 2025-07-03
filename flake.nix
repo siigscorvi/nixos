@@ -12,13 +12,18 @@
 
     nvim-config.url = "github:siigscorvi/nvim";
 
+    nixos-06cb-009a-fingerprint-sensor = {
+      url = "github:ahbnr/nixos-06cb-009a-fingerprint-sensor?ref=24.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-stable, home-manager, stylix, ... }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-stable, home-manager, nixos-06cb-009a-fingerprint-sensor, stylix, ... }:
     let
       vars = import ./modules/vars/var.nix;
       keys = import ./modules/vars/keys.nix;
@@ -26,7 +31,7 @@
 
       nixosConfigurations = (import ./hosts {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs nixpkgs-stable home-manager vars keys stylix;
+        inherit inputs nixpkgs nixpkgs-stable home-manager vars keys nixos-06cb-009a-fingerprint-sensor stylix;
       });
 
       homeConfigurations = (import ./nix {

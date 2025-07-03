@@ -1,4 +1,5 @@
-{ inputs, nixpkgs, nixpkgs-stable, home-manager, vars, keys, stylix, ... }:
+{ inputs, nixpkgs, nixpkgs-stable, home-manager, vars, keys
+, nixos-06cb-009a-fingerprint-sensor, stylix, ... }:
 
 let
   system = "x86_64-linux";
@@ -43,7 +44,9 @@ in {
     };
 
     modules = [
+      nixos-06cb-009a-fingerprint-sensor.nixosModules."06cb-009a-fingerprint-sensor"
       stylix.nixosModules.stylix
+
       ./moses
       ./configuration.nix
       home-manager.nixosModules.home-manager
