@@ -1,4 +1,4 @@
-{ config, lib, vars, pkgs, ... }:
+{ config, lib, vars, pkgs, inputs, ... }:
 with lib;
 let cfg = config.system.desktop.hyprland;
 in {
@@ -9,6 +9,8 @@ in {
     default = true;
     description = "Enable Hyprland as the Wayland compositor";
   };
+  # TODO: add this option to hyprlock module, when ready
+  # options.hyprlock.fingerprint.enable = mkEnableOption "Fingerprint authentication for Hyprlock";
 
   config = mkIf cfg.enable {
 
@@ -27,7 +29,13 @@ in {
     #   };
     # };
 
-    environment.systemPackages = with pkgs; [ hyprpaper hyprpolkitagent rofi-wayland wl-clipboard-rs ];
+    environment.systemPackages = with pkgs; [
+      inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
+      hyprpaper
+      hyprpolkitagent
+      rofi-wayland
+      wl-clipboard-rs
+    ];
 
   };
 }

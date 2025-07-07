@@ -1,5 +1,5 @@
 { inputs, nixpkgs, nixpkgs-stable, home-manager, vars, keys
-, nixos-06cb-009a-fingerprint-sensor, stylix, ... }:
+, nixos-06cb-009a-fingerprint-sensor, rose-pine-hyprcursor, stylix, ... }:
 
 let
   system = "x86_64-linux";
