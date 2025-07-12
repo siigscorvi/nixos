@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ./fingerprint-on-t480s.nix ];
+  imports = [ ./hardware-configuration.nix ./desktop.nix ./fingerprint-on-t480s.nix ];
 
   boot.loader = {
     systemd-boot = {
