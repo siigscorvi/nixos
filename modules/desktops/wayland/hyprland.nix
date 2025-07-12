@@ -2,7 +2,7 @@
 with lib;
 let cfg = config.system.desktop.hyprland;
 in {
-  imports = [ ./hypridle.nix ./waybar.nix ];
+  imports = [ ./hypridle.nix ./waybar.nix ./hyprlock.nix ];
 
   options.system.desktop.hyprland.enable = mkOption {
     type = types.bool;
@@ -20,8 +20,6 @@ in {
       xwayland.enable = true;
       withUWSM = true;
     };
-
-    programs.hyprlock.enable = true;
 
     environment.systemPackages = with pkgs; [
       inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
