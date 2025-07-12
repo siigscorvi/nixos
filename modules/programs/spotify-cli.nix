@@ -53,7 +53,7 @@ in
         cover_img_scale = 1.0
         enable_media_control = true
         enable_streaming = "DaemonOnly"
-        enable_notify = true
+        enable_notify = false
         enable_cover_image_cache = true
         default_device = "spotify-player@moses"
         notify_streaming_only = true
