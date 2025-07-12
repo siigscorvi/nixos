@@ -23,12 +23,6 @@ in {
 
     programs.hyprlock.enable = true;
 
-    # home-manager.users.${vars.username} = {
-    #   home.file.".config/hypr/hyprland.conf" = {
-    #     source = ../../../configs/hyprland.conf;
-    #   };
-    # };
-
     environment.systemPackages = with pkgs; [
       inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
       hyprpaper
@@ -36,6 +30,18 @@ in {
       rofi-wayland
       wl-clipboard-rs
     ];
+
+    home-manager.users.${vars.username} = {
+
+      home.file.".config/hypr/hyprpaper.conf" = {
+        force = true;
+        text = ''
+          preload = /home/siigs/.config/wallpapers/current
+          wallpaper = , /home/siigs/.config/wallpapers/current
+        '';
+      };
+
+    };
 
   };
 }
