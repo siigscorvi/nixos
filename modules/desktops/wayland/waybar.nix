@@ -57,55 +57,61 @@ in {
             ],
 
            "modules-right": [
-                ${if !cfg.battery then ''
-                "idle_inhibitor",
-                "pulseaudio"
-                '' else ''
-                "idle_inhibitor",
-                "pulseaudio",
-                "battery#power",
-                "battery#charge"
-                ''}
+                ${
+                  if !cfg.battery then ''
+                    "idle_inhibitor",
+                    "pulseaudio"
+                  '' else ''
+                    "idle_inhibitor",
+                    "pulseaudio",
+                    "battery#power",
+                    "battery#charge"
+                  ''
+                }
             ],
 
-            ${if !cfg.battery then "" else ''
-            "battery#power": {
-                "format-discharging": "{power:0.1f}W",
-                "format": "",
-                "interval": 20,
-                "tooltip": false
-            },
-
-            "battery#charge": {
-                "format": "{capacity}%",
-                "format-charging": "󱐋 {capacity}%",
-                "interval": 20,
-                "states": {
-                    "full": 100,
-                    "ninetyfive": 95,
-                    "ninety": 90,
-                    "eightyfive": 85,
-                    "eighty": 80,
-                    "seventyfive": 75,
-                    "seventy": 70,
-                    "sixtyfive": 65,
-                    "sixty": 60,
-                    "fiftyfive": 55,
-                    "fifty": 50,
-                    "fortyfive": 45,
-                    "forty": 40,
-                    "thirtyfive": 35,
-                    "thirty": 30,
-                    "twentyfive": 25,
-                    "twenty": 20,
-                    "fifteen": 15,
-                    "ten": 10,
-                    "five": 5
+            ${
+              if !cfg.battery then
+                ""
+              else ''
+                "battery#power": {
+                    "format-discharging": "{power:0.1f}W",
+                    "format": "",
+                    "interval": 20,
+                    "tooltip": false
                 },
-                "on-click": "${pkgs.libnotify}/bin/notify-send HELP \" please implement the rofi script\"",
-                "tooltip": false
-            },
-            ''}
+
+                "battery#charge": {
+                    "format": "{capacity}%",
+                    "format-charging": "󱐋 {capacity}%",
+                    "interval": 20,
+                    "states": {
+                        "full": 100,
+                        "ninetyfive": 95,
+                        "ninety": 90,
+                        "eightyfive": 85,
+                        "eighty": 80,
+                        "seventyfive": 75,
+                        "seventy": 70,
+                        "sixtyfive": 65,
+                        "sixty": 60,
+                        "fiftyfive": 55,
+                        "fifty": 50,
+                        "fortyfive": 45,
+                        "forty": 40,
+                        "thirtyfive": 35,
+                        "thirty": 30,
+                        "twentyfive": 25,
+                        "twenty": 20,
+                        "fifteen": 15,
+                        "ten": 10,
+                        "five": 5
+                    },
+                    "on-click": "${pkgs.libnotify}/bin/notify-send HELP \" please implement the rofi script\"",
+                    "tooltip": false
+                },
+              ''
+            }
 
             "clock": {
               "interval": 60,
@@ -232,213 +238,215 @@ in {
           }
 
           #clock { }
-          ${if !cfg.battery then "" else ''
-          #battery { }
-          #battery.power { }
+          ${if !cfg.battery then
+            ""
+          else ''
+            #battery { }
+            #battery.power { }
 
-          #battery.power.discharging {
-              min-width: 45px;
-          }
+            #battery.power.discharging {
+                min-width: 45px;
+            }
 
-          #battery.charge {
-              min-width: 45px;
-          }
+            #battery.charge {
+                min-width: 45px;
+            }
 
-          #battery.charge.full {
-            background: @bg;
-          }
-          #battery.charge.ninetyfive {
-            background: linear-gradient(to right,
-            @bg 0%, @bg 95%,
-            @bg-empty 95%, @bg-empty 100%);
-          }
-          #battery.charge.ninety {
-            background: linear-gradient(to right,
-            @bg 0%, @bg 90%,
-            @bg-empty 90%, @bg-empty 100%);
-          }
-          #battery.charge.eightyfive {
-            background: linear-gradient(to right,
-            @bg 0%, @bg 85%,
-            @bg-empty 85%, @bg-empty 100%);
-          }
-          #battery.charge.eighty {
-            background: linear-gradient(to right,
-            @bg 0%, @bg 80%,
-            @bg-empty 80%, @bg-empty 100%);
-          }
-          #battery.charge.seventyfive {
-            background: linear-gradient(to right,
-            @bg 0%, @bg 75%,
-            @bg-empty 75%, @bg-empty 100%);
-          }
-          #battery.charge.seventy {
-            background: linear-gradient(to right,
-            @bg 0%, @bg 70%,
-            @bg-empty 70%, @bg-empty 100%);
-          }
-          #battery.charge.sixtyfive {
-            background: linear-gradient(to right,
-            @bg 0%, @bg 65%,
-            @bg-empty 65%, @bg-empty 100%);
-          }
-          #battery.charge.sixty {
-            background: linear-gradient(to right,
-            @bg 0%, @bg 60%,
-            @bg-empty 60%, @bg-empty 100%);
-          }
-          #battery.charge.fiftyfive {
-            background: linear-gradient(to right,
-            @bg 0%, @bg 55%,
-            @bg-empty 55%, @bg-empty 100%);
-          }
-          #battery.charge.fifty {
-            background: linear-gradient(to right,
-            @bg 0%, @bg 50%,
-            @bg-empty 50%, @bg-empty 100%);
-          }
-          #battery.charge.fortyfive {
-            background: linear-gradient(to right,
-            @bg 0%, @bg 45%,
-            @bg-empty 45%, @bg-empty 100%);
-          }
-          #battery.charge.forty {
-            background: linear-gradient(to right,
-            @bg 0%, @bg 40%,
-            @bg-empty 40%, @bg-empty 100%);
-          }
-          #battery.charge.thirtyfive {
-            background: linear-gradient(to right,
-            @bg 0%, @bg 35%,
-            @bg-empty 35%, @bg-empty 100%);
-          }
-          #battery.charge.thirty {
-            background: linear-gradient(to right,
-            @bg-warning 0%, @bg-warning 30%,
-            @bg-empty 30%, @bg-empty 100%);
-          }
-          #battery.charge.twentyfive {
-            background: linear-gradient(to right,
-            @bg-warning 0%, @bg-warning 25%,
-            @bg-empty 25%, @bg-empty 100%);
-          }
-          #battery.charge.twenty {
-            background: linear-gradient(to right,
-            @bg-warning 0%, @bg-warning 20%,
-            @bg-empty 20%, @bg-empty 100%);
-          }
-          #battery.charge.fifteen {
-            background: linear-gradient(to right,
-            @bg-critical 0%, @bg-critical 15%,
-            @bg-empty 15%, @bg-empty 100%);
-          }
-          #battery.charge.ten {
-            background: linear-gradient(to right,
-            @bg-critical 0%, @bg-critical 10%,
-            @bg-empty 10%, @bg-empty 100%);
-          }
-          #battery.charge.five {
-            background: linear-gradient(to right,
-            @bg-critical 0%, @bg-critical 5%,
-            @bg-empty 5%, @bg-empty 100%);
-          }
+            #battery.charge.full {
+              background: @bg;
+            }
+            #battery.charge.ninetyfive {
+              background: linear-gradient(to right,
+              @bg 0%, @bg 95%,
+              @bg-empty 95%, @bg-empty 100%);
+            }
+            #battery.charge.ninety {
+              background: linear-gradient(to right,
+              @bg 0%, @bg 90%,
+              @bg-empty 90%, @bg-empty 100%);
+            }
+            #battery.charge.eightyfive {
+              background: linear-gradient(to right,
+              @bg 0%, @bg 85%,
+              @bg-empty 85%, @bg-empty 100%);
+            }
+            #battery.charge.eighty {
+              background: linear-gradient(to right,
+              @bg 0%, @bg 80%,
+              @bg-empty 80%, @bg-empty 100%);
+            }
+            #battery.charge.seventyfive {
+              background: linear-gradient(to right,
+              @bg 0%, @bg 75%,
+              @bg-empty 75%, @bg-empty 100%);
+            }
+            #battery.charge.seventy {
+              background: linear-gradient(to right,
+              @bg 0%, @bg 70%,
+              @bg-empty 70%, @bg-empty 100%);
+            }
+            #battery.charge.sixtyfive {
+              background: linear-gradient(to right,
+              @bg 0%, @bg 65%,
+              @bg-empty 65%, @bg-empty 100%);
+            }
+            #battery.charge.sixty {
+              background: linear-gradient(to right,
+              @bg 0%, @bg 60%,
+              @bg-empty 60%, @bg-empty 100%);
+            }
+            #battery.charge.fiftyfive {
+              background: linear-gradient(to right,
+              @bg 0%, @bg 55%,
+              @bg-empty 55%, @bg-empty 100%);
+            }
+            #battery.charge.fifty {
+              background: linear-gradient(to right,
+              @bg 0%, @bg 50%,
+              @bg-empty 50%, @bg-empty 100%);
+            }
+            #battery.charge.fortyfive {
+              background: linear-gradient(to right,
+              @bg 0%, @bg 45%,
+              @bg-empty 45%, @bg-empty 100%);
+            }
+            #battery.charge.forty {
+              background: linear-gradient(to right,
+              @bg 0%, @bg 40%,
+              @bg-empty 40%, @bg-empty 100%);
+            }
+            #battery.charge.thirtyfive {
+              background: linear-gradient(to right,
+              @bg 0%, @bg 35%,
+              @bg-empty 35%, @bg-empty 100%);
+            }
+            #battery.charge.thirty {
+              background: linear-gradient(to right,
+              @bg-warning 0%, @bg-warning 30%,
+              @bg-empty 30%, @bg-empty 100%);
+            }
+            #battery.charge.twentyfive {
+              background: linear-gradient(to right,
+              @bg-warning 0%, @bg-warning 25%,
+              @bg-empty 25%, @bg-empty 100%);
+            }
+            #battery.charge.twenty {
+              background: linear-gradient(to right,
+              @bg-warning 0%, @bg-warning 20%,
+              @bg-empty 20%, @bg-empty 100%);
+            }
+            #battery.charge.fifteen {
+              background: linear-gradient(to right,
+              @bg-critical 0%, @bg-critical 15%,
+              @bg-empty 15%, @bg-empty 100%);
+            }
+            #battery.charge.ten {
+              background: linear-gradient(to right,
+              @bg-critical 0%, @bg-critical 10%,
+              @bg-empty 10%, @bg-empty 100%);
+            }
+            #battery.charge.five {
+              background: linear-gradient(to right,
+              @bg-critical 0%, @bg-critical 5%,
+              @bg-empty 5%, @bg-empty 100%);
+            }
 
 
-          #battery.charge.charging.ninetyfive {
-            background: linear-gradient(to right,
-            @bg-charging 0%, @bg-charging 95%,
-            @bg-empty 95%, @bg-empty 100%);
-          }
-          #battery.charge.charging.ninety {
-            background: linear-gradient(to right,
-            @bg-charging 0%, @bg-charging 90%,
-            @bg-empty 90%, @bg-empty 100%);
-          }
-          #battery.charge.charging.eightyfive {
-            background: linear-gradient(to right,
-            @bg-charging 0%, @bg-charging 85%,
-            @bg-empty 85%, @bg-empty 100%);
-          }
-          #battery.charge.charging.eighty {
-            background: linear-gradient(to right,
-            @bg-charging 0%, @bg-charging 80%,
-            @bg-empty 80%, @bg-empty 100%);
-          }
-          #battery.charge.charging.seventyfive {
-            background: linear-gradient(to right,
-            @bg-charging 0%, @bg-charging 75%,
-            @bg-empty 75%, @bg-empty 100%);
-          }
-          #battery.charge.charging.seventy {
-            background: linear-gradient(to right,
-            @bg-charging 0%, @bg-charging 70%,
-            @bg-empty 70%, @bg-empty 100%);
-          }
-          #battery.charge.charging.sixtyfive {
-            background: linear-gradient(to right,
-            @bg-charging 0%, @bg-charging 65%,
-            @bg-empty 65%, @bg-empty 100%);
-          }
-          #battery.charge.charging.sixty {
-            background: linear-gradient(to right,
-            @bg-charging 0%, @bg-charging 60%,
-            @bg-empty 60%, @bg-empty 100%);
-          }
-          #battery.charge.charging.fiftyfive {
-            background: linear-gradient(to right,
-            @bg-charging 0%, @bg-charging 55%,
-            @bg-empty 55%, @bg-empty 100%);
-          }
-          #battery.charge.charging.fifty {
-            background: linear-gradient(to right,
-            @bg-charging 0%, @bg-charging 50%,
-            @bg-empty 50%, @bg-empty 100%);
-          }
-          #battery.charge.charging.fortyfive {
-            background: linear-gradient(to right,
-            @bg-charging 0%, @bg-charging 45%,
-            @bg-empty 45%, @bg-empty 100%);
-          }
-          #battery.charge.charging.forty {
-            background: linear-gradient(to right,
-            @bg-charging 0%, @bg-charging 40%,
-            @bg-empty 40%, @bg-empty 100%);
-          }
-          #battery.charge.charging.thirtyfive {
-            background: linear-gradient(to right,
-            @bg-charging 0%, @bg-charging 35%,
-            @bg-empty 35%, @bg-empty 100%);
-          }
-          #battery.charge.charging.thirty {
-            background: linear-gradient(to right,
-            @bg-charging 0%, @bg-charging 30%,
-            @bg-empty 30%, @bg-empty 100%);
-          }
-          #battery.charge.charging.twentyfive {
-            background: linear-gradient(to right,
-            @bg-charging 0%, @bg-charging 25%,
-            @bg-empty 25%, @bg-empty 100%);
-          }
-          #battery.charge.charging.twenty {
-            background: linear-gradient(to right,
-            @bg-charging 0%, @bg-charging 20%,
-            @bg-empty 20%, @bg-empty 100%);
-          }
-          #battery.charge.charging.fifteen {
-            background: linear-gradient(to right,
-            @bg-charging 0%, @bg-charging 15%,
-            @bg-empty 15%, @bg-empty 100%);
-          }
-          #battery.charge.charging.ten {
-            background: linear-gradient(to right,
-            @bg-charging 0%, @bg-charging 10%,
-            @bg-empty 10%, @bg-empty 100%);
-          }
-          #battery.charge.charging.five {
-            background: linear-gradient(to right,
-            @bg-charging 0%, @bg-charging 5%,
-            @bg-empty 5%, @bg-empty 100%);
-          }
+            #battery.charge.charging.ninetyfive {
+              background: linear-gradient(to right,
+              @bg-charging 0%, @bg-charging 95%,
+              @bg-empty 95%, @bg-empty 100%);
+            }
+            #battery.charge.charging.ninety {
+              background: linear-gradient(to right,
+              @bg-charging 0%, @bg-charging 90%,
+              @bg-empty 90%, @bg-empty 100%);
+            }
+            #battery.charge.charging.eightyfive {
+              background: linear-gradient(to right,
+              @bg-charging 0%, @bg-charging 85%,
+              @bg-empty 85%, @bg-empty 100%);
+            }
+            #battery.charge.charging.eighty {
+              background: linear-gradient(to right,
+              @bg-charging 0%, @bg-charging 80%,
+              @bg-empty 80%, @bg-empty 100%);
+            }
+            #battery.charge.charging.seventyfive {
+              background: linear-gradient(to right,
+              @bg-charging 0%, @bg-charging 75%,
+              @bg-empty 75%, @bg-empty 100%);
+            }
+            #battery.charge.charging.seventy {
+              background: linear-gradient(to right,
+              @bg-charging 0%, @bg-charging 70%,
+              @bg-empty 70%, @bg-empty 100%);
+            }
+            #battery.charge.charging.sixtyfive {
+              background: linear-gradient(to right,
+              @bg-charging 0%, @bg-charging 65%,
+              @bg-empty 65%, @bg-empty 100%);
+            }
+            #battery.charge.charging.sixty {
+              background: linear-gradient(to right,
+              @bg-charging 0%, @bg-charging 60%,
+              @bg-empty 60%, @bg-empty 100%);
+            }
+            #battery.charge.charging.fiftyfive {
+              background: linear-gradient(to right,
+              @bg-charging 0%, @bg-charging 55%,
+              @bg-empty 55%, @bg-empty 100%);
+            }
+            #battery.charge.charging.fifty {
+              background: linear-gradient(to right,
+              @bg-charging 0%, @bg-charging 50%,
+              @bg-empty 50%, @bg-empty 100%);
+            }
+            #battery.charge.charging.fortyfive {
+              background: linear-gradient(to right,
+              @bg-charging 0%, @bg-charging 45%,
+              @bg-empty 45%, @bg-empty 100%);
+            }
+            #battery.charge.charging.forty {
+              background: linear-gradient(to right,
+              @bg-charging 0%, @bg-charging 40%,
+              @bg-empty 40%, @bg-empty 100%);
+            }
+            #battery.charge.charging.thirtyfive {
+              background: linear-gradient(to right,
+              @bg-charging 0%, @bg-charging 35%,
+              @bg-empty 35%, @bg-empty 100%);
+            }
+            #battery.charge.charging.thirty {
+              background: linear-gradient(to right,
+              @bg-charging 0%, @bg-charging 30%,
+              @bg-empty 30%, @bg-empty 100%);
+            }
+            #battery.charge.charging.twentyfive {
+              background: linear-gradient(to right,
+              @bg-charging 0%, @bg-charging 25%,
+              @bg-empty 25%, @bg-empty 100%);
+            }
+            #battery.charge.charging.twenty {
+              background: linear-gradient(to right,
+              @bg-charging 0%, @bg-charging 20%,
+              @bg-empty 20%, @bg-empty 100%);
+            }
+            #battery.charge.charging.fifteen {
+              background: linear-gradient(to right,
+              @bg-charging 0%, @bg-charging 15%,
+              @bg-empty 15%, @bg-empty 100%);
+            }
+            #battery.charge.charging.ten {
+              background: linear-gradient(to right,
+              @bg-charging 0%, @bg-charging 10%,
+              @bg-empty 10%, @bg-empty 100%);
+            }
+            #battery.charge.charging.five {
+              background: linear-gradient(to right,
+              @bg-charging 0%, @bg-charging 5%,
+              @bg-empty 5%, @bg-empty 100%);
+            }
           ''}
         '';
       };
