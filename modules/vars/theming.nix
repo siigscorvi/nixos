@@ -1,5 +1,19 @@
-{ config, lib, pkgs, ... }:
-with lib; {
+{ config, lib, ... }:
+with lib;
+let
+  to-cssrgb = hexStr:
+  let
+    parts = builtins.match "#([[:xdigit:]]{2})([[:xdigit:]]{2})([[:xdigit:]]{2})" hexStr;
+    rgb = if parts == null then abort "Invalid hex ${hexStr}"
+      else builtins.map trivial.fromHexString parts;
+
+    r = builtins.toString (builtins.elemAt rgb 0);
+    g = builtins.toString (builtins.elemAt rgb 1);
+    b = builtins.toString (builtins.elemAt rgb 2);
+  in
+  "${r}, ${g}, ${b}";
+in
+ {
   # this is was is used in other modules
   options.theming = {
     colors = {
@@ -132,6 +146,139 @@ with lib; {
         type = types.str;
         default = "#a89984";
       };
+
+
+      rgb = {
+        bg = mkOption {
+          type = types.str;
+          default = to-cssrgb config.theming.colors.bg;
+        };
+        fg = mkOption {
+          type = types.str;
+          default = to-cssrgb config.theming.colors.fg;
+        };
+
+        accent = mkOption {
+          type = types.str;
+          default = to-cssrgb config.theming.colors.accent;
+        };
+
+        red = mkOption {
+          type = types.str;
+          default = to-cssrgb config.theming.colors.red;
+        };
+        bright-red = mkOption {
+          type = types.str;
+          default = to-cssrgb config.theming.colors.bright-red;
+        };
+        green = mkOption {
+          type = types.str;
+          default = to-cssrgb config.theming.colors.green;
+        };
+        bright-green = mkOption {
+          type = types.str;
+          default = to-cssrgb config.theming.colors.bright-green;
+        };
+        yellow = mkOption {
+          type = types.str;
+          default = to-cssrgb config.theming.colors.yellow;
+        };
+        bright-yellow = mkOption {
+          type = types.str;
+          default = to-cssrgb config.theming.colors.bright-yellow;
+        };
+        blue = mkOption {
+          type = types.str;
+          default = to-cssrgb config.theming.colors.blue;
+        };
+        bright-blue = mkOption {
+          type = types.str;
+          default = to-cssrgb config.theming.colors.bright-blue;
+        };
+        purple = mkOption {
+          type = types.str;
+          default = to-cssrgb config.theming.colors.purple;
+        };
+        bright-purple = mkOption {
+          type = types.str;
+          default = to-cssrgb config.theming.colors.bright-purple;
+        };
+        aqua = mkOption {
+          type = types.str;
+          default = to-cssrgb config.theming.colors.aqua;
+        };
+        bright-aqua = mkOption {
+          type = types.str;
+          default = to-cssrgb config.theming.colors.bright-aqua;
+        };
+        gray = mkOption {
+          type = types.str;
+          default = to-cssrgb config.theming.colors.gray;
+        };
+        bright-gray = mkOption {
+          type = types.str;
+          default = to-cssrgb config.theming.colors.bright-gray;
+        };
+        orange = mkOption {
+          type = types.str;
+          default = to-cssrgb config.theming.colors.orange;
+        };
+        bright-orange = mkOption {
+          type = types.str;
+          default = to-cssrgb config.theming.colors.bright-orange;
+        };
+
+        bg0_h = mkOption {
+          type = types.str;
+          default = to-cssrgb config.theming.colors.bg0_h;
+        };
+        bg0 = mkOption {
+          type = types.str;
+          default = to-cssrgb config.theming.colors.bg0;
+        };
+        bg1 = mkOption {
+          type = types.str;
+          default = to-cssrgb config.theming.colors.bg1;
+        };
+        bg2 = mkOption {
+          type = types.str;
+          default = to-cssrgb config.theming.colors.bg2;
+        };
+        bg3 = mkOption {
+          type = types.str;
+          default = to-cssrgb config.theming.colors.bg3;
+        };
+        bg4 = mkOption {
+          type = types.str;
+          default = to-cssrgb config.theming.colors.bg4;
+        };
+        bg0_s = mkOption {
+          type = types.str;
+          default = to-cssrgb config.theming.colors.bg0_s;
+        };
+
+        fg0 = mkOption {
+          type = types.str;
+          default = to-cssrgb config.theming.colors.fg0;
+        };
+        fg1 = mkOption {
+          type = types.str;
+          default = to-cssrgb config.theming.colors.fg1;
+        };
+        fg2 = mkOption {
+          type = types.str;
+          default = to-cssrgb config.theming.colors.fg2;
+        };
+        fg3 = mkOption {
+          type = types.str;
+          default = to-cssrgb config.theming.colors.fg3;
+        };
+        fg4 = mkOption {
+          type = types.str;
+          default = to-cssrgb config.theming.colors.fg4;
+        };
+      };
+
     };
     font = mkOption {
       type = types.str;
