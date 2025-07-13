@@ -35,10 +35,10 @@ in {
       description = "Inactive window transparency value";
     };
 
-    shadow = mkEnableOption "enable shadows on windows";
-    blur = mkEnableOption "enable blur on transparent windows";
-    animations = mkEnableOption "enable animations";
-    swapcaps = mkEnableOption "enable swapping escape and capslock";
+    shadow = mkEnableOption "shadows on windows";
+    blur = mkEnableOption "blur on transparent windows";
+    animations = mkEnableOption "animations";
+    swapcaps = mkEnableOption "swapping escape and capslock";
   };
 
   config = mkIf cfg.enable {
@@ -81,8 +81,8 @@ in {
           source = ~/.config/hypr/test.conf
 
           # startup commands
-          exec-once = [workspace 1 silent] ${vars.terminal}
-          exec-once = [workspace special:magic silent] ${vars.terminal}
+          exec-once = [workspace 1 silent] ${terminal-pkg}
+          exec-once = [workspace special:magic silent] ${terminal-pkg}
           ## services
           exec-once = ${pkgs.hyprpaper}/bin/hyprpaper
           exec-once = ${pkgs.kdePackages.kdeconnect-kde}/bin/kdeconnect-indicator

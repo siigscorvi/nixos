@@ -1,5 +1,3 @@
-{ config, ...}:
-
 {
   config.system.desktop = {
     hyprland = {
