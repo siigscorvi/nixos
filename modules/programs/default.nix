@@ -29,6 +29,7 @@
     xournalpp
     openvpn
     openssl
+    bitwarden-desktop
     # this needs to move to a module!
     rofi-wayland
     # this is no longer necessary with hyprland. Make it optional
