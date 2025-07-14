@@ -2,7 +2,7 @@
 { pkgs, config, host, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [ ./hardware-configuration.nix ./desktop.nix ];
 
   boot.loader = {
     systemd-boot = {
