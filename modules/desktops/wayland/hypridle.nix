@@ -95,7 +95,7 @@ in {
             # return brightness on input
             listener {
               timeout = ${toString cfg.screendimming-locked-timeout}
-              on-timeout = pidof ${pkgs.hyprlock}/bin/hyprlock && ${pkgs.brillo}/bin/brillo -S 10%
+              on-timeout = pidof ${pkgs.hyprlock}/bin/hyprlock && ${pkgs.brillo}/bin/brillo -O && ${pkgs.brillo}/bin/brillo -S 10%
               on-resume = pidof ${pkgs.hyprlock}/bin/hyprlock && ${pkgs.brillo}/bin/brillo -I
             }
           ''}
