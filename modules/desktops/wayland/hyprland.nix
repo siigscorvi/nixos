@@ -81,12 +81,14 @@ in {
           source = ~/.config/hypr/test.conf
 
           # startup commands
-          exec-once = [workspace 1 silent] ${terminal-pkg}
+          exec-once = [workspace 1] ${terminal-pkg}
           exec-once = [workspace special:magic silent] ${terminal-pkg}
           ## services
           exec-once = ${pkgs.hyprpaper}/bin/hyprpaper
-          exec-once = ${pkgs.kdePackages.kdeconnect-kde}/bin/kdeconnect-indicator
           exec-once = ${pkgs.systemd}/bin/systemctl --user start hyprpolkitagent
+
+          exec-once = ${pkgs.kdePackages.kdeconnect-kde}/bin/kdeconnect-indicator
+          exec-once = ${pkgs.bitwarden-desktop}/bin/bitwarden
 
           # environment variables
           env = XCURSOR_SIZE,32
