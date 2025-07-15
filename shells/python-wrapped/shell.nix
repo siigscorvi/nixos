@@ -4,7 +4,7 @@
 pkgs.mkShell {
   packages = with pkgs; [
     (python312.withPackages(p: with p; [
-      yfinance
+      git-filter-repo
     ]))
   ];
   shellHook = ''
