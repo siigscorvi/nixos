@@ -29,6 +29,13 @@ in {
       description = "Hyprland workspace monitor configuration";
     };
 
+    extra-settings = mkOption {
+      type = types.str;
+      default = "";
+      description = "Hyprland workspace monitor configuration";
+    };
+
+    # TODO: remove this option. It is very irritating, when the windows go tranparent even a tiny bit.
     inactive-transparency = mkOption {
       type = types.float;
       default = 1.0;
@@ -75,10 +82,17 @@ in {
         '';
       };
 
+      home.file.".config/hypr/extra.conf" = {
+        text = ''
+          ${cfg.extra-settings}
+        '';
+      };
+
       home.file.".config/hypr/hyprland.conf" = {
         text = ''
           source = ~/.config/hypr/monitor.conf
           source = ~/.config/hypr/test.conf
+          source = ~/.config/hypr/extra.conf
 
           # startup commands
           exec-once = [workspace 1] ${terminal-pkg}
