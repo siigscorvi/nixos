@@ -31,6 +31,7 @@
     openssl
     bitwarden-desktop
     # this needs to move to a module!
+    sshfs
     rofi-wayland
     # this is no longer necessary with hyprland. Make it optional
     arandr
