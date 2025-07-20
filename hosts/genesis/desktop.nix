@@ -32,9 +32,9 @@
 
     hypridle = {
       lockwarning-timeout = 260;
-      screendimming-beforelock-timeout = 270;
+      screendimming-beforelock-timeout = 0;
       lock-timeout = 300;
-      screendimming-locked-timeout = 20;
+      screendimming-locked-timeout = 0;
       blankscreen-timeout = 30;
       sleep-timeout = 299;
     };
