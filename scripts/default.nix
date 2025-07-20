@@ -1,1 +1,1 @@
-{ imports = [ ./rofi ./hyprland ]; }
+{ imports = [ ./rofi ./hyprland ./docs-update.nix ]; }
