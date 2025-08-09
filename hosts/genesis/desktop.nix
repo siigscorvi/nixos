@@ -3,8 +3,9 @@
     hyprland = {
 
       monitors = ''
-        monitor=desc:Lenovo Group Limited R27qe UP331C79,2560x1440@180.08,auto-up,1
+        monitor=desc:Lenovo Group Limited R27qe UP331C79,2560x1440@180.08,auto,1
         monitor=desc:Acer Technologies GN276HL T6BEE0018501,preferred,auto-left,1
+        monitor=,preferred,auto-left,1
       '';
 
       workspace-rules = ''
