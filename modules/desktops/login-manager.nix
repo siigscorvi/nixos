@@ -26,7 +26,7 @@ in {
     (mkIf cfg.ly.enable { services.displayManager.ly.enable = true; })
 
     (mkIf cfg.tuigreet.enable {
-      environment.systemPackages = [ pkgs.greetd.tuigreet ];
+      environment.systemPackages = [ pkgs.tuigreet ];
 
       services.greetd = {
         enable = true;
