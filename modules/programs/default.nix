@@ -4,6 +4,7 @@
     ./spotify.nix
     ./spotify-cli.nix
     ./networkmanager.nix
+    ./zathura.nix
 
     ./nh.nix
     ./git.nix
@@ -37,7 +38,5 @@
     arandr
 
     python313
-
-    zathura
   ];
 }
