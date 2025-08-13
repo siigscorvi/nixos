@@ -39,4 +39,5 @@
 
     python313
   ];
+  programs.zathura.enable = true;
 }

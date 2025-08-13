@@ -5,7 +5,6 @@ let cfg = config.programs.zathura;
 in {
 
   options.programs.zathura.enable = mkEnableOption "zathura pdf viewer";
-  programs.zathura.enable = true;
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ zathura ];
